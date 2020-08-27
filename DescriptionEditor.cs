@@ -150,9 +150,9 @@ namespace DescriptionEditor
             return settings;
         }
 
-        public override UserControl GetSettingsView(bool firstRunSettings)
-        {
-            return new DescriptionEditorSettingsView();
-        }
+        //public override UserControl GetSettingsView(bool firstRunSettings)
+        //{
+        //    return new DescriptionEditorSettingsView();
+        //}
     }
 }
