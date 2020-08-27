@@ -1,4 +1,4 @@
-﻿<WindowBase x:Class="DescriptionEditor.Views.DescriptionEditorMultiMetadata"
+﻿<WindowBase x:Class="DescriptionEditor.Views.DescriptionEditorView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -33,9 +33,9 @@
 
         <!-- Editor button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
-            <DockPanel Margin="5">
-                <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Width="100"
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left">
+            <DockPanel>
+                <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Width="140"
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom">
                             <Grid IsVisibleChanged="Grid_IsVisibleChanged">
@@ -100,6 +100,21 @@
                                     <Button Name="btInsertImg" Content="{DynamicResource LOCAddTitle}" Click="BtInsertImg_Click" />
                                 </Grid>
                             </Grid>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+
+                <Button Name="btRemoveImg" Content="{DynamicResource LOCDescriptionEditorButtonRemoveImg}" Width="140" 
+                        HorizontalAlignment="Left" Margin="5" Click="BtRemoveImg_Click" />
+
+                <Button Name="btHtmlFormat" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormat}" Width="140" 
+                        HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormat_Click" />
+
+                <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" Width="140" 
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right"  Margin="5">
+                    <Button.ContextMenu>
+                        <ContextMenu Placement="Bottom">
+                            <MenuItem Click="SteamRemoveAbout_click" Header="{DynamicResource LOCDescriptionEditorRemoveAboutGame}" />
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

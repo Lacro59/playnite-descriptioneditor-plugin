@@ -101,7 +101,7 @@ namespace DescriptionEditor
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-            new DescriptionEditorMultiMetadata(TextDescription).ShowDialog();
+            new DescriptionEditorView(TextDescription).ShowDialog();
         }
 
 
