@@ -1,6 +1,7 @@
 ﻿using Playnite.Controls;
 using Playnite.SDK;
 using PluginCommon;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -162,8 +163,49 @@ namespace DescriptionEditor.Views
         #region Steam formatter 
         private void SteamRemoveAbout_click(object sender, RoutedEventArgs e)
         {
-            int index = DescriptionActual.Text.ToLower().IndexOf("<h1>about the game</h1>");
-            if (index > -1)
+            List<string> AboutGame = new List<string>();
+            AboutGame.Add("<h1>about the game</h1>".ToLower());
+            AboutGame.Add("<h1>à propos du jeu</h1>".ToLower());
+            AboutGame.Add("<h1>Относно играта</h1>".ToLower());
+            AboutGame.Add("<h1>关于游戏</h1>".ToLower());
+            AboutGame.Add("<h1>關於此遊戲</h1>".ToLower());
+            AboutGame.Add("<h1>O hře</h1>".ToLower());
+            AboutGame.Add("<h1>Om spillet</h1>".ToLower());
+            AboutGame.Add("<h1>Info over het spel</h1>".ToLower());
+            AboutGame.Add("<h1>Tietoja pelistä</h1>".ToLower());
+            AboutGame.Add("<h1>Über das Spiel</h1>".ToLower());
+            AboutGame.Add("<h1>Σχετικά με το παιχνίδι</h1>".ToLower());
+            AboutGame.Add("<h1>A játékról:&nbsp;</h1>".ToLower());
+            AboutGame.Add("<h1>Informazioni sul gioco</h1>".ToLower());
+            AboutGame.Add("<h1>ゲームについて</h1>".ToLower());
+            AboutGame.Add("<h1>게임 정보</h1>".ToLower());
+            AboutGame.Add("<h1>Om spillet</h1>".ToLower());
+            AboutGame.Add("<h1>Informacje o&nbsp;grze</h1>".ToLower());
+            AboutGame.Add("<h1>Acerca do Jogo</h1>".ToLower());
+            AboutGame.Add("<h1>Sobre o jogo</h1>".ToLower());
+            AboutGame.Add("<h1>Despre joc</h1>".ToLower());
+            AboutGame.Add("<h1>Об игре</h1>".ToLower());
+            AboutGame.Add("<h1>Acerca del juego</h1>".ToLower());
+            AboutGame.Add("<h1>Acerca del juego</h1>".ToLower());
+            AboutGame.Add("<h1>Om spelet</h1>".ToLower());
+            AboutGame.Add("<h1>ข้อมูลเกม</h1>".ToLower());
+            AboutGame.Add("<h1>Oyun Açıklaması</h1>".ToLower());
+            AboutGame.Add("<h1>Про гру</h1>".ToLower());
+            AboutGame.Add("<h1>Về trò chơi này</h1>".ToLower());
+
+            bool isFind = false;
+            int index = -1;
+            foreach (string about in AboutGame)
+            {
+                index = DescriptionActual.Text.ToLower().IndexOf(about);
+                if (index > -1)
+                {
+                    isFind = true;
+                    break;
+                }
+            }
+            
+            if (isFind)
             {
                 DescriptionActual.Text = DescriptionActual.Text.Substring(index + 23);
             }
