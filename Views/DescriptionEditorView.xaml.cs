@@ -195,11 +195,17 @@ namespace DescriptionEditor.Views
 
             bool isFind = false;
             int index = -1;
+            string aboutFind = string.Empty;
+
+            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, @"\r\n", "");
+            DescriptionActual.Text = DescriptionActual.Text.Replace("     ", "");
+
             foreach (string about in AboutGame)
             {
                 index = DescriptionActual.Text.ToLower().IndexOf(about);
                 if (index > -1)
                 {
+                    aboutFind = about;
                     isFind = true;
                     break;
                 }
@@ -207,7 +213,7 @@ namespace DescriptionEditor.Views
             
             if (isFind)
             {
-                DescriptionActual.Text = DescriptionActual.Text.Substring(index + 23);
+                DescriptionActual.Text = DescriptionActual.Text.Substring(index + aboutFind.Length);
             }
         }
         #endregion
