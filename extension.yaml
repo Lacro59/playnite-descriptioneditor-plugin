@@ -4,3 +4,8 @@ Version: 0.2.1a
 Module: DescriptionEditor.dll
 Type: GenericPlugin
 Icon: icon.png
+Links:
+  - Name: Plugin forum
+    Url: https://playnite.link/forum/thread-379.html
+  - Name: Plugin Github
+    Url: https://github.com/Lacro59/playnite-descriptioneditor-plugin

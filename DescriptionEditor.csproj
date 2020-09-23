@@ -42,7 +42,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Playnite, Version=7.7.0.26797, Culture=neutral, processorArchitecture=x86">
@@ -50,18 +50,9 @@
       <HintPath>Resources\PlayniteResources\Playnite.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Playnite.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Resources\PlayniteResources\Playnite.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Playnite.SDK, Version=5.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\PlayniteSDK.5.2.0\lib\net462\Playnite.SDK.dll</HintPath>
       <Private>False</Private>
-    </Reference>
-    <Reference Include="PluginCommon, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Resources\PluginCommon.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -271,15 +262,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PlayniteResources\Playnite.Common.dll" />
     <None Include="Resources\PlayniteResources\Playnite.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PluginCommon.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PlayniteResources\HtmlRenderer.dll" />
     <None Include="Resources\PlayniteResources\HtmlRenderer.WPF.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="playnite-plugincommon\PluginCommon.csproj">
+      <Project>{e05ac297-6067-4270-a572-1df926bb3635}</Project>
+      <Name>PluginCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
