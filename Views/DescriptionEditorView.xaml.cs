@@ -20,9 +20,9 @@ namespace DescriptionEditor.Views
         private TextBox TextDescription;
 
 
-        public string imgUrl { get; set; } = "";
+        public string imgUrl { get; set; } = string.Empty;
         public bool imgCent { get; set; } = true;
-        public string imgSize { get; set; } = "";
+        public string imgSize { get; set; } = string.Empty;
         public bool imgLeft { get; set; } = false;
         public bool imgCenter { get; set; } = true;
         public bool imgRight { get; set; } = false;
@@ -57,14 +57,14 @@ namespace DescriptionEditor.Views
 
         private void ImgSize_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            ((TextBox)sender).Text = Regex.Replace(((TextBox)sender).Text, "[^0-9]+", "");
+            ((TextBox)sender).Text = Regex.Replace(((TextBox)sender).Text, "[^0-9]+", string.Empty);
         }
 
         private void Grid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            imgUrl = "";
+            imgUrl = string.Empty;
             imgCent = true;
-            imgSize = "";
+            imgSize = string.Empty;
             imgLeft = false;
             imgCenter = true;
             imgRight = false;
@@ -96,7 +96,7 @@ namespace DescriptionEditor.Views
         private void BtInsertImg_Click(object sender, RoutedEventArgs e)
         {
             string imgAdded = "<img src=\"{0}\" style=\"{1}\">";
-            string style = "";
+            string style = string.Empty;
             if (!string.IsNullOrEmpty(imgUrl))
             {
                 if (imgCent)
@@ -152,6 +152,8 @@ namespace DescriptionEditor.Views
                     DescriptionActual.Text = DescriptionActual.Text.Insert(DescriptionActual.CaretIndex, imgAdded);
                 }
             }
+
+            btAddImgContextMenu.Visibility = Visibility.Collapsed;
         }
 
         private void BtRemoveImg_Click(object sender, RoutedEventArgs e)
@@ -197,8 +199,8 @@ namespace DescriptionEditor.Views
             int index = -1;
             string aboutFind = string.Empty;
 
-            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, @"\r\n", "");
-            DescriptionActual.Text = DescriptionActual.Text.Replace("     ", "");
+            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, @"\r\n", string.Empty);
+            DescriptionActual.Text = DescriptionActual.Text.Replace("     ", string.Empty);
 
             foreach (string about in AboutGame)
             {

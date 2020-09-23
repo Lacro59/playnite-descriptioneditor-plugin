@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
+// TODO Integrate control HtmlTextView
 namespace DescriptionEditor
 {
     public class DescriptionEditor : Plugin

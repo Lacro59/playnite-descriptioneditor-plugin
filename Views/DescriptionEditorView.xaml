@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:DescriptionEditor.Views"
              xmlns:pbeh="clr-namespace:Playnite.Behaviors;assembly=Playnite"
              xmlns:controls="clr-namespace:Playnite.Controls;assembly=Playnite"
-            xmlns:pcon="clr-namespace:Playnite.Converters;assembly=Playnite"
-            mc:Ignorable="d" Height="740" Width="1260" Background="{DynamicResource WindowBackgourndBrush}"
+             xmlns:pcon="clr-namespace:PluginCommon;assembly=PluginCommon"
+             mc:Ignorable="d" Height="740" Width="1260" Background="{DynamicResource WindowBackgourndBrush}"
              Title="{DynamicResource LOCDescriptionEditor}"              
              d:DesignStyle="{StaticResource WindowDesignStyle}"
              Style="{DynamicResource StandardWindowStyle}"
@@ -37,7 +37,7 @@
                 <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Width="140"
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5">
                     <Button.ContextMenu>
-                        <ContextMenu Placement="Bottom">
+                        <ContextMenu Placement="Bottom" Name="btAddImgContextMenu">
                             <Grid IsVisibleChanged="Grid_IsVisibleChanged">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>

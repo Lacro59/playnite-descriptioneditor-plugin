@@ -45,8 +45,7 @@
                 <ResourceDictionary Source="Resources/PlayniteResources/DefaultControls/TreeView.xaml" />
 
                 <!--PluginCommon-->
-                <!--ResourceDictionary Source="Resources/LiveChartsCommon/Common.xaml" /-->
-                
+                <ResourceDictionary Source="Resources/LiveChartsCommon/Common.xaml" />
                 <!--Default localization-->
                 <ResourceDictionary Source="Localization/LocSource.xaml" />
             </ResourceDictionary.MergedDictionaries>
