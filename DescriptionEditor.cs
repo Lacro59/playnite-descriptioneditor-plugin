@@ -52,16 +52,20 @@ namespace DescriptionEditor
 
         public override IEnumerable<ExtensionFunction> GetFunctions()
         {
-            return new List<ExtensionFunction>
-            {
-                //new ExtensionFunction(
-                //    "Execute function from GenericPlugin",
-                //    () =>
-                //    {
-                //        // Add code to be execute when user invokes this menu entry.
-                //        PlayniteApi.Dialogs.ShowMessage("Code executed from a plugin!");
-                //    })
-            };
+            List<ExtensionFunction> listFunctions = new List<ExtensionFunction>();
+
+#if DEBUG
+            listFunctions.Add(
+                new ExtensionFunction(
+                    "DescriptionEditor Test",
+                    () =>
+                    {
+
+                    })
+                );
+#endif
+
+            return listFunctions;
         }
 
         private TextBox TextDescription;
