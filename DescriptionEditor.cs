@@ -31,7 +31,7 @@ namespace DescriptionEditor
             string pluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             // Add plugin localization in application ressource.
-            PluginCommon.Localization.SetPluginLanguage(pluginFolder, api.Paths.ConfigurationPath);
+            PluginCommon.Localization.SetPluginLanguage(pluginFolder, api.ApplicationSettings.Language);
             // Add common in application ressource.
             PluginCommon.Common.Load(pluginFolder);
 
@@ -72,7 +72,7 @@ namespace DescriptionEditor
 
         private void WindowBase_LoadedEvent(object sender, System.EventArgs e)
         {
-            string WinName = "";
+            string WinName = String.Empty;
             try
             {
                 WinName = ((WindowBase)sender).Name;
