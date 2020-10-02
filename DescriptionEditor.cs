@@ -1,5 +1,4 @@
 ﻿using DescriptionEditor.Views;
-using Playnite.Controls;
 using Playnite.SDK;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
@@ -11,6 +10,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
+// TODO Integrate control HtmlTextView
 namespace DescriptionEditor
 {
     public class DescriptionEditor : Plugin
@@ -30,7 +30,7 @@ namespace DescriptionEditor
             string pluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             // Add plugin localization in application ressource.
-            PluginCommon.Localization.SetPluginLanguage(pluginFolder, api.Paths.ConfigurationPath);
+            PluginCommon.Localization.SetPluginLanguage(pluginFolder, api.ApplicationSettings.Language);
             // Add common in application ressource.
             PluginCommon.Common.Load(pluginFolder);
 
@@ -46,35 +46,39 @@ namespace DescriptionEditor
             }
 
             // Add Event for WindowBase for get the "WindowGameEdit".
-            EventManager.RegisterClassHandler(typeof(WindowBase), WindowBase.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
+            EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
         }
 
         public override IEnumerable<ExtensionFunction> GetFunctions()
         {
-            return new List<ExtensionFunction>
-            {
-                //new ExtensionFunction(
-                //    "Execute function from GenericPlugin",
-                //    () =>
-                //    {
-                //        // Add code to be execute when user invokes this menu entry.
-                //        PlayniteApi.Dialogs.ShowMessage("Code executed from a plugin!");
-                //    })
-            };
+            List<ExtensionFunction> listFunctions = new List<ExtensionFunction>();
+
+#if DEBUG
+            listFunctions.Add(
+                new ExtensionFunction(
+                    "DescriptionEditor Test",
+                    () =>
+                    {
+
+                    })
+                );
+#endif
+
+            return listFunctions;
         }
 
         private TextBox TextDescription;
 
         private void WindowBase_LoadedEvent(object sender, System.EventArgs e)
         {
-            string WinName = "";
+            string WinName = String.Empty;
             try
             {
-                WinName = ((WindowBase)sender).Name;
+                WinName = ((Window)sender).Name;
 
                 if (WinName == "mainWindow")
                 {
-                    WindowBase mainWindow = (WindowBase)sender;
+                    Window mainWindow = (Window)sender;
                     DockPanel ElementParent = (DockPanel)((Button)mainWindow.FindName("ButtonDownload")).Parent;
 
                     if (ElementParent != null)
