@@ -66,6 +66,7 @@
     <Compile Include="DescriptionEditor.cs" />
     <Compile Include="DescriptionEditorSettings.cs" />
     <Compile Include="HtmlHelper.cs" />
+    <Compile Include="PlayniteResources\Controls\HtmlTextView.cs" />
     <Compile Include="Views\DescriptionEditorView.xaml.cs">
       <DependentUpon>DescriptionEditorView.xaml</DependentUpon>
     </Compile>
@@ -118,6 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlayniteResources\DescriptionView.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

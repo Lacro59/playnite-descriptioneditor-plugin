@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DescriptionEditor.Views"
         xmlns:pbeh="clr-namespace:PluginCommon.PlayniteResources.Behaviors;assembly=PluginCommon"
         xmlns:pcon="clr-namespace:PluginCommon;assembly=PluginCommon"
+        xmlns:controls="clr-namespace:DescriptionEditor.PlayniteResources.Controls"
         mc:Ignorable="d" Height="740" Width="1260" Background="{DynamicResource WindowBackgourndBrush}"
         Title="{DynamicResource LOCDescriptionEditor}"      
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="SingleBorderWindow">
@@ -123,13 +124,13 @@
                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                      Text="{Binding Description, Mode=TwoWay}" />
 
-        <!--controls:HtmlTextView Grid.Column="2" Grid.Row="2" HtmlText="{Binding ElementName=DescriptionActual, Path=Text, Mode=OneWay}"
+        <controls:HtmlTextView Grid.Column="2" Grid.Row="2" HtmlText="{Binding ElementName=DescriptionActual, Path=Text, Mode=OneWay}"
                                    HtmlFontSize="{DynamicResource FontSize}"
                                    HtmlFontFamily="{DynamicResource FontFamily}"
                                    HtmlForeground="{DynamicResource TextColor}"
-                                   LinkForeground="{DynamicResource GlyphColor}"                                      
+                                   LinkForeground="{DynamicResource GlyphColor}"
                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"/-->
+                                   ScrollViewer.VerticalScrollBarVisibility="Disabled" />
 
         <!-- Action button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" BorderThickness="0,1,0,0" BorderBrush="{StaticResource NormalBorderBrush}">
