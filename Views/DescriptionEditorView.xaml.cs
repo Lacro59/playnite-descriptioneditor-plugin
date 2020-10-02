@@ -1,5 +1,4 @@
-﻿using Playnite.Controls;
-using Playnite.SDK;
+﻿using Playnite.SDK;
 using PluginCommon;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -11,7 +10,7 @@ namespace DescriptionEditor.Views
     /// <summary>
     /// Logique d'interaction pour DescriptionEditorView.xaml
     /// </summary>
-    public partial class DescriptionEditorView : WindowBase
+    public partial class DescriptionEditorView : Window
     {
         private static readonly ILogger logger = LogManager.GetLogger();
         private static IResourceProvider resources = new ResourceProvider();

@@ -45,10 +45,6 @@
       <HintPath>packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Playnite">
-      <HintPath>playnite-plugincommon\Resources\PlayniteResources\Playnite.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Playnite.SDK, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\PlayniteSDK.5.3.0-rc\lib\net462\Playnite.SDK.dll</HintPath>
       <Private>False</Private>
@@ -91,10 +87,6 @@
       <SubType>Designer</SubType>
     </Page>
     <None Include="README.md" />
-    <None Include="Resources\PlayniteResources\DerivedStyles\BottomButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <Page Include="Views\DescriptionEditorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -107,18 +99,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\PlayniteResources\DerivedStyles\MainWindowStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Resources\PlayniteResources\DerivedStyles\StandardWindowStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Resources\PlayniteResources\DerivedStyles\WindowBarButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

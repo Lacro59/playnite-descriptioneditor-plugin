@@ -1,5 +1,4 @@
 ﻿using DescriptionEditor.Views;
-using Playnite.Controls;
 using Playnite.SDK;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
@@ -47,7 +46,7 @@ namespace DescriptionEditor
             }
 
             // Add Event for WindowBase for get the "WindowGameEdit".
-            EventManager.RegisterClassHandler(typeof(WindowBase), WindowBase.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
+            EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
         }
 
         public override IEnumerable<ExtensionFunction> GetFunctions()
@@ -75,11 +74,11 @@ namespace DescriptionEditor
             string WinName = String.Empty;
             try
             {
-                WinName = ((WindowBase)sender).Name;
+                WinName = ((Window)sender).Name;
 
                 if (WinName == "mainWindow")
                 {
-                    WindowBase mainWindow = (WindowBase)sender;
+                    Window mainWindow = (Window)sender;
                     DockPanel ElementParent = (DockPanel)((Button)mainWindow.FindName("ButtonDownload")).Parent;
 
                     if (ElementParent != null)
