@@ -105,7 +105,9 @@ namespace DescriptionEditor
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
-            new DescriptionEditorView(TextDescription).ShowDialog();
+            var ViewExtension = new DescriptionEditorView(TextDescription);
+            Window windowExtension = PlayniteUiHelper.CreateExtensionWindow(PlayniteApi,resources.GetString("LOCDescriptionEditor"), ViewExtension);
+            windowExtension.ShowDialog();
         }
 
 

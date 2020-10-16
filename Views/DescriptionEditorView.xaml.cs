@@ -10,7 +10,7 @@ namespace DescriptionEditor.Views
     /// <summary>
     /// Logique d'interaction pour DescriptionEditorView.xaml
     /// </summary>
-    public partial class DescriptionEditorView : Window
+    public partial class DescriptionEditorView : UserControl
     {
         private static readonly ILogger logger = LogManager.GetLogger();
         private static IResourceProvider resources = new ResourceProvider();
@@ -37,20 +37,15 @@ namespace DescriptionEditor.Views
             DataContext = this;
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Tools.DesactivePlayniteWindowControl(this);
-        }
-
         private void BtEditorCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            ((Window)this.Parent).Close();
         }
 
         private void BtEditorOK_Click(object sender, RoutedEventArgs e)
         {
             TextDescription.Text = DescriptionActual.Text;
-            this.Close();
+            ((Window)this.Parent).Close();
         }
 
 
