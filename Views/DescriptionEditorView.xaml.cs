@@ -194,7 +194,7 @@ namespace DescriptionEditor.Views
             string aboutFind = string.Empty;
 
             DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, @"\r\n", string.Empty);
-            DescriptionActual.Text = DescriptionActual.Text.Replace("     ", string.Empty);
+            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
 
             foreach (string about in AboutGame)
             {

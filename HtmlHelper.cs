@@ -3,6 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
+using AngleSharp.Parser.Html;
+using System.IO;
+using AngleSharp.Html;
+using System.Net;
 
 namespace DescriptionEditor
 {
@@ -10,48 +14,65 @@ namespace DescriptionEditor
     {
         private static readonly ILogger logger = LogManager.GetLogger();
 
+        private static readonly string Indentation = "    ";
 
-        public static string HtmlFormat(string html)
+
+        public static string HtmlFormat(string Html)
         {
-            html = Regex.Replace(html, "(</[^>]*>)", "\r\n$1");
-            html = Regex.Replace(html, "(<[br]*[br/]*[br /]*[BR]*[BR/]*[BR /]*>)", "\r\n$1");
-            html = Regex.Replace(html, "(<[^>]*>)", "$1\r\n");
+            Html = HtmlFormatRemove(Html);
 
-            string[] stringSeparators = new string[] { "\r\n" };
-            List<string> lines = new List<string>(html.Split(stringSeparators, StringSplitOptions.None));
+            // TODO With recent version of AngleSharp
+            /*
+            var parser = new HtmlParser();
+            var document = parser.ParseDocument(Html);
 
-            // Remove space tab
-            lines = lines.Select(s => s.Trim()).ToList();
-
-            // Remove line empty
-            lines = lines.FindAll(x => !string.IsNullOrEmpty(x));
-
-            // Add space tab
-            List<string> lastTag = new List<string>();
-            for(int i = 0; i < lines.Count; i++)
+            using (var writer = new StringWriter())
             {
-                if (Regex.IsMatch(lines[i], "<[^>]*>") 
-                    && lines[i].ToLower() != "<br>" && lines[i].ToLower() != "<br/>" && lines[i].ToLower() != "<br />"
-                    && lines[i].ToLower().IndexOf("<img") == -1)
+                var formatter = new PrettyMarkupFormatter
                 {
-                    if (Regex.IsMatch(lines[i], "</[^>]*>"))
-                    {
-                        lastTag.RemoveAt(lastTag.Count - 1);
-                        lines[i] = AddSpace(lines[i], lastTag.Count);
-                    }
-                    else if (!lastTag.Contains(lines[i]))
-                    {
-                        lastTag.Add(lines[i]);
-                        lines[i] = AddSpace(lines[i], (lastTag.Count - 1));
-                    }
-                }
-                else
+                    Indentation = Indentation
+                };
+                document.Body.ChildNodes.ToHtml(writer, formatter);
+                Html = writer.ToString();
+            }
+            */
+
+            var parser = new HtmlParser();
+            var document = parser.Parse(Html);
+
+            using (var writer = new StringWriter())
+            {
+                var formatter = new PrettyMarkupFormatter
                 {
-                    lines[i] = AddSpace(lines[i], lastTag.Count);
-                }
+                    Indentation = Indentation
+                };
+                document.Body.ChildNodes.ToHtml(writer, formatter);
+                Html = writer.ToString();
             }
 
-            return String.Join("\r\n", lines.ToArray()); ;
+
+            Html = Regex.Replace(Html, @"(<[^>]*>)\s+(.)", "$1$2", RegexOptions.IgnoreCase);
+            Html = Regex.Replace(Html, @"(<br>)(</li>)", "$2", RegexOptions.IgnoreCase);
+
+            Html = Regex.Replace(Html, @"(<[^>]*>)(<strong>)(\s+)", "$1" + Environment.NewLine + "$3$2", RegexOptions.IgnoreCase);
+
+            Html = Regex.Replace(Html, @"(.)(<br>)", "$1" + Environment.NewLine + "$2", RegexOptions.IgnoreCase);
+            Html = Regex.Replace(Html, @"(<br>)(.)", "$1" + Environment.NewLine + "$2", RegexOptions.IgnoreCase);
+
+            Html = Regex.Replace(Html, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
+
+            Html = WebUtility.HtmlDecode(Html);
+
+            return Html;
+        }
+
+        public static string HtmlFormatRemove(string Html)
+        {
+            Html = Html.Replace(Environment.NewLine, string.Empty);
+            Html = Regex.Replace(Html, @"\r\n?|\n", string.Empty);
+            Html = Regex.Replace(Html, @"\s+", " ");
+            Html = Regex.Replace(Html, @"(>)\s+(<)", "$1$2", RegexOptions.IgnoreCase);
+            return Html;
         }
 
         private static string AddSpace(string line, int index)
