@@ -1,16 +1,64 @@
-﻿using System.IO;
-using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using TheArtOfDev.HtmlRenderer.WPF;
-using Path = System.IO.Path;
 
 namespace DescriptionEditor.PlayniteResources.Controls
 {
     public class HtmlTextView : HtmlPanel
     {
-        private static string template = string.Empty;
+        internal string templateContent = string.Empty;
+
+        public string TemplatePath
+        {
+            get
+            {
+                return (string)GetValue(TemplatePathProperty);
+            }
+
+            set
+            {
+                SetValue(TemplatePathProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty TemplatePathProperty =
+            DependencyProperty.Register(
+                "TemplatePath",
+                typeof(string),
+                typeof(HtmlTextView),
+                new PropertyMetadata(null, TemplatePathChange));
+
+        private static void TemplatePathChange(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var obj = sender as HtmlTextView;
+            if (e.NewValue is string path)
+            {
+                if (path.IsNullOrEmpty())
+                {
+                    obj.templateContent = string.Empty;
+                }
+                else if (File.Exists(path))
+                {
+                    obj.templateContent = File.ReadAllText(path);
+                }
+
+                obj.UpdateTextContent();
+            }
+        }
 
         public double HtmlFontSize
         {
@@ -33,12 +81,7 @@ namespace DescriptionEditor.PlayniteResources.Controls
             var obj = sender as HtmlTextView;
             if (e.NewValue is double size)
             {
-                var content = template;
-                content = content.Replace("{text}", obj.HtmlText);
-                content = content.Replace("{foreground}", obj.HtmlForeground.ToHtml());
-                content = content.Replace("{link_foreground}", obj.LinkForeground.ToHtml());
-                content = content.Replace("{font_size}", size.ToString());
-                obj.Text = content.Replace("{font_family}", obj.HtmlFontFamily.ToString());
+                obj.UpdateTextContent();
             }
         }
 
@@ -61,13 +104,7 @@ namespace DescriptionEditor.PlayniteResources.Controls
         private static void OnHtmlFontFamilyChange(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var obj = sender as HtmlTextView;
-            var font = e.NewValue.ToString();
-            var content = template;
-            content = content.Replace("{text}", obj.HtmlText);
-            content = content.Replace("{foreground}", obj.HtmlForeground.ToHtml());
-            content = content.Replace("{link_foreground}", obj.LinkForeground.ToHtml());
-            content = content.Replace("{font_size}", obj.HtmlFontSize.ToString());
-            obj.Text = content.Replace("{font_family}", font);
+            obj.UpdateTextContent();
         }
 
         public Color LinkForeground
@@ -91,12 +128,7 @@ namespace DescriptionEditor.PlayniteResources.Controls
             var obj = sender as HtmlTextView;
             if (e.NewValue is Color color)
             {
-                var content = template;
-                content = content.Replace("{text}", obj.HtmlText);
-                content = content.Replace("{foreground}", obj.HtmlForeground.ToHtml());
-                content = content.Replace("{font_family}", obj.HtmlFontFamily.ToString());
-                content = content.Replace("{font_size}", obj.HtmlFontSize.ToString());
-                obj.Text = content.Replace("{link_foreground}", color.ToHtml());
+                obj.UpdateTextContent();
             }
         }
 
@@ -121,12 +153,7 @@ namespace DescriptionEditor.PlayniteResources.Controls
             var obj = sender as HtmlTextView;
             if (e.NewValue is Color color)
             {
-                var content = template;
-                content = content.Replace("{text}", obj.HtmlText);
-                content = content.Replace("{link_foreground}", obj.LinkForeground.ToHtml());
-                content = content.Replace("{font_family}", obj.HtmlFontFamily.ToString());
-                content = content.Replace("{font_size}", obj.HtmlFontSize.ToString());
-                obj.Text = content.Replace("{foreground}", color.ToHtml());
+                obj.UpdateTextContent();
             }
         }
 
@@ -149,23 +176,23 @@ namespace DescriptionEditor.PlayniteResources.Controls
         private static void OnHtmlTextChange(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var obj = sender as HtmlTextView;
-            var content = template;
-            content = content.Replace("{foreground}", obj.HtmlForeground.ToHtml());
-            content = content.Replace("{link_foreground}", obj.LinkForeground.ToHtml());
-            content = content.Replace("{font_family}", obj.HtmlFontFamily.ToString());
-            content = content.Replace("{font_size}", obj.HtmlFontSize.ToString());
-            obj.Text = content.Replace("{text}", e.NewValue?.ToString());
+            obj.UpdateTextContent();
+        }
+
+        internal void UpdateTextContent()
+        {
+            var content = templateContent;
+            content = content.Replace("{foreground}", HtmlForeground.ToHtml());
+            content = content.Replace("{link_foreground}", LinkForeground.ToHtml());
+            content = content.Replace("{font_family}", HtmlFontFamily.ToString());
+            content = content.Replace("{font_size}", HtmlFontSize.ToString());
+            Text = content.Replace("{text}", HtmlText?.ToString());
         }
 
         static HtmlTextView()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(HtmlTextView), new FrameworkPropertyMetadata(typeof(HtmlTextView)));
-
-            string pluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Resources\\PlayniteResources\\DescriptionView.html";
-            var tr = new StreamReader(pluginFolder);
-            template = tr.ReadToEnd();
         }
-
 
         public HtmlTextView()
         {

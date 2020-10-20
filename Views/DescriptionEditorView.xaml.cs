@@ -1,9 +1,17 @@
-﻿using Playnite.SDK;
+﻿using DescriptionEditor.PlayniteResources.Controls;
+using Playnite.SDK;
 using PluginCommon;
+using PluginCommon.PlayniteResources;
+using PluginCommon.PlayniteResources.Extensions.Markup;
+using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace DescriptionEditor.Views
 {
@@ -14,9 +22,12 @@ namespace DescriptionEditor.Views
     {
         private static readonly ILogger logger = LogManager.GetLogger();
         private static IResourceProvider resources = new ResourceProvider();
+        private IPlayniteAPI _PlayniteApi;
 
         public string Description { get; set; }
-        private TextBox TextDescription;
+        private TextBox _TextDescription;
+
+        private HtmlTextView htmlTextView = new HtmlTextView();
 
 
         public string imgUrl { get; set; } = string.Empty;
@@ -27,12 +38,36 @@ namespace DescriptionEditor.Views
         public bool imgRight { get; set; } = false;
 
 
-        public DescriptionEditorView(TextBox TextDescription)
+        public DescriptionEditorView(IPlayniteAPI PlayniteApi, TextBox TextDescription)
         {
-            this.TextDescription = TextDescription;
+            _PlayniteApi = PlayniteApi;
+            _TextDescription = TextDescription;
             InitializeComponent();
 
             Description = TextDescription.Text;
+
+            PlayniteTools.SetThemeInformation(_PlayniteApi);
+            string DescriptionViewFile = ThemeFile.GetFilePath("DescriptionView.html"); ;
+#if DEBUG
+            logger.Debug($"DescriptionEditor - {DescriptionViewFile}");
+#endif
+            try
+            {
+                htmlTextView.Visibility = Visibility.Visible;
+                htmlTextView.TemplatePath = DescriptionViewFile;
+                htmlTextView.HtmlText = Description;
+
+                htmlTextView.HtmlFontSize = (double)resources.GetResource("FontSize");
+                htmlTextView.HtmlFontFamily = (FontFamily)resources.GetResource("FontFamily");
+                htmlTextView.HtmlForeground = (Color)resources.GetResource("TextColor");
+                htmlTextView.LinkForeground = (Color)resources.GetResource("GlyphColor");
+
+                PART_HtmlDescription.Children.Add(htmlTextView);
+            }
+            catch (Exception ex)
+            {
+                Common.LogError(ex, "DescriptionEditor", "Error on creation HtmlTextView");
+            }
 
             DataContext = this;
         }
@@ -44,7 +79,7 @@ namespace DescriptionEditor.Views
 
         private void BtEditorOK_Click(object sender, RoutedEventArgs e)
         {
-            TextDescription.Text = DescriptionActual.Text;
+            _TextDescription.Text = DescriptionActual.Text;
             ((Window)this.Parent).Close();
         }
 
@@ -213,5 +248,11 @@ namespace DescriptionEditor.Views
             }
         }
         #endregion
+        
+
+        private void DescriptionActual_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            htmlTextView.HtmlText = ((TextBox)sender).Text;
+        }
     }
 }
