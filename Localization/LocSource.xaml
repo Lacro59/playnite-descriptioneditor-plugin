@@ -12,6 +12,8 @@
     <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>

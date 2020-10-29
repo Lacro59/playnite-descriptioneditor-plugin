@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using DescriptionEditor.Views.Interface;
+using Playnite.SDK.Data;
 
 namespace DescriptionEditor.Views
 {
@@ -80,6 +81,22 @@ namespace DescriptionEditor.Views
         private void BtHtmlFormat_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.HtmlFormat(DescriptionActual.Text);
+        }
+
+
+        private void BtHtmlFormatRemove_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
+        }
+
+        private void BtMarkdownToHtml_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = Markup.MarkdownToHtml(DescriptionActual.Text);
+            
+            DescriptionActual.Text = Regex.Replace(
+                                DescriptionActual.Text,
+                                "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
+                                "<img src=\"$1\" width=\"100%\"/>");
         }
 
         private void BtInsertImg_Click(object sender, RoutedEventArgs e)

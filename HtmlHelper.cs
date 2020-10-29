@@ -7,6 +7,7 @@ using AngleSharp.Parser.Html;
 using System.IO;
 using AngleSharp.Html;
 using System.Net;
+using HtmlAgilityPack;
 
 namespace DescriptionEditor
 {
@@ -20,6 +21,19 @@ namespace DescriptionEditor
         public static string HtmlFormat(string Html)
         {
             Html = HtmlFormatRemove(Html);
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(Html);
+
+            Html = string.Empty;
+            if (doc.DocumentNode != null)
+            {
+                foreach (var node in doc.DocumentNode.ChildNodes)
+                {
+                    Html += WriteNode(node, 0);
+                }
+            }
+            return Html;
 
             // TODO With recent version of AngleSharp
             /*
@@ -36,35 +50,69 @@ namespace DescriptionEditor
                 Html = writer.ToString();
             }
             */
+        }
 
-            var parser = new HtmlParser();
-            var document = parser.Parse(Html);
 
-            using (var writer = new StringWriter())
+        public static string WriteNode(HtmlNode _node, int _indentLevel)
+        {
+            string Result = string.Empty;
+
+            // check parameter
+            if (_node == null) return string.Empty;
+
+            // init 
+            string INDENT = Indentation;
+            string NEW_LINE = System.Environment.NewLine;
+
+            // case: no children
+            if (_node.HasChildNodes == false)
             {
-                var formatter = new PrettyMarkupFormatter
+                for (int i = 0; i < _indentLevel; i++)
                 {
-                    Indentation = Indentation
-                };
-                document.Body.ChildNodes.ToHtml(writer, formatter);
-                Html = writer.ToString();
+                    Result += INDENT;
+                }
+                Result += _node.OuterHtml;
+                Result += NEW_LINE;
             }
 
+            // case: node has childs
+            else
+            {
+                // indent
+                for (int i = 0; i < _indentLevel; i++)
+                {
+                    Result += INDENT;
+                }
 
-            Html = Regex.Replace(Html, @"(<[^>]*>)\s+(.)", "$1$2", RegexOptions.IgnoreCase);
-            Html = Regex.Replace(Html, @"(<br>)(</li>)", "$2", RegexOptions.IgnoreCase);
+                // open tag
+                Result += string.Format("<{0}", _node.Name);
+                if (_node.HasAttributes)
+                {
+                    foreach (var attr in _node.Attributes)
+                    {
+                        Result += string.Format("{0}=\"{1}\"", attr.Name, attr.Value);
+                    }
+                }
+                Result += string.Format(">{0}", NEW_LINE);
 
-            Html = Regex.Replace(Html, @"(<[^>]*>)(<strong>)(\s+)", "$1" + Environment.NewLine + "$3$2", RegexOptions.IgnoreCase);
+                // childs
+                foreach (var chldNode in _node.ChildNodes)
+                {
+                    Result += WriteNode(chldNode, _indentLevel + 1);
+                }
 
-            Html = Regex.Replace(Html, @"(.)(<br>)", "$1" + Environment.NewLine + "$2", RegexOptions.IgnoreCase);
-            Html = Regex.Replace(Html, @"(<br>)(.)", "$1" + Environment.NewLine + "$2", RegexOptions.IgnoreCase);
+                // close tag
+                for (int i = 0; i < _indentLevel; i++)
+                {
+                    Result += INDENT;
+                }
+                Result += string.Format("</{0}>{1}", _node.Name, NEW_LINE);
+            }
 
-            Html = Regex.Replace(Html, @"^\s+$[\r\n]*", string.Empty, RegexOptions.Multiline);
-
-            Html = WebUtility.HtmlDecode(Html);
-
-            return Html;
+            return Result;
         }
+
+
 
         public static string HtmlFormatRemove(string Html)
         {

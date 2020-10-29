@@ -8,7 +8,7 @@
              xmlns:pcon="clr-namespace:PluginCommon;assembly=PluginCommon"
              xmlns:controls="clr-namespace:DescriptionEditor.PlayniteResources.Controls"
              xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
-             mc:Ignorable="d" Height="740" Width="1260" Background="{DynamicResource WindowBackgourndBrush}">
+             mc:Ignorable="d" Height="740" Width="1280" Background="{DynamicResource WindowBackgourndBrush}">
 
     <UserControl.Resources>
         <pcon:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
@@ -31,7 +31,7 @@
         <!-- Editor button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
             <DockPanel>
-                <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Width="140" Click="BtAddImg_Click"
+                <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Click="BtAddImg_Click"
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom" Name="btAddImgContextMenu">
@@ -40,13 +40,19 @@
                     </Button.ContextMenu>
                 </Button>
 
-                <Button Name="btRemoveImg" Content="{DynamicResource LOCDescriptionEditorButtonRemoveImg}" Width="140" 
+                <Button Name="btRemoveImg" Content="{DynamicResource LOCDescriptionEditorButtonRemoveImg}"
                         HorizontalAlignment="Left" Margin="5" Click="BtRemoveImg_Click" />
 
-                <Button Name="btHtmlFormat" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormat}" Width="140" 
+                <Button Name="btHtmlFormat" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormat}"
                         HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormat_Click" />
 
-                <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" Width="140" 
+                <Button Name="btHtmlFormatRemove" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatRemove}"
+                        HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormatRemove_Click" />
+
+                <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
+                        HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
+
+                <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right"  Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom">
@@ -62,7 +68,9 @@
                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                      Text="{Binding Description, Mode=TwoWay}" />
 
-        <StackPanel Grid.Column="2" Grid.Row="2" Name="PART_HtmlDescription"></StackPanel>
+        <ScrollViewer Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="PART_HtmlDescription"></StackPanel>
+        </ScrollViewer>
         
         <!--controls:HtmlTextView Grid.Column="2" Grid.Row="2" HtmlText="{Binding ElementName=DescriptionActual, Path=Text, Mode=OneWay}"
                                    HtmlFontSize="{DynamicResource FontSize}"
