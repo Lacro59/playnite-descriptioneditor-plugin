@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using DescriptionEditor.Views.Interface;
 
 namespace DescriptionEditor.Views
 {
@@ -28,14 +29,6 @@ namespace DescriptionEditor.Views
         private TextBox _TextDescription;
 
         private HtmlTextView htmlTextView = new HtmlTextView();
-
-
-        public string imgUrl { get; set; } = string.Empty;
-        public bool imgCent { get; set; } = true;
-        public string imgSize { get; set; } = string.Empty;
-        public bool imgLeft { get; set; } = false;
-        public bool imgCenter { get; set; } = true;
-        public bool imgRight { get; set; } = false;
 
 
         public DescriptionEditorView(IPlayniteAPI PlayniteApi, TextBox TextDescription)
@@ -83,39 +76,6 @@ namespace DescriptionEditor.Views
             ((Window)this.Parent).Close();
         }
 
-
-        private void ImgSize_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            ((TextBox)sender).Text = Regex.Replace(((TextBox)sender).Text, "[^0-9]+", string.Empty);
-        }
-
-        private void Grid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            imgUrl = string.Empty;
-            imgCent = true;
-            imgSize = string.Empty;
-            imgLeft = false;
-            imgCenter = true;
-            imgRight = false;
-
-            tbImgUrl.Text = imgUrl;
-            ckImgCent.IsChecked = imgCent;
-            tbImgSize.Text = imgSize;
-            rbImgLeft.IsChecked = imgLeft;
-            rbImgCenter.IsChecked = imgCenter;
-            rbImgRight.IsChecked = imgRight;
-
-            foreach (var ui in Tools.FindVisualChildren<Border>((ContextMenu)((Grid)sender).Parent))
-            {
-                if (((FrameworkElement)ui).Name == "HoverBorder")
-                {
-                    ((Border)ui).Background = (System.Windows.Media.Brush)resources.GetResource("NormalBrush");
-                    break;
-                }
-            }
-        }
-
-
         #region Common formatter 
         private void BtHtmlFormat_Click(object sender, RoutedEventArgs e)
         {
@@ -124,44 +84,50 @@ namespace DescriptionEditor.Views
 
         private void BtInsertImg_Click(object sender, RoutedEventArgs e)
         {
+            ImageContextMenu imageContextMenu = ((ImageContextMenu)btAddImgContextMenu.Items[0]);
+
+            string imgUrl = imageContextMenu.imgUrl;
+            bool imgCent = imageContextMenu.imgCent;
+            bool imgPx = imageContextMenu.imgPx;
+            int imgSize = imageContextMenu.imgSize;
+            bool imgLeft = imageContextMenu.imgLeft;
+            bool imgCenter = imageContextMenu.imgCenter;
+            bool imgRight = imageContextMenu.imgRight;
+
+
             string imgAdded = "<img src=\"{0}\" style=\"{1}\">";
             string style = string.Empty;
             if (!string.IsNullOrEmpty(imgUrl))
             {
-                if (imgCent)
+                if (imgCent && imgSize > 0)
                 {
-                    style += $"width: 100%;";
+                    style += $"width: {imgSize }%;";
                 }
-                else
+                else if (imgPx && imgSize > 0)
                 {
-                    if (!string.IsNullOrEmpty(imgSize))
-                    {
-                        style += $"width: {imgSize }px;";
+                    style += $"width: {imgSize }px;";
+                }
 
-                    }
-                    if (imgLeft)
+                if (imgPx || (imgCent && imgSize < 100))
+                {
+                    if (imgRight)
                     {
-                        style += $"width: 100%;";
-                        //style += $"float: left;";
                         imgAdded = "<table style=\"border: 0; width: 100 %;border-spacing: 10px;\"><tr><td>Your text here!</td>"
-                             + $"<td style=\"width: {imgSize }px;vertical-align: top;\">"
+                             + $"<td style=\"{style}vertical - align: top;\">"
                              + imgAdded
                              + "</td>"
                              + "</tr></table>";
                     }
                     if (imgCenter)
                     {
-                        //style += $"margin-left: auto;margin-right: auto;";
                         imgAdded = "<div style=\"text-align: center;\">"
                             + imgAdded
                             + "</div>";
                     }
-                    if (imgRight)
+                    if (imgLeft)
                     {
-                        style += $"width: 100%;";
-                        //style += $"float: right;";
                         imgAdded = "<table style=\"border: 0; width: 100 %;border-spacing: 10px;\"><tr>"
-                             + $"<td style=\"width: {imgSize }px;vertical-align: top;\">"
+                             + $"<td style=\"{style}vertical-align: top;\">"
                              + imgAdded
                              + "</td>"
                              + "<td>Your text here!</td>"
@@ -253,6 +219,11 @@ namespace DescriptionEditor.Views
         private void DescriptionActual_TextChanged(object sender, TextChangedEventArgs e)
         {
             htmlTextView.HtmlText = ((TextBox)sender).Text;
+        }
+
+        private void BtAddImg_Click(object sender, RoutedEventArgs e)
+        {
+            btAddImgContextMenu.Visibility = Visibility.Visible;
         }
     }
 }

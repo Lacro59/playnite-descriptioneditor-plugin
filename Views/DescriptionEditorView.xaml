@@ -1,13 +1,14 @@
 ﻿<UserControl x:Class="DescriptionEditor.Views.DescriptionEditorView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-        xmlns:local="clr-namespace:DescriptionEditor.Views"
-        xmlns:pbeh="clr-namespace:PluginCommon.PlayniteResources.Behaviors;assembly=PluginCommon"
-        xmlns:pcon="clr-namespace:PluginCommon;assembly=PluginCommon"
-        xmlns:controls="clr-namespace:DescriptionEditor.PlayniteResources.Controls"
-        mc:Ignorable="d" Height="740" Width="1260" Background="{DynamicResource WindowBackgourndBrush}">
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DescriptionEditor.Views"
+             xmlns:pbeh="clr-namespace:PluginCommon.PlayniteResources.Behaviors;assembly=PluginCommon"
+             xmlns:pcon="clr-namespace:PluginCommon;assembly=PluginCommon"
+             xmlns:controls="clr-namespace:DescriptionEditor.PlayniteResources.Controls"
+             xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
+             mc:Ignorable="d" Height="740" Width="1260" Background="{DynamicResource WindowBackgourndBrush}">
 
     <UserControl.Resources>
         <pcon:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
@@ -30,72 +31,11 @@
         <!-- Editor button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
             <DockPanel>
-                <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Width="140"
+                <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Width="140" Click="BtAddImg_Click"
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom" Name="btAddImgContextMenu">
-                            <Grid IsVisibleChanged="Grid_IsVisibleChanged">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                
-                                <Grid Margin="0,0,0,10" Grid.Row="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Grid.Column="0" Content="{DynamicResource LOCURLLabel}" Margin="0,0,5,0"/>
-                                    <TextBox Grid.Column="1" Name="tbImgUrl" Text="{Binding imgUrl, Mode=TwoWay}"/>
-                                </Grid>
-
-                                <Grid Margin="0,0,0,10" Grid.Row="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Grid.Column="0" Content="{DynamicResource LOCDescriptionEditorLabelSize}" Margin="0,0,5,0" />
-                                    <ToggleButton Grid.Column="1" IsChecked="{Binding imgCent, Mode=TwoWay}" Margin="0,0,20,0" Content="100%" Width="80" Name="ckImgCent"/>
-                                    <Label Grid.Column="2"  Content="{DynamicResource LOCDescriptionEditorLabelManualSize}" Margin="0,0,5,0" />
-                                    <TextBox Grid.Column="3" Name="tbImgSize" KeyUp="ImgSize_KeyUp" Text="{Binding imgSize, Mode=TwoWay}" Width="80" 
-                                             IsEnabled="{Binding ElementName=ckImgCent, Path=IsChecked, Converter={StaticResource InvertedBoolenConverter}}"/>
-                                </Grid>
-
-                                <Grid Margin="0,0,0,10" Grid.Row="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label Grid.Column="0" Content="Position" Margin="0,0,5,0"/>
-                                    <RadioButton Grid.Column="1" GroupName="imgPosition" IsChecked="{Binding imgLeft, Mode=TwoWay}"
-                                                 Name="rbImgLeft" Content="{DynamicResource LOCDockLeft}" Margin="0,0,5,0" 
-                                                 IsEnabled="{Binding ElementName=ckImgCent, Path=IsChecked, Converter={StaticResource InvertedBoolenConverter}}"/>
-                                    <RadioButton Grid.Column="2" GroupName="imgPosition" IsChecked="{Binding imgCenter, Mode=TwoWay}" 
-                                                 Name="rbImgCenter" Content="{DynamicResource LOCDescriptionEditorCenter}" Margin="0,0,5,0" 
-                                                 IsEnabled="{Binding ElementName=ckImgCent, Path=IsChecked, Converter={StaticResource InvertedBoolenConverter}}"/>
-                                    <RadioButton Grid.Column="3" GroupName="imgPosition" IsChecked="{Binding imgRight, Mode=TwoWay}" 
-                                                 Name="rbImgRight" Content="{DynamicResource LOCDockRight}" 
-                                                 IsEnabled="{Binding ElementName=ckImgCent, Path=IsChecked, Converter={StaticResource InvertedBoolenConverter}}"/>
-                                </Grid>
-
-                                <Grid Margin="0,0,0,10" Grid.Row="3">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="auto" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Button Name="btInsertImg" Content="{DynamicResource LOCAddTitle}" Click="BtInsertImg_Click" />
-                                </Grid>
-                            </Grid>
+                            <interface:ImageContextMenu BtInsertImgClick="BtInsertImg_Click" />
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
