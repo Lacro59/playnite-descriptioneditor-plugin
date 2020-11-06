@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- MainView -->
+    
+    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
+
+    
+    <!-- EditGameDetails -->
+
+    <sys:String x:Key="LOCDescriptionEditorButton">Editor Descrizione</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Formattatore HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Aggiungi immagine</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Rimuovi immagine</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Formattatore di Steam</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">Dimensione immagine</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">o manuale (px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Centro</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Rimuovi &quot;Informazioni sul Gioco&quot;</sys:String>
+
+</ResourceDictionary>
