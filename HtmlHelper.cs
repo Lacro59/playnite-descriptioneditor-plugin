@@ -90,7 +90,7 @@ namespace DescriptionEditor
                 {
                     foreach (var attr in _node.Attributes)
                     {
-                        Result += string.Format("{0}=\"{1}\"", attr.Name, attr.Value);
+                        Result += string.Format(" {0}=\"{1}\"", attr.Name, attr.Value);
                     }
                 }
                 Result += string.Format(">{0}", NEW_LINE);
