@@ -117,9 +117,12 @@ namespace DescriptionEditor
         public static string HtmlFormatRemove(string Html)
         {
             Html = Html.Replace(Environment.NewLine, string.Empty);
+            Html = Html.Replace(Indentation, string.Empty);
             Html = Regex.Replace(Html, @"\r\n?|\n", string.Empty);
             Html = Regex.Replace(Html, @"\s+", " ");
+            Html = Regex.Replace(Html, @"[⠀⠀⠀⠀⠀⠀⠀⠀]", string.Empty);
             Html = Regex.Replace(Html, @"(>)\s+(<)", "$1$2", RegexOptions.IgnoreCase);
+            Html = Regex.Replace(Html, @">\s+", string.Empty, RegexOptions.IgnoreCase);
             return Html;
         }
 
