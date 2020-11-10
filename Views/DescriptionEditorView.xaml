@@ -30,7 +30,7 @@
 
         <!-- Editor button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
-            <DockPanel>
+            <DockPanel Margin="0,5">
                 <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Click="BtAddImg_Click"
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5">
                     <Button.ContextMenu>
@@ -92,7 +92,7 @@
 
         <!-- Action button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" BorderThickness="0,1,0,0" BorderBrush="{StaticResource NormalBorderBrush}">
-            <DockPanel KeyboardNavigation.TabNavigation="Local" LastChildFill="False" Margin="5">
+            <DockPanel KeyboardNavigation.TabNavigation="Local" LastChildFill="False" Margin="0,5">
                 <Button TabIndex="1" Name="btEditorCancel" Content="{DynamicResource LOCCancelLabel}" DockPanel.Dock="Right" IsCancel="True"
                         Style="{StaticResource BottomButton}" Click="BtEditorCancel_Click"/>
                 <Button TabIndex="2" Name="btEditorOK" Content="{DynamicResource LOCSaveLabel}" DockPanel.Dock="Right" IsDefault="True"

@@ -10,58 +10,54 @@
 
     <Grid.Resources>
         <pcon:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
-        <sys:Double x:Key="RowHeight">40</sys:Double>
+        <GridLength x:Key="RowHeight">40</GridLength>
     </Grid.Resources>
 
     <Grid IsVisibleChanged="Grid_IsVisibleChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="{StaticResource RowHeight}" />
+            <RowDefinition Height="{StaticResource RowHeight}" />
+            <RowDefinition Height="{StaticResource RowHeight}" />
+            <RowDefinition Height="{StaticResource RowHeight}" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Height="{StaticResource RowHeight}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Label Grid.Column="0" Content="{DynamicResource LOCURLLabel}" Margin="0,0,5,0" VerticalAlignment="Center"/>
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Name="scv" 
-                          Grid.Column="1">
-                <TextBox Text="{Binding imgUrl, Mode=TwoWay, FallbackValue=url_testing}" Name="tbImgUrl" KeyUp="TbImgUrl_KeyUp"
+        <Label Grid.Row="0" Grid.Column="0" Content="{DynamicResource LOCURLLabel}" Margin="0,0,5,0" VerticalAlignment="Center"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Name="scv" 
+                          Grid.Column="2" Grid.Row="0">
+            <TextBox Text="{Binding imgUrl, Mode=TwoWay, FallbackValue=url_testing}" Name="tbImgUrl" KeyUp="TbImgUrl_KeyUp"
                          MaxWidth="{Binding ElementName=scv, Path=ActualWidth}" VerticalAlignment="Center" />
-            </ScrollViewer>
-        </Grid>
+        </ScrollViewer>
 
-        <Grid Grid.Row="1" Height="{StaticResource RowHeight}">
+        <Label Grid.Row="1" Grid.Column="0" Content="{DynamicResource LOCDescriptionEditorLabelSize}" VerticalAlignment="Center" />
+        <Grid Grid.Row="1" Grid.Column="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="auto" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Content="{DynamicResource LOCDescriptionEditorLabelSize}" VerticalAlignment="Center" />
-            <TextBox Grid.Column="1" Name="tbImgSize" KeyUp="ImgSize_KeyUp" Text="{Binding imgSize, Mode=TwoWay, FallbackValue=100}" Width="60" 
+            <TextBox Grid.Column="0" Name="tbImgSize" KeyUp="ImgSize_KeyUp" Text="{Binding imgSize, Mode=TwoWay, FallbackValue=100}" Width="60" 
                      TextAlignment="Center" VerticalAlignment="Center" />
             <ToggleButton Click="CkImgCent_Click" VerticalAlignment="Center"
-                          Margin="10,0,0,0" Content="%" Width="40" Name="ckImgCent" Grid.Column="2" />
+                          Margin="10,0,0,0" Content="%" Width="40" Name="ckImgCent" Grid.Column="1" />
             <ToggleButton Click="CkImgPx_Click" VerticalAlignment="Center"
-                          Margin="10,0,0,0" Content="px" Width="40" Name="ckImgPx" Grid.Column="3" />
-
+                          Margin="10,0,0,0" Content="px" Width="40" Name="ckImgPx" Grid.Column="2" />
         </Grid>
-
-        <Grid Grid.Row="2" Name="gPosition" Height="{StaticResource RowHeight}">
+        
+        <Label Grid.Column="0" Grid.Row="2" Content="{DynamicResource LOCDescriptionEditorPosition}" VerticalAlignment="Center" />
+        <Grid Grid.Row="2" Grid.Column="2" Name="gPosition">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0" Content="{DynamicResource LOCDescriptionEditorPosition}" VerticalAlignment="Center" />
             <RadioButton Grid.Column="1" GroupName="imgPosition" IsChecked="{Binding imgLeft, Mode=TwoWay}"
                          Name="rbImgLeft" Content="{DynamicResource LOCDockLeft}" VerticalAlignment="Center" />
             <RadioButton Grid.Column="2" GroupName="imgPosition" IsChecked="{Binding imgCenter, Mode=TwoWay}" 
@@ -70,7 +66,7 @@
                          Name="rbImgRight" Content="{DynamicResource LOCDockRight}" VerticalAlignment="Center" />
         </Grid>
 
-        <Grid Grid.Row="3" Height="{StaticResource RowHeight}">
+        <Grid Grid.Row="3" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="auto" />
