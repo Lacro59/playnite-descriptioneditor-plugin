@@ -171,6 +171,25 @@ namespace DescriptionEditor.Views
         private void BtRemoveImg_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.RemoveTag(DescriptionActual.Text, "img");
+            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
+        }
+
+        private void Bt100PercentImg_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.Add100PercentStyle(DescriptionActual.Text);
+            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
+        }
+
+        private void BtRemoveImgStyle_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.RemoveSizeStyle(DescriptionActual.Text);
+            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
+        }
+
+        private void BtCenterImg_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.CenterImage(DescriptionActual.Text);
+            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
         #endregion
 
@@ -242,5 +261,10 @@ namespace DescriptionEditor.Views
         {
             btAddImgContextMenu.Visibility = Visibility.Visible;
         }
+
+
+
+
+
     }
 }

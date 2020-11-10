@@ -40,8 +40,17 @@
                     </Button.ContextMenu>
                 </Button>
 
-                <Button Name="btRemoveImg" Content="{DynamicResource LOCDescriptionEditorButtonRemoveImg}"
-                        HorizontalAlignment="Left" Margin="5" Click="BtRemoveImg_Click" />
+                <Button Name="btImageFormatter" Content="{DynamicResource LOCDescriptionEditorButtonImageFormatter}" 
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" Margin="5">
+                    <Button.ContextMenu>
+                        <ContextMenu Placement="Bottom">
+                            <MenuItem Click="BtRemoveImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveImg}" />
+                            <MenuItem Click="Bt100PercentImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonAdd100PercentImg}" />
+                            <MenuItem Click="BtRemoveImgStyle_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveStyleImg}" />
+                            <MenuItem Click="BtCenterImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonCenterImg}" />
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
 
                 <Button Name="btHtmlFormat" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormat}"
                         HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormat_Click" />
@@ -52,8 +61,9 @@
                 <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
                         HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
 
+
                 <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right"  Margin="5">
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom">
                             <MenuItem Click="SteamRemoveAbout_click" Header="{DynamicResource LOCDescriptionEditorRemoveAboutGame}" />

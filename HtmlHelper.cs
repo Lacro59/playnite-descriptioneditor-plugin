@@ -52,7 +52,6 @@ namespace DescriptionEditor
             */
         }
 
-
         public static string WriteNode(HtmlNode _node, int _indentLevel)
         {
             string Result = string.Empty;
@@ -113,7 +112,6 @@ namespace DescriptionEditor
         }
 
 
-
         public static string HtmlFormatRemove(string Html)
         {
             Html = Html.Replace(Environment.NewLine, string.Empty);
@@ -126,22 +124,86 @@ namespace DescriptionEditor
             return Html;
         }
 
-        private static string AddSpace(string line, int index)
-        {
-            string spaces = "";
-            for (int j = 0; j < (index * 5); j++)
-            {
-                spaces += " ";
-            }
-            return spaces + line;
-        }
 
         public static string RemoveTag(string html, string tag)
         {
             // Only img
-            html = Regex.Replace(html, $"<{tag.ToLower()}[^>]*>", "");
-            html = Regex.Replace(html, $"<{tag.ToUpper()}[^>]*>", "");
+            html = Regex.Replace(html, $"<{tag.ToLower()}[^>]*>", "", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, $"<{tag.ToUpper()}[^>]*>", "", RegexOptions.IgnoreCase);
             return html;
+        }
+
+        public static string CenterImage(string html)
+        {
+            html = Regex.Replace(html, $"(<img[^>]*>)", "<div style=\"text-align: center;\">$1</div>", RegexOptions.IgnoreCase);
+            return html;
+        }
+
+        public static string Add100PercentStyle(string html)
+        {
+            var parser = new HtmlParser();
+            var document = parser.Parse(html);
+
+            foreach(var ImgTag in document.QuerySelectorAll("img"))
+            {
+                ImgTag.RemoveAttribute("width");
+
+                List<string> ActualStyle = new List<string>();
+                if (!ImgTag.GetAttribute("style").IsNullOrEmpty())
+                {
+                    ActualStyle = ImgTag.GetAttribute("style").Split(';').ToList(); ;
+                }
+
+                string NewStyle = string.Empty;
+                if (ActualStyle.Count > 0)
+                {
+                    foreach(string StyleProperty in ActualStyle)
+                    {
+                        if (!StyleProperty.ToLower().Contains("width"))
+                        {
+                            NewStyle += StyleProperty.ToLower() + ";";
+                        }
+                    }
+                }
+
+                ImgTag.SetAttribute("style", NewStyle + "width: 100%;");
+            }
+
+            return document.Body.InnerHtml;
+        }
+
+        public static string RemoveSizeStyle(string html)
+        {
+            var parser = new HtmlParser();
+            var document = parser.Parse(html);
+
+            foreach (var ImgTag in document.QuerySelectorAll("img"))
+            {
+                ImgTag.RemoveAttribute("width");
+                ImgTag.RemoveAttribute("height");
+
+                List<string> ActualStyle = new List<string>();
+                if (!ImgTag.GetAttribute("style").IsNullOrEmpty())
+                {
+                    ActualStyle = ImgTag.GetAttribute("style").Split(';').ToList(); ;
+                }
+
+                string NewStyle = string.Empty;
+                if (ActualStyle.Count > 0)
+                {
+                    foreach (string StyleProperty in ActualStyle)
+                    {
+                        if (!StyleProperty.ToLower().Contains("width") && !StyleProperty.ToLower().Contains("height"))
+                        {
+                            NewStyle += StyleProperty.ToLower() + ";";
+                        }
+                    }
+                }
+
+                ImgTag.SetAttribute("style", NewStyle);
+            }
+
+            return document.Body.InnerHtml;
         }
     }
 }
