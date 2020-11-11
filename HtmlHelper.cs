@@ -120,7 +120,6 @@ namespace DescriptionEditor
             Html = Regex.Replace(Html, @"\s+", " ");
             Html = Regex.Replace(Html, @"[⠀⠀⠀⠀⠀⠀⠀⠀]", string.Empty);
             Html = Regex.Replace(Html, @"(>)\s+(<)", "$1$2", RegexOptions.IgnoreCase);
-            Html = Regex.Replace(Html, @">\s+", string.Empty, RegexOptions.IgnoreCase);
             return Html;
         }
 
