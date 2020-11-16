@@ -41,7 +41,7 @@
                 </Button>
 
                 <Button Name="btImageFormatter" Content="{DynamicResource LOCDescriptionEditorButtonImageFormatter}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" Margin="5">
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" Margin="5,5,50,5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom">
                             <MenuItem Click="BtRemoveImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveImg}" />
@@ -56,7 +56,7 @@
                         HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormat_Click" />
 
                 <Button Name="btHtmlFormatRemove" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatRemove}"
-                        HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormatRemove_Click" />
+                        HorizontalAlignment="Left" Margin="5,5,50,5" Click="BtHtmlFormatRemove_Click" />
 
                 <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
                         HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
