@@ -22,6 +22,9 @@ namespace DescriptionEditor
 
         public override Guid Id { get; } = Guid.Parse("7600a469-4616-4547-94b8-0c330db02b8f");
 
+        private TextBox TextDescription;
+
+
         public DescriptionEditor(IPlayniteAPI api) : base(api)
         {
             settings = new DescriptionEditorSettings(this);
@@ -30,7 +33,7 @@ namespace DescriptionEditor
             string pluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             // Add plugin localization in application ressource.
-            PluginCommon.Localization.SetPluginLanguage(pluginFolder, api.ApplicationSettings.Language);
+            PluginCommon.PluginLocalization.SetPluginLanguage(pluginFolder, api.ApplicationSettings.Language);
             // Add common in application ressource.
             PluginCommon.Common.Load(pluginFolder);
 
@@ -49,29 +52,10 @@ namespace DescriptionEditor
             EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
         }
 
-        public override IEnumerable<ExtensionFunction> GetFunctions()
-        {
-            List<ExtensionFunction> listFunctions = new List<ExtensionFunction>();
-
-#if DEBUG
-            listFunctions.Add(
-                new ExtensionFunction(
-                    "DescriptionEditor Test",
-                    () =>
-                    {
-
-                    })
-                );
-#endif
-
-            return listFunctions;
-        }
-
-        private TextBox TextDescription;
-
+        
         private void WindowBase_LoadedEvent(object sender, System.EventArgs e)
         {
-            string WinName = String.Empty;
+            string WinName = string.Empty;
             try
             {
                 WinName = ((Window)sender).Name;
@@ -111,44 +95,54 @@ namespace DescriptionEditor
         }
 
 
+        // Add code to be executed when game is finished installing.
         public override void OnGameInstalled(Game game)
         {
-            // Add code to be executed when game is finished installing.
+            
         }
 
+        // Add code to be executed when game is started running.
         public override void OnGameStarted(Game game)
         {
-            // Add code to be executed when game is started running.
+            
         }
 
+        // Add code to be executed when game is preparing to be started.
         public override void OnGameStarting(Game game)
         {
-            // Add code to be executed when game is preparing to be started.
+            
         }
 
+        // Add code to be executed when game is preparing to be started.
         public override void OnGameStopped(Game game, long elapsedSeconds)
         {
-            // Add code to be executed when game is preparing to be started.
+            
         }
 
+        // Add code to be executed when game is uninstalled.
         public override void OnGameUninstalled(Game game)
         {
-            // Add code to be executed when game is uninstalled.
+            
         }
 
+
+        // Add code to be executed when Playnite is initialized.
         public override void OnApplicationStarted()
         {
-            // Add code to be executed when Playnite is initialized.
+            
         }
 
+        // Add code to be executed when Playnite is shutting down.
         public override void OnApplicationStopped()
         {
-            // Add code to be executed when Playnite is shutting down.
+            
         }
 
+
+        // Add code to be executed when library is updated.
         public override void OnLibraryUpdated()
         {
-            // Add code to be executed when library is updated.
+            
         }
 
         public override ISettings GetSettings(bool firstRunSettings)
