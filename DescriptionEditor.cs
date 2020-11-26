@@ -52,48 +52,6 @@ namespace DescriptionEditor
             EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
         }
 
-        
-        private void WindowBase_LoadedEvent(object sender, System.EventArgs e)
-        {
-            string WinName = string.Empty;
-            try
-            {
-                WinName = ((Window)sender).Name;
-
-                if (WinName == "mainWindow")
-                {
-                    Window mainWindow = (Window)sender;
-                    DockPanel ElementParent = (DockPanel)((Button)mainWindow.FindName("ButtonDownload")).Parent;
-
-                    if (ElementParent != null)
-                    {
-                        // Game Description
-                        TextDescription = (TextBox)mainWindow.FindName("TextDescription");
-
-                        // Add new button
-                        Button bt = new Button();
-                        bt.Content = resources.GetString("LOCDescriptionEditorButton");
-                        Style style = Application.Current.FindResource("BottomButton") as Style;
-                        bt.Style = style;
-                        bt.Click += OnButtonClick;
-
-                        ElementParent.Children.Add(bt);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Common.LogError(ex, "DescriptionEditor", $"Error on WindowBase_LoadedEvent for {WinName}");
-            }
-        }
-
-        private void OnButtonClick(object sender, RoutedEventArgs e)
-        {
-            var ViewExtension = new DescriptionEditorView(PlayniteApi ,TextDescription);
-            Window windowExtension = PlayniteUiHelper.CreateExtensionWindow(PlayniteApi,resources.GetString("LOCDescriptionEditor"), ViewExtension);
-            windowExtension.ShowDialog();
-        }
-
 
         // Add code to be executed when game is finished installing.
         public override void OnGameInstalled(Game game)
@@ -154,5 +112,47 @@ namespace DescriptionEditor
         //{
         //    return new DescriptionEditorSettingsView();
         //}
+
+
+        private void WindowBase_LoadedEvent(object sender, System.EventArgs e)
+        {
+            string WinName = string.Empty;
+            try
+            {
+                WinName = ((Window)sender).Name;
+
+                if (WinName == "mainWindow")
+                {
+                    Window mainWindow = (Window)sender;
+                    DockPanel ElementParent = (DockPanel)((Button)mainWindow.FindName("ButtonDownload")).Parent;
+
+                    if (ElementParent != null)
+                    {
+                        // Game Description
+                        TextDescription = (TextBox)mainWindow.FindName("TextDescription");
+
+                        // Add new button
+                        Button bt = new Button();
+                        bt.Content = resources.GetString("LOCDescriptionEditorButton");
+                        Style style = Application.Current.FindResource("BottomButton") as Style;
+                        bt.Style = style;
+                        bt.Click += OnButtonClick;
+
+                        ElementParent.Children.Add(bt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.LogError(ex, "DescriptionEditor", $"Error on WindowBase_LoadedEvent for {WinName}");
+            }
+        }
+
+        private void OnButtonClick(object sender, RoutedEventArgs e)
+        {
+            var ViewExtension = new DescriptionEditorView(PlayniteApi, TextDescription);
+            Window windowExtension = PlayniteUiHelper.CreateExtensionWindow(PlayniteApi, resources.GetString("LOCDescriptionEditor"), ViewExtension);
+            windowExtension.ShowDialog();
+        }
     }
 }
