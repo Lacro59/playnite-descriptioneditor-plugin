@@ -129,7 +129,8 @@ namespace DescriptionEditor.Views
                 {
                     if (imgRight)
                     {
-                        imgAdded = "<table style=\"border: 0; width: 100 %;border-spacing: 10px;\"><tr><td>Your text here!</td>"
+                        imgAdded = "<table style=\"border: 0; width: 100 %;border-spacing: 10px;\"><tr>"   
+                             + "<td>" + resources.GetString("LOCDescriptionEditorTextHere") + "</td>"
                              + $"<td style=\"{style}vertical - align: top;\">"
                              + imgAdded
                              + "</td>"
@@ -147,7 +148,7 @@ namespace DescriptionEditor.Views
                              + $"<td style=\"{style}vertical-align: top;\">"
                              + imgAdded
                              + "</td>"
-                             + "<td>Your text here!</td>"
+                             + "<td>" + resources.GetString("LOCDescriptionEditorTextHere") + "</td>"
                              + "</tr></table>";
                     }
                 }
