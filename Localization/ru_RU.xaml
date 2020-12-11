@@ -3,25 +3,33 @@
 
     <!-- MainView -->
     
-    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">Редактор описания</sys:String>
 
     
     <!-- EditGameDetails -->
 
     <sys:String x:Key="LOCDescriptionEditorButton">Редактор описания</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML форматер</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Удаление HTML-формататора</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
+    
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Формат изображения</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Добавить изображение</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Удалить изображение</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Установить ширину на 100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Удалить стиль размера</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">По центру изображения</sys:String>
+    
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматор Steam</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">or manual (px)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Center</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (пикс)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Позиция</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Центр</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remove &quot;About the Game&quot;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Удалить &quot;О игре&quot;</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текст</sys:String>
 
 </ResourceDictionary>

@@ -11,17 +11,25 @@
     <sys:String x:Key="LOCDescriptionEditorButton">Editor de Descrições</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML formatador</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Remover formatador de HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Reduzir para Html</sys:String>
+    
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Formatador de imagem</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Adicionar imagem</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remover imagem</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Definir largura em 100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remover estilo de tamanho</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centralizar a imagem</sys:String>
+    
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatador</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Tamanho da imagem</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">ou manual (px)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Posição</sys:String>
     <sys:String x:Key="LOCDescriptionEditorCenter">Centralizar</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remover &quot;Sobre o Jogo&quot;</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Digite aqui</sys:String>
 
 </ResourceDictionary>

@@ -13,8 +13,14 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Formateur HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Supprimer formateur HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown en html</sys:String>
+    
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Formateur d'image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Ajouter image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Retirer image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Définir la largeur à 100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Supprimer le style de taille</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centrer l'image</sys:String>
+    
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Formateur Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Dimension image</sys:String>
@@ -23,5 +29,7 @@
     <sys:String x:Key="LOCDescriptionEditorCenter">Centré</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Retirer &quot;À propos du jeu&quot;</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Votre texte ici...</sys:String>
 
 </ResourceDictionary>
