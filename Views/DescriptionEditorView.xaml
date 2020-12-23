@@ -4,14 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DescriptionEditor.Views"
-             xmlns:pbeh="clr-namespace:PluginCommon.PlayniteResources.Behaviors;assembly=PluginCommon"
-             xmlns:pcon="clr-namespace:PluginCommon;assembly=PluginCommon"
-             xmlns:controls="clr-namespace:DescriptionEditor.PlayniteResources.Controls"
+             xmlns:pbeh="clr-namespace:CommonPlaynite.Behaviors;assembly=CommonPlaynite"
              xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
+             xmlns:converters="clr-namespace:CommonPlaynite.Converters;assembly=CommonPlaynite"
              mc:Ignorable="d" Height="740" Width="1280" Background="{DynamicResource WindowBackgourndBrush}">
 
     <UserControl.Resources>
-        <pcon:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
+        <converters:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
     </UserControl.Resources>
     
     <Grid Margin="10" Name="PART_DescriptionView">

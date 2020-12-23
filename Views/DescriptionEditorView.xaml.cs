@@ -1,8 +1,6 @@
 ﻿using DescriptionEditor.PlayniteResources.Controls;
 using Playnite.SDK;
 using PluginCommon;
-using PluginCommon.PlayniteResources;
-using PluginCommon.PlayniteResources.Extensions.Markup;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -14,6 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using DescriptionEditor.Views.Interface;
 using Playnite.SDK.Data;
+using CommonPlaynite.Extensions.Markup;
 
 namespace DescriptionEditor.Views
 {
