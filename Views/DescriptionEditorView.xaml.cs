@@ -90,12 +90,44 @@ namespace DescriptionEditor.Views
 
         private void BtMarkdownToHtml_Click(object sender, RoutedEventArgs e)
         {
+            DescriptionActual.Text = RemoveParagraph(DescriptionActual.Text);
+
+            // List
+            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "•", "*", RegexOptions.IgnoreCase);
+            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>*", "", RegexOptions.IgnoreCase);
+            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>\n*", "", RegexOptions.IgnoreCase);
+            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>-", "-", RegexOptions.IgnoreCase);
+            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>\n-", "-", RegexOptions.IgnoreCase);
+            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>+", "", RegexOptions.IgnoreCase);
+            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>\n+", "", RegexOptions.IgnoreCase);
+
             DescriptionActual.Text = Markup.MarkdownToHtml(DescriptionActual.Text);
-            
+
             DescriptionActual.Text = Regex.Replace(
                                 DescriptionActual.Text,
                                 "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
                                 "<img src=\"$1\" width=\"100%\"/>");
+
+            DescriptionActual.Text = RemoveParagraph(DescriptionActual.Text);
+        }
+
+        private string RemoveParagraph(string Text)
+        {
+            if (Text.Substring(Text.Length - 1, 1) == "\n")
+            {
+                Text = Text.Substring(0, Text.Length - 1);
+            }
+
+            string StartString = Text.Substring(0, 3).ToLower();
+            string EndString = Text.Substring(Text.Length - 4, 4).ToLower();
+
+            if (StartString == "<p>" && EndString == "</p>")
+            {
+                Text = Text.Substring(3, Text.Length - 3);
+                Text = Text.Substring(0, Text.Length - 4);
+            }
+
+            return Text;
         }
 
         private void BtInsertImg_Click(object sender, RoutedEventArgs e)

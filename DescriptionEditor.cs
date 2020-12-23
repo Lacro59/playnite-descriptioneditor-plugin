@@ -36,6 +36,7 @@ namespace DescriptionEditor
             PluginCommon.PluginLocalization.SetPluginLanguage(pluginFolder, api.ApplicationSettings.Language);
             // Add common in application ressource.
             PluginCommon.Common.Load(pluginFolder);
+            PluginCommon.Common.SetEvent(PlayniteApi);
 
             // Check version
             if (settings.EnableCheckVersion)
