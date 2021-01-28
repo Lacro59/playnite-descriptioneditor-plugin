@@ -9,6 +9,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Automation;
 
 // TODO Integrate control HtmlTextView
 namespace DescriptionEditor
@@ -23,6 +24,7 @@ namespace DescriptionEditor
         public override Guid Id { get; } = Guid.Parse("7600a469-4616-4547-94b8-0c330db02b8f");
 
         private TextBox TextDescription;
+        private Button BtDescriptionEditor;
 
 
         public DescriptionEditor(IPlayniteAPI api) : base(api)
@@ -113,35 +115,39 @@ namespace DescriptionEditor
 
         private void WindowBase_LoadedEvent(object sender, System.EventArgs e)
         {
+            string WinIdProperty = string.Empty;
             string WinName = string.Empty;
             try
             {
+                WinIdProperty = ((Window)sender).GetValue(AutomationProperties.AutomationIdProperty).ToString();
                 WinName = ((Window)sender).Name;
 
-                if (WinName == "mainWindow")
+                if (WinIdProperty == "WindowGameEdit")
                 {
-                    Window mainWindow = (Window)sender;
-                    DockPanel ElementParent = (DockPanel)((Button)mainWindow.FindName("ButtonDownload")).Parent;
+                    Window WindowGameEdit = (Window)sender;
+                    DockPanel ElementParent = (DockPanel)((Button)WindowGameEdit.FindName("ButtonDownload")).Parent;
+                    TabControl tabControl = (TabControl)WindowGameEdit.FindName("TabControlMain");
+                    tabControl.SelectionChanged += TabControl_SelectionChanged;
 
                     if (ElementParent != null)
                     {
                         // Game Description
-                        TextDescription = (TextBox)mainWindow.FindName("TextDescription");
+                        TextDescription = (TextBox)WindowGameEdit.FindName("TextDescription");
 
                         // Add new button
-                        Button bt = new Button();
-                        bt.Content = resources.GetString("LOCDescriptionEditorButton");
+                        BtDescriptionEditor = new Button();
+                        BtDescriptionEditor.Content = resources.GetString("LOCDescriptionEditorButton");
                         Style style = Application.Current.FindResource("BottomButton") as Style;
-                        bt.Style = style;
-                        bt.Click += OnButtonClick;
+                        BtDescriptionEditor.Style = style;
+                        BtDescriptionEditor.Click += OnButtonClick;
 
-                        ElementParent.Children.Add(bt);
+                        ElementParent.Children.Add(BtDescriptionEditor);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Common.LogError(ex, "DescriptionEditor", $"Error on WindowBase_LoadedEvent for {WinName}");
+                Common.LogError(ex, "DescriptionEditor", $"Error on WindowBase_LoadedEvent for {WinName} & {WinIdProperty}");
             }
         }
 
@@ -150,6 +156,41 @@ namespace DescriptionEditor
             var ViewExtension = new DescriptionEditorView(PlayniteApi, TextDescription);
             Window windowExtension = PlayniteUiHelper.CreateExtensionWindow(PlayniteApi, resources.GetString("LOCDescriptionEditor"), ViewExtension);
             windowExtension.ShowDialog();
+        }
+
+        private void TabControl_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            string ControlName = string.Empty;
+
+            try
+            {
+                ControlName = ((TabControl)sender).Name;
+
+                if (ControlName == "TabControlMain")
+                {
+                    if (BtDescriptionEditor != null)
+                    {
+                        BtDescriptionEditor.Visibility = Visibility.Collapsed;
+                        TabItem tabItem = (TabItem)((TabControl)sender).SelectedItem;
+
+                        if (tabItem != null)
+                        {
+                            foreach (TextBlock textBlock in Tools.FindVisualChildren<TextBlock>((DependencyObject)tabItem.Content))
+                            {
+                                if (textBlock.Text == resources.GetString("LOCGameDescriptionTitle"))
+                                {
+                                    BtDescriptionEditor.Visibility = Visibility.Visible;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Common.LogError(ex, "DescriptionEditor", $"Error on TabControl_SelectionChanged for {ControlName}");
+            }
         }
     }
 }
