@@ -65,6 +65,7 @@ namespace DescriptionEditor.Views
             DataContext = this;
         }
 
+
         private void BtEditorCancel_Click(object sender, RoutedEventArgs e)
         {
             ((Window)this.Parent).Close();
@@ -75,6 +76,7 @@ namespace DescriptionEditor.Views
             _TextDescription.Text = DescriptionActual.Text;
             ((Window)this.Parent).Close();
         }
+
 
         #region Common formatter 
         private void BtHtmlFormat_Click(object sender, RoutedEventArgs e)
@@ -90,16 +92,10 @@ namespace DescriptionEditor.Views
 
         private void BtMarkdownToHtml_Click(object sender, RoutedEventArgs e)
         {
-            DescriptionActual.Text = RemoveParagraph(DescriptionActual.Text);
-
             // List
-            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "•", "*", RegexOptions.IgnoreCase);
             DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>*", "", RegexOptions.IgnoreCase);
-            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>\n*", "", RegexOptions.IgnoreCase);
             DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>-", "-", RegexOptions.IgnoreCase);
-            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>\n-", "-", RegexOptions.IgnoreCase);
             DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>+", "", RegexOptions.IgnoreCase);
-            //DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>\n+", "", RegexOptions.IgnoreCase);
 
             DescriptionActual.Text = Markup.MarkdownToHtml(DescriptionActual.Text);
 
@@ -107,8 +103,8 @@ namespace DescriptionEditor.Views
                                 DescriptionActual.Text,
                                 "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
                                 "<img src=\"$1\" width=\"100%\"/>");
-
-            DescriptionActual.Text = RemoveParagraph(DescriptionActual.Text);
+            
+            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
 
         private string RemoveParagraph(string Text)
@@ -129,6 +125,7 @@ namespace DescriptionEditor.Views
 
             return Text;
         }
+
 
         private void BtInsertImg_Click(object sender, RoutedEventArgs e)
         {
@@ -293,10 +290,5 @@ namespace DescriptionEditor.Views
         {
             btAddImgContextMenu.Visibility = Visibility.Visible;
         }
-
-
-
-
-
     }
 }

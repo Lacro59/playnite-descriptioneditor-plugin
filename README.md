@@ -1,5 +1,5 @@
 # playnite-descriptioneditor-plugin
-Generic plugin for [Playnite](https://playnite.link/) application.
+Generic plugin for [Playnite](https://playnite.link/) application.  
 This plugin can edit and preview the game description with some presets.
 
 More information here: https://playnite.link/forum/thread-379.html
