@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Automation;
+using Playnite.SDK.Events;
 
 // TODO Integrate control HtmlTextView
 namespace DescriptionEditor
@@ -29,6 +30,14 @@ namespace DescriptionEditor
             EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
         }
 
+
+        public override void OnGameSelected(GameSelectionEventArgs args)
+        {
+#if DEBUG
+            // Force development localization
+            PluginLocalization.SetPluginLanguage(PluginFolder, "LocSource", true);
+#endif
+        }
 
         // Add code to be executed when game is finished installing.
         public override void OnGameInstalled(Game game)
@@ -128,7 +137,7 @@ namespace DescriptionEditor
             }
             catch (Exception ex)
             {
-                Common.LogError(ex, "DescriptionEditor", $"Error on WindowBase_LoadedEvent for {WinName} & {WinIdProperty}");
+                Common.LogError(ex, false, $"Error on WindowBase_LoadedEvent for {WinName} & {WinIdProperty}");
             }
         }
 
@@ -170,7 +179,7 @@ namespace DescriptionEditor
             }
             catch (Exception ex)
             {
-                Common.LogError(ex, "DescriptionEditor", $"Error on TabControl_SelectionChanged for {ControlName}");
+                Common.LogError(ex, false, $"Error on TabControl_SelectionChanged for {ControlName}");
             }
         }
     }

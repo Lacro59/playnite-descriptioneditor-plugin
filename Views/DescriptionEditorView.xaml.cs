@@ -41,9 +41,9 @@ namespace DescriptionEditor.Views
 
             PlayniteTools.SetThemeInformation(_PlayniteApi);
             string DescriptionViewFile = ThemeFile.GetFilePath("DescriptionView.html"); ;
-#if DEBUG
-            logger.Debug($"DescriptionEditor - {DescriptionViewFile}");
-#endif
+
+            Common.LogDebug(true, $"{DescriptionViewFile}");
+
             try
             {
                 htmlTextView.Visibility = Visibility.Visible;
@@ -59,7 +59,7 @@ namespace DescriptionEditor.Views
             }
             catch (Exception ex)
             {
-                Common.LogError(ex, "DescriptionEditor", "Error on creation HtmlTextView");
+                Common.LogError(ex, false, "Error on creation HtmlTextView");
             }
 
             DataContext = this;
