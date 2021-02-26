@@ -3,6 +3,7 @@ using Playnite.SDK;
 using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
 using CommonPluginsShared;
+using CommonPluginsShared.PlayniteExtended;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,13 +15,8 @@ using System.Windows.Automation;
 // TODO Integrate control HtmlTextView
 namespace DescriptionEditor
 {
-    public class DescriptionEditor : Plugin
+    public class DescriptionEditor : PluginExtended<DescriptionEditorSettingsViewModel>
     {
-        private static readonly ILogger logger = LogManager.GetLogger();
-        private static IResourceProvider resources = new ResourceProvider();
-
-        private DescriptionEditorSettings settings { get; set; }
-
         public override Guid Id { get; } = Guid.Parse("7600a469-4616-4547-94b8-0c330db02b8f");
 
         private TextBox TextDescription;
@@ -29,24 +25,6 @@ namespace DescriptionEditor
 
         public DescriptionEditor(IPlayniteAPI api) : base(api)
         {
-            settings = new DescriptionEditorSettings(this);
-
-            // Get plugin's location 
-            string pluginFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
-            // Add plugin localization in application ressource.
-            PluginLocalization.SetPluginLanguage(pluginFolder, api.ApplicationSettings.Language);
-            // Add common in application ressource.
-            Common.Load(pluginFolder);
-            Common.SetEvent(PlayniteApi);
-
-            // Check version
-            if (settings.EnableCheckVersion)
-            {
-                CheckVersion cv = new CheckVersion();
-                cv.Check("DescriptionEditor", pluginFolder, api);
-            }
-
             // Add Event for WindowBase for get the "WindowGameEdit".
             EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
         }
@@ -102,15 +80,18 @@ namespace DescriptionEditor
             
         }
 
+
+        #region Settings
         public override ISettings GetSettings(bool firstRunSettings)
         {
-            return settings;
+            return PluginSettings;
         }
 
         //public override UserControl GetSettingsView(bool firstRunSettings)
         //{
         //    return new DescriptionEditorSettingsView();
         //}
+        #endregion
 
 
         private void WindowBase_LoadedEvent(object sender, System.EventArgs e)

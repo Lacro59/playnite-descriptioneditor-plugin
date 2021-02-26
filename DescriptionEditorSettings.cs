@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Playnite.SDK;
+﻿using Playnite.SDK;
+using Playnite.SDK.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,26 +8,41 @@ using System.Threading.Tasks;
 
 namespace DescriptionEditor
 {
-    public class DescriptionEditorSettings : ISettings
+    public class DescriptionEditorSettings : ObservableObject
     {
-        private readonly DescriptionEditor plugin;
+        #region Settings variables
 
-        public bool EnableCheckVersion { get; set; } = true;
+        #endregion
 
         // Playnite serializes settings object to a JSON object and saves it as text file.
-        // If you want to exclude some property from being saved then use `JsonIgnore` ignore attribute.
-        [JsonIgnore]
-        public bool OptionThatWontBeSaved { get; set; } = false;
+        // If you want to exclude some property from being saved then use `JsonDontSerialize` ignore attribute.
+        #region Variables exposed
 
-        // Parameterless constructor must exist if you want to use LoadPluginSettings method.
-        public DescriptionEditorSettings()
+        #endregion  
+    }
+
+
+    public class DescriptionEditorSettingsViewModel : ObservableObject, ISettings
+    {
+        private readonly DescriptionEditor Plugin;
+        private DescriptionEditorSettings EditingClone { get; set; }
+
+        private DescriptionEditorSettings _Settings;
+        public DescriptionEditorSettings Settings
         {
+            get => _Settings;
+            set
+            {
+                _Settings = value;
+                OnPropertyChanged();
+            }
         }
 
-        public DescriptionEditorSettings(DescriptionEditor plugin)
+
+        public DescriptionEditorSettingsViewModel(DescriptionEditor plugin)
         {
             // Injecting your plugin instance is required for Save/Load method because Playnite saves data to a location based on what plugin requested the operation.
-            this.plugin = plugin;
+            Plugin = plugin;
 
             // Load saved settings.
             var savedSettings = plugin.LoadPluginSettings<DescriptionEditorSettings>();
@@ -35,33 +50,39 @@ namespace DescriptionEditor
             // LoadPluginSettings returns null if not saved data is available.
             if (savedSettings != null)
             {
-                EnableCheckVersion = savedSettings.EnableCheckVersion;
+                Settings = savedSettings;
+            }
+            else
+            {
+                Settings = new DescriptionEditorSettings();
             }
         }
 
+        // Code executed when settings view is opened and user starts editing values.
         public void BeginEdit()
         {
-            // Code executed when settings view is opened and user starts editing values.
+            EditingClone = Serialization.GetClone(Settings);
         }
 
+        // Code executed when user decides to cancel any changes made since BeginEdit was called.
+        // This method should revert any changes made to Option1 and Option2.
         public void CancelEdit()
         {
-            // Code executed when user decides to cancel any changes made since BeginEdit was called.
-            // This method should revert any changes made to Option1 and Option2.
+            Settings = EditingClone;
         }
 
+        // Code executed when user decides to confirm changes made since BeginEdit was called.
+        // This method should save settings made to Option1 and Option2.
         public void EndEdit()
         {
-            // Code executed when user decides to confirm changes made since BeginEdit was called.
-            // This method should save settings made to Option1 and Option2.
-            plugin.SavePluginSettings(this);
+            Plugin.SavePluginSettings(Settings);
         }
 
+        // Code execute when user decides to confirm changes made since BeginEdit was called.
+        // Executed before EndEdit is called and EndEdit is not called if false is returned.
+        // List of errors is presented to user if verification fails.
         public bool VerifySettings(out List<string> errors)
         {
-            // Code execute when user decides to confirm changes made since BeginEdit was called.
-            // Executed before EndEdit is called and EndEdit is not called if false is returned.
-            // List of errors is presented to user if verification fails.
             errors = new List<string>();
             return true;
         }
