@@ -31,78 +31,7 @@ namespace DescriptionEditor
         }
 
 
-        public override void OnGameSelected(GameSelectionEventArgs args)
-        {
-#if DEBUG
-            // Force development localization
-            PluginLocalization.SetPluginLanguage(PluginFolder, "LocSource", true);
-#endif
-        }
-
-        // Add code to be executed when game is finished installing.
-        public override void OnGameInstalled(Game game)
-        {
-            
-        }
-
-        // Add code to be executed when game is started running.
-        public override void OnGameStarted(Game game)
-        {
-            
-        }
-
-        // Add code to be executed when game is preparing to be started.
-        public override void OnGameStarting(Game game)
-        {
-            
-        }
-
-        // Add code to be executed when game is preparing to be started.
-        public override void OnGameStopped(Game game, long elapsedSeconds)
-        {
-            
-        }
-
-        // Add code to be executed when game is uninstalled.
-        public override void OnGameUninstalled(Game game)
-        {
-            
-        }
-
-
-        // Add code to be executed when Playnite is initialized.
-        public override void OnApplicationStarted()
-        {
-            
-        }
-
-        // Add code to be executed when Playnite is shutting down.
-        public override void OnApplicationStopped()
-        {
-            
-        }
-
-
-        // Add code to be executed when library is updated.
-        public override void OnLibraryUpdated()
-        {
-            
-        }
-
-
-        #region Settings
-        public override ISettings GetSettings(bool firstRunSettings)
-        {
-            return PluginSettings;
-        }
-
-        //public override UserControl GetSettingsView(bool firstRunSettings)
-        //{
-        //    return new DescriptionEditorSettingsView();
-        //}
-        #endregion
-
-
+        #region Custom event
         private void WindowBase_LoadedEvent(object sender, System.EventArgs e)
         {
             string WinIdProperty = string.Empty;
@@ -182,5 +111,79 @@ namespace DescriptionEditor
                 Common.LogError(ex, false, $"Error on TabControl_SelectionChanged for {ControlName}");
             }
         }
+        #endregion
+
+
+        #region Game event
+        public override void OnGameSelected(GameSelectionEventArgs args)
+        {
+
+        }
+
+        // Add code to be executed when game is finished installing.
+        public override void OnGameInstalled(Game game)
+        {
+            
+        }
+
+        // Add code to be executed when game is started running.
+        public override void OnGameStarted(Game game)
+        {
+            
+        }
+
+        // Add code to be executed when game is preparing to be started.
+        public override void OnGameStarting(Game game)
+        {
+            
+        }
+
+        // Add code to be executed when game is preparing to be started.
+        public override void OnGameStopped(Game game, long elapsedSeconds)
+        {
+            
+        }
+
+        // Add code to be executed when game is uninstalled.
+        public override void OnGameUninstalled(Game game)
+        {
+            
+        }
+        #endregion
+
+
+        #region Application event
+        // Add code to be executed when Playnite is initialized.
+        public override void OnApplicationStarted()
+        {
+            
+        }
+
+        // Add code to be executed when Playnite is shutting down.
+        public override void OnApplicationStopped()
+        {
+            
+        }
+        #endregion
+
+
+        // Add code to be executed when library is updated.
+        public override void OnLibraryUpdated()
+        {
+            
+        }
+
+
+        #region Settings
+        public override ISettings GetSettings(bool firstRunSettings)
+        {
+            return PluginSettings;
+        }
+
+        //public override UserControl GetSettingsView(bool firstRunSettings)
+        //{
+        //    return new DescriptionEditorSettingsView();
+        //}
+        #endregion
     }
 }
