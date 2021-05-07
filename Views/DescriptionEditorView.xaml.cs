@@ -127,6 +127,12 @@ namespace DescriptionEditor.Views
         }
 
 
+        private void BtHtoB_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.HeaderToBold(DescriptionActual.Text);
+        }
+
+
         private void BtInsertImg_Click(object sender, RoutedEventArgs e)
         {
             ImageContextMenu imageContextMenu = ((ImageContextMenu)btAddImgContextMenu.Items[0]);

@@ -60,6 +60,8 @@
                 <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
                         HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
 
+                <Button Name="btHtoB" Content="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}"
+                        HorizontalAlignment="Left" Margin="5" Click="BtHtoB_Click" />
 
                 <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">

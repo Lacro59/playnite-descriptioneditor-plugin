@@ -13,6 +13,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Format html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Restore html format</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>

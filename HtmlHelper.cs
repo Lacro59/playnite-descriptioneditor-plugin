@@ -125,6 +125,14 @@ namespace DescriptionEditor
         }
 
 
+        public static string HeaderToBold(string html)
+        {
+            html = Regex.Replace(html, $"<h[0-9][^>]*>", "<br><br><b>", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, $"</h[0-9][^>]*>", "</b><br>", RegexOptions.IgnoreCase);
+            return html;
+        }
+
+
         public static string RemoveTag(string html, string tag)
         {
             // Only img
