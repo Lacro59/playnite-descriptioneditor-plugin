@@ -20,6 +20,11 @@ namespace DescriptionEditor
     {
         public override Guid Id { get; } = Guid.Parse("7600a469-4616-4547-94b8-0c330db02b8f");
 
+        public override PluginProperties Properties { get; } = new PluginProperties
+        {
+            HasSettings = false
+        };
+
         private TextBox TextDescription;
         private Button BtDescriptionEditor;
 
