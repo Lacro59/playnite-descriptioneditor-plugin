@@ -7,12 +7,12 @@
              xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
              xmlns:converters="clr-namespace:CommonPluginsShared"
              xmlns:pbeh="clr-namespace:CommonPluginsPlaynite.Behaviors"
-             mc:Ignorable="d" Height="740" Width="1280" Background="{DynamicResource WindowBackgourndBrush}">
+             mc:Ignorable="d" MinHeight="740" MinWidth="1280">
 
     <UserControl.Resources>
         <converters:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
     </UserControl.Resources>
-    
+
     <Grid Margin="10" Name="PART_DescriptionView">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -31,7 +31,7 @@
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
             <DockPanel Margin="0,5">
                 <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Click="BtAddImg_Click"
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5">
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left" Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom" Name="btAddImgContextMenu">
                             <interface:ImageContextMenu BtInsertImgClick="BtInsertImg_Click" />

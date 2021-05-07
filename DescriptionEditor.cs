@@ -77,8 +77,16 @@ namespace DescriptionEditor
 
         private void OnButtonClick(object sender, RoutedEventArgs e)
         {
+            var windowCreationOptions = new WindowCreationOptions
+            {
+                ShowMinimizeButton = false,
+                ShowMaximizeButton = true,
+                ShowCloseButton = true
+            };
+
             var ViewExtension = new DescriptionEditorView(PlayniteApi, TextDescription);
-            Window windowExtension = PlayniteUiHelper.CreateExtensionWindow(PlayniteApi, resources.GetString("LOCDescriptionEditor"), ViewExtension);
+            Window windowExtension = PlayniteUiHelper.CreateExtensionWindow(PlayniteApi, resources.GetString("LOCDescriptionEditor"), ViewExtension, windowCreationOptions);
+            windowExtension.ResizeMode = ResizeMode.CanResize;
             windowExtension.ShowDialog();
         }
 
