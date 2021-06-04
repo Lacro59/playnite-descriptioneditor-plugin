@@ -7,7 +7,7 @@
              xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
              xmlns:converters="clr-namespace:CommonPluginsShared"
              xmlns:pbeh="clr-namespace:CommonPluginsPlaynite.Behaviors"
-             mc:Ignorable="d" MinHeight="740" MinWidth="1280">
+             mc:Ignorable="d" MinHeight="720" MinWidth="1200">
 
     <UserControl.Resources>
         <converters:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
@@ -30,6 +30,11 @@
         <!-- Editor button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
             <DockPanel Margin="0,5">
+                <Button Name="PART_Undo" Content="&#xee0b;" FontFamily="{DynamicResource FontIcoFont}" 
+                        Margin="5" VerticalAlignment="Center" Click="PART_Undo_Click" IsEnabled="False" />
+                <Button Name="PART_Redo" Content="&#xedfe;" FontFamily="{DynamicResource FontIcoFont}" 
+                        Margin="5,5,50,5" VerticalAlignment="Center" Click="PART_Redo_Click" IsEnabled="False" />
+
                 <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Click="BtAddImg_Click"
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left" Margin="5">
                     <Button.ContextMenu>

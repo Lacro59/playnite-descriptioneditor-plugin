@@ -31,6 +31,11 @@ namespace DescriptionEditor.Views
         private HtmlTextView htmlTextView = new HtmlTextView();
 
 
+        private bool DisableEvent = false;
+        private int IndexUndo = 0;
+        private List<string> ListUndo = new List<string>();
+
+
         public DescriptionEditorView(IPlayniteAPI PlayniteApi, TextBox TextDescription)
         {
             _PlayniteApi = PlayniteApi;
@@ -290,11 +295,73 @@ namespace DescriptionEditor.Views
         private void DescriptionActual_TextChanged(object sender, TextChangedEventArgs e)
         {
             htmlTextView.HtmlText = ((TextBox)sender).Text;
+
+
+            if (!DisableEvent)
+            {
+                if (ListUndo.Count == 0)
+                {
+                    ListUndo.Add(((TextBox)sender).Text);
+                }
+                else if (IndexUndo == ListUndo.Count - 1)
+                {
+                    ListUndo.Add(((TextBox)sender).Text);
+                }
+                else
+                {
+                    ListUndo.RemoveRange(IndexUndo, ListUndo.Count - 1 - IndexUndo);
+                    ListUndo.Add(((TextBox)sender).Text);
+                }
+
+                IndexUndo = ListUndo.Count - 1;
+
+                if (ListUndo.Count > 1)
+                {
+                    PART_Undo.IsEnabled = true;
+                    PART_Redo.IsEnabled = false;
+                }
+            }
+            else
+            {
+                DisableEvent = false;
+            }
         }
+
 
         private void BtAddImg_Click(object sender, RoutedEventArgs e)
         {
             btAddImgContextMenu.Visibility = Visibility.Visible;
         }
+
+
+        #region Undo/Redo
+        private void PART_Undo_Click(object sender, RoutedEventArgs e)
+        {
+            DisableEvent = true;
+
+            IndexUndo = IndexUndo - 1;
+            DescriptionActual.Text = ListUndo[IndexUndo];
+
+            PART_Redo.IsEnabled = true;
+            if (IndexUndo == 0)
+            {
+                PART_Undo.IsEnabled = false;
+            }
+        }
+
+        private void PART_Redo_Click(object sender, RoutedEventArgs e)
+        {
+            DisableEvent = true;
+
+            IndexUndo = IndexUndo + 1;
+            DescriptionActual.Text = ListUndo[IndexUndo];
+
+            PART_Undo.IsEnabled = true;
+            if (IndexUndo == ListUndo.Count - 1)
+            {
+                PART_Redo.IsEnabled = false;
+            }
+        }
+        #endregion
     }
 }
