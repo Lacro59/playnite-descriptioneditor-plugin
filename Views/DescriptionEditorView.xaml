@@ -7,10 +7,11 @@
              xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
              xmlns:converters="clr-namespace:CommonPluginsShared"
              xmlns:pbeh="clr-namespace:CommonPluginsPlaynite.Behaviors"
+             xmlns:convertersshared="clr-namespace:CommonPluginsPlaynite.Converters"
              mc:Ignorable="d" MinHeight="720" MinWidth="1200">
 
     <UserControl.Resources>
-        <converters:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
+        <convertersshared:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
     </UserControl.Resources>
 
     <Grid Margin="10" Name="PART_DescriptionView">

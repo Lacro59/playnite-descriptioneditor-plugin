@@ -107,7 +107,7 @@ namespace DescriptionEditor
 
                         if (tabItem != null)
                         {
-                            foreach (TextBlock textBlock in Tools.FindVisualChildren<TextBlock>((DependencyObject)tabItem.Content))
+                            foreach (TextBlock textBlock in UI.FindVisualChildren<TextBlock>((DependencyObject)tabItem.Content))
                             {
                                 if (textBlock.Text == resources.GetString("LOCGameDescriptionTitle"))
                                 {
