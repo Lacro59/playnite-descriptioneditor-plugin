@@ -66,8 +66,15 @@
                 <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
                         HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
 
-                <Button Name="btHtoB" Content="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}"
-                        HorizontalAlignment="Left" Margin="5" Click="BtHtoB_Click" />
+                <Button Name="btHtmlFormaters" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormater}" 
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">
+                    <Button.ContextMenu>
+                        <ContextMenu Placement="Bottom">
+                            <MenuItem Click="BtHtoB_Click" Header="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}" />
+                            <MenuItem Click="BtPremove_Click" Header="{DynamicResource LOCDescriptionEditorButtonParagraphRemove}" />
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
 
                 <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">

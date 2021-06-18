@@ -133,6 +133,14 @@ namespace DescriptionEditor
         }
 
 
+        public static string ParagraphRemove(string html)
+        {
+            html = Regex.Replace(html, $"<p[^>]*>", "", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, $"</p[^>]*>", "<br><br>", RegexOptions.IgnoreCase);
+            return html;
+        }
+
+
         public static string RemoveTag(string html, string tag)
         {
             // Only img

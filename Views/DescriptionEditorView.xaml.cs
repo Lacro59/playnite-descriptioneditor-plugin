@@ -137,6 +137,11 @@ namespace DescriptionEditor.Views
             DescriptionActual.Text = HtmlHelper.HeaderToBold(DescriptionActual.Text);
         }
 
+        private void BtPremove_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.ParagraphRemove(DescriptionActual.Text);
+        }
+
 
         private void BtInsertImg_Click(object sender, RoutedEventArgs e)
         {
