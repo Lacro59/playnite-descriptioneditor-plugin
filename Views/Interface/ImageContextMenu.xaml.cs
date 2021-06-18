@@ -108,10 +108,7 @@ namespace DescriptionEditor.Views.Interface
             imgCenter = (bool)rbImgCenter.IsChecked;
             imgRight = (bool)rbImgRight.IsChecked;
 
-            if (BtInsertImgClick != null)
-            {
-                BtInsertImgClick(this, new RoutedEventArgs());
-            }
+            BtInsertImgClick?.Invoke(this, new RoutedEventArgs());
         }
     }
 }

@@ -97,19 +97,7 @@ namespace DescriptionEditor.Views
 
         private void BtMarkdownToHtml_Click(object sender, RoutedEventArgs e)
         {
-            // List
-            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>*", "", RegexOptions.IgnoreCase);
-            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>-", "-", RegexOptions.IgnoreCase);
-            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>+", "", RegexOptions.IgnoreCase);
-
-            DescriptionActual.Text = Markup.MarkdownToHtml(DescriptionActual.Text);
-
-            DescriptionActual.Text = Regex.Replace(
-                                DescriptionActual.Text,
-                                "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
-                                "<img src=\"$1\" width=\"100%\"/>");
-            
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
+            DescriptionActual.Text = HtmlHelper.MarkdownToHtml(DescriptionActual.Text);
         }
 
         private string RemoveParagraph(string Text)
@@ -216,25 +204,21 @@ namespace DescriptionEditor.Views
         private void BtRemoveImg_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.RemoveTag(DescriptionActual.Text, "img");
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
 
         private void Bt100PercentImg_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.Add100PercentStyle(DescriptionActual.Text);
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
 
         private void BtRemoveImgStyle_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.RemoveSizeStyle(DescriptionActual.Text);
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
 
         private void BtCenterImg_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.CenterImage(DescriptionActual.Text);
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
         #endregion
 
