@@ -13,6 +13,7 @@ using System.Windows.Media;
 using DescriptionEditor.Views.Interface;
 using Playnite.SDK.Data;
 using CommonPluginsPlaynite.Extensions.Markup;
+using System.Windows.Input;
 
 namespace DescriptionEditor.Views
 {
@@ -349,6 +350,27 @@ namespace DescriptionEditor.Views
             if (IndexUndo == ListUndo.Count - 1)
             {
                 PART_Redo.IsEnabled = false;
+            }
+        }
+
+        private void DescriptionActual_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Z && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) != 0)
+            {
+                if (PART_Undo.IsEnabled)
+                {
+                    PART_Undo_Click(null, null);
+                }
+                e.Handled = true;
+            }
+
+            if (e.Key == Key.Y && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) != 0)
+            {
+                if (PART_Redo.IsEnabled)
+                {
+                    PART_Redo_Click(null, null);
+                }
+                e.Handled = true;
             }
         }
         #endregion
