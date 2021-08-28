@@ -90,6 +90,7 @@
         <TextBox Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" TextChanged="DescriptionActual_TextChanged"
                  TextWrapping="Wrap" AcceptsReturn="True" Name="DescriptionActual"
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 FontFamily="{DynamicResource MonospaceFontFamily}"
                  PreviewKeyDown="DescriptionActual_PreviewKeyDown"
                  Text="{Binding Description, Mode=TwoWay}" />
 

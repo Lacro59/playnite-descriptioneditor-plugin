@@ -127,13 +127,7 @@ namespace DescriptionEditor
         #region Game event
         public override void OnGameSelected(OnGameSelectedEventArgs args)
         {
-            if (args.NewValue.Count == 0)
-            {
-                return;
-            }
 
-            Game game = args.NewValue?[0];
-            bool IsRcsp3 = PlayniteTools.GameUseRpcs3(PlayniteApi, game);
         }
 
         // Add code to be executed when game is started running.
