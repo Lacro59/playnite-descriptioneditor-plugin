@@ -20,17 +20,14 @@ namespace DescriptionEditor
     {
         public override Guid Id { get; } = Guid.Parse("7600a469-4616-4547-94b8-0c330db02b8f");
 
-        public override PluginProperties Properties { get; } = new PluginProperties
-        {
-            HasSettings = false
-        };
-
         private TextBox TextDescription;
         private Button BtDescriptionEditor;
 
 
         public DescriptionEditor(IPlayniteAPI api) : base(api)
         {
+            Properties = new GenericPluginProperties { HasSettings = true };
+
             // Add Event for WindowBase for get the "WindowGameEdit".
             EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
         }
@@ -128,37 +125,43 @@ namespace DescriptionEditor
 
 
         #region Game event
-        public override void OnGameSelected(GameSelectionEventArgs args)
+        public override void OnGameSelected(OnGameSelectedEventArgs args)
         {
+            if (args.NewValue.Count == 0)
+            {
+                return;
+            }
 
-        }
-
-        // Add code to be executed when game is finished installing.
-        public override void OnGameInstalled(Game game)
-        {
-            
+            Game game = args.NewValue?[0];
+            bool IsRcsp3 = PlayniteTools.GameUseRpcs3(PlayniteApi, game);
         }
 
         // Add code to be executed when game is started running.
-        public override void OnGameStarted(Game game)
+        public override void OnGameStarted(OnGameStartedEventArgs args)
         {
             
         }
 
         // Add code to be executed when game is preparing to be started.
-        public override void OnGameStarting(Game game)
+        public override void OnGameStarting(OnGameStartingEventArgs args)
         {
             
         }
 
         // Add code to be executed when game is preparing to be started.
-        public override void OnGameStopped(Game game, long elapsedSeconds)
+        public override void OnGameStopped(OnGameStoppedEventArgs args)
         {
             
+        }
+
+        // Add code to be executed when game is finished installing.
+        public override void OnGameInstalled(OnGameInstalledEventArgs args)
+        {
+
         }
 
         // Add code to be executed when game is uninstalled.
-        public override void OnGameUninstalled(Game game)
+        public override void OnGameUninstalled(OnGameUninstalledEventArgs args)
         {
             
         }
@@ -167,13 +170,13 @@ namespace DescriptionEditor
 
         #region Application event
         // Add code to be executed when Playnite is initialized.
-        public override void OnApplicationStarted()
+        public override void OnApplicationStarted(OnApplicationStartedEventArgs args)
         {
             
         }
 
         // Add code to be executed when Playnite is shutting down.
-        public override void OnApplicationStopped()
+        public override void OnApplicationStopped(OnApplicationStoppedEventArgs args)
         {
             
         }
@@ -181,7 +184,7 @@ namespace DescriptionEditor
 
 
         // Add code to be executed when library is updated.
-        public override void OnLibraryUpdated()
+        public override void OnLibraryUpdated(OnLibraryUpdatedEventArgs args)
         {
             
         }
@@ -193,10 +196,10 @@ namespace DescriptionEditor
             return PluginSettings;
         }
 
-        //public override UserControl GetSettingsView(bool firstRunSettings)
-        //{
-        //    return new DescriptionEditorSettingsView();
-        //}
+        public override UserControl GetSettingsView(bool firstRunSettings)
+        {
+            return new DescriptionEditorSettingsView();
+        }
         #endregion
     }
 }

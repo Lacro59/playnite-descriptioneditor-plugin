@@ -46,7 +46,7 @@ namespace DescriptionEditor.Views
             Description = TextDescription.Text;
 
             PlayniteTools.SetThemeInformation(_PlayniteApi);
-            string DescriptionViewFile = ThemeFile.GetFilePath("DescriptionView.html"); ;
+            string DescriptionViewFile = ThemeFile.GetFilePath("DescriptionView.html");
 
             Common.LogDebug(true, $"{DescriptionViewFile}");
 
