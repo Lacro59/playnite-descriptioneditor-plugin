@@ -2,10 +2,10 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- MainView -->
-    
+
     <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
 
-    
+
     <!-- EditGameDetails -->
 
     <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
@@ -14,13 +14,17 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
     
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width at 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
-    
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
