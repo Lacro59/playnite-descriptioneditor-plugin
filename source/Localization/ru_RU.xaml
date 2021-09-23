@@ -2,34 +2,38 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- MainView -->
-    
+
     <sys:String x:Key="LOCDescriptionEditor">Редактор описания</sys:String>
 
-    
+
     <!-- EditGameDetails -->
 
     <sys:String x:Key="LOCDescriptionEditorButton">Редактор описания</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML форматер</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML формате</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Удаление HTML-формататора</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
     
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Формат изображения</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Добавить изображение</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Удалить изображение</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Установить ширину на 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Удалить стиль размера</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">По центру изображения</sys:String>
-    
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматор Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (пикс)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Позиция</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Центр</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Цент</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Удалить &quot;О игре&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текст</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текс</sys:String>
 
 </ResourceDictionary>
