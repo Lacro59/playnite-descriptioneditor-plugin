@@ -2,10 +2,10 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- MainView -->
-    
+
     <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
 
-    
+
     <!-- EditGameDetails -->
 
     <sys:String x:Key="LOCDescriptionEditorButton">Editer la description</sys:String>
@@ -14,19 +14,23 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Supprimer formateur HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown en html</sys:String>
     
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Formateur d'image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Ajouter image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Retirer image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Définir la largeur à 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Supprimer le style de taille</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centrer l'image</sys:String>
-    
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Formateur Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Dimension image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">ou manuel (px)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Centré</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Centr</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Retirer &quot;À propos du jeu&quot;</sys:String>
 
