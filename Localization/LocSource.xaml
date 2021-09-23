@@ -13,6 +13,9 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Format html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Restore html format</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &#60;p&#62;</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
@@ -21,6 +24,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
 
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>

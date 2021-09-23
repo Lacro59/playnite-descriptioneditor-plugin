@@ -13,6 +13,7 @@ using System.Windows.Media;
 using DescriptionEditor.Views.Interface;
 using Playnite.SDK.Data;
 using CommonPluginsPlaynite.Extensions.Markup;
+using System.Windows.Input;
 
 namespace DescriptionEditor.Views
 {
@@ -31,6 +32,11 @@ namespace DescriptionEditor.Views
         private HtmlTextView htmlTextView = new HtmlTextView();
 
 
+        private bool DisableEvent = false;
+        private int IndexUndo = 0;
+        private List<string> ListUndo = new List<string>();
+
+
         public DescriptionEditorView(IPlayniteAPI PlayniteApi, TextBox TextDescription)
         {
             _PlayniteApi = PlayniteApi;
@@ -40,10 +46,10 @@ namespace DescriptionEditor.Views
             Description = TextDescription.Text;
 
             PlayniteTools.SetThemeInformation(_PlayniteApi);
-            string DescriptionViewFile = ThemeFile.GetFilePath("DescriptionView.html"); ;
-#if DEBUG
-            logger.Debug($"DescriptionEditor - {DescriptionViewFile}");
-#endif
+            string DescriptionViewFile = ThemeFile.GetFilePath("DescriptionView.html");
+
+            Common.LogDebug(true, $"{DescriptionViewFile}");
+
             try
             {
                 htmlTextView.Visibility = Visibility.Visible;
@@ -59,7 +65,7 @@ namespace DescriptionEditor.Views
             }
             catch (Exception ex)
             {
-                Common.LogError(ex, "DescriptionEditor", "Error on creation HtmlTextView");
+                Common.LogError(ex, false, "Error on creation HtmlTextView");
             }
 
             DataContext = this;
@@ -92,19 +98,7 @@ namespace DescriptionEditor.Views
 
         private void BtMarkdownToHtml_Click(object sender, RoutedEventArgs e)
         {
-            // List
-            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>*", "", RegexOptions.IgnoreCase);
-            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>-", "-", RegexOptions.IgnoreCase);
-            DescriptionActual.Text = Regex.Replace(DescriptionActual.Text, "<br>+", "", RegexOptions.IgnoreCase);
-
-            DescriptionActual.Text = Markup.MarkdownToHtml(DescriptionActual.Text);
-
-            DescriptionActual.Text = Regex.Replace(
-                                DescriptionActual.Text,
-                                "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
-                                "<img src=\"$1\" width=\"100%\"/>");
-            
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
+            DescriptionActual.Text = HtmlHelper.MarkdownToHtml(DescriptionActual.Text);
         }
 
         private string RemoveParagraph(string Text)
@@ -124,6 +118,17 @@ namespace DescriptionEditor.Views
             }
 
             return Text;
+        }
+
+
+        private void BtHtoB_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.HeaderToBold(DescriptionActual.Text);
+        }
+
+        private void BtPremove_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.ParagraphRemove(DescriptionActual.Text);
         }
 
 
@@ -200,25 +205,21 @@ namespace DescriptionEditor.Views
         private void BtRemoveImg_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.RemoveTag(DescriptionActual.Text, "img");
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
 
         private void Bt100PercentImg_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.Add100PercentStyle(DescriptionActual.Text);
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
 
         private void BtRemoveImgStyle_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.RemoveSizeStyle(DescriptionActual.Text);
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
 
         private void BtCenterImg_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.CenterImage(DescriptionActual.Text);
-            DescriptionActual.Text = HtmlHelper.HtmlFormatRemove(DescriptionActual.Text);
         }
         #endregion
 
@@ -284,11 +285,94 @@ namespace DescriptionEditor.Views
         private void DescriptionActual_TextChanged(object sender, TextChangedEventArgs e)
         {
             htmlTextView.HtmlText = ((TextBox)sender).Text;
+
+
+            if (!DisableEvent)
+            {
+                if (ListUndo.Count == 0)
+                {
+                    ListUndo.Add(((TextBox)sender).Text);
+                }
+                else if (IndexUndo == ListUndo.Count - 1)
+                {
+                    ListUndo.Add(((TextBox)sender).Text);
+                }
+                else
+                {
+                    ListUndo.RemoveRange(IndexUndo, ListUndo.Count - 1 - IndexUndo);
+                    ListUndo.Add(((TextBox)sender).Text);
+                }
+
+                IndexUndo = ListUndo.Count - 1;
+
+                if (ListUndo.Count > 1)
+                {
+                    PART_Undo.IsEnabled = true;
+                    PART_Redo.IsEnabled = false;
+                }
+            }
+            else
+            {
+                DisableEvent = false;
+            }
         }
+
 
         private void BtAddImg_Click(object sender, RoutedEventArgs e)
         {
             btAddImgContextMenu.Visibility = Visibility.Visible;
         }
+
+
+        #region Undo/Redo
+        private void PART_Undo_Click(object sender, RoutedEventArgs e)
+        {
+            DisableEvent = true;
+
+            IndexUndo = IndexUndo - 1;
+            DescriptionActual.Text = ListUndo[IndexUndo];
+
+            PART_Redo.IsEnabled = true;
+            if (IndexUndo == 0)
+            {
+                PART_Undo.IsEnabled = false;
+            }
+        }
+
+        private void PART_Redo_Click(object sender, RoutedEventArgs e)
+        {
+            DisableEvent = true;
+
+            IndexUndo = IndexUndo + 1;
+            DescriptionActual.Text = ListUndo[IndexUndo];
+
+            PART_Undo.IsEnabled = true;
+            if (IndexUndo == ListUndo.Count - 1)
+            {
+                PART_Redo.IsEnabled = false;
+            }
+        }
+
+        private void DescriptionActual_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Z && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) != 0)
+            {
+                if (PART_Undo.IsEnabled)
+                {
+                    PART_Undo_Click(null, null);
+                }
+                e.Handled = true;
+            }
+
+            if (e.Key == Key.Y && (e.KeyboardDevice.Modifiers & ModifierKeys.Control) != 0)
+            {
+                if (PART_Redo.IsEnabled)
+                {
+                    PART_Redo_Click(null, null);
+                }
+                e.Handled = true;
+            }
+        }
+        #endregion
     }
 }

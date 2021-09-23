@@ -66,7 +66,7 @@ namespace DescriptionEditor.Views.Interface
             btInsertImg.IsEnabled = false;
             gPosition.IsEnabled = true;
 
-            foreach (var ui in Tools.FindVisualChildren<Border>((ContextMenu)((FrameworkElement)((FrameworkElement)sender).Parent).Parent))
+            foreach (var ui in UI.FindVisualChildren<Border>((ContextMenu)((FrameworkElement)((FrameworkElement)sender).Parent).Parent))
             {
                 if (((FrameworkElement)ui).Name == "HoverBorder")
                 {
@@ -108,10 +108,7 @@ namespace DescriptionEditor.Views.Interface
             imgCenter = (bool)rbImgCenter.IsChecked;
             imgRight = (bool)rbImgRight.IsChecked;
 
-            if (BtInsertImgClick != null)
-            {
-                BtInsertImgClick(this, new RoutedEventArgs());
-            }
+            BtInsertImgClick?.Invoke(this, new RoutedEventArgs());
         }
     }
 }

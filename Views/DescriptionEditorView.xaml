@@ -7,12 +7,13 @@
              xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
              xmlns:converters="clr-namespace:CommonPluginsShared"
              xmlns:pbeh="clr-namespace:CommonPluginsPlaynite.Behaviors"
-             mc:Ignorable="d" Height="740" Width="1280" Background="{DynamicResource WindowBackgourndBrush}">
+             xmlns:convertersshared="clr-namespace:CommonPluginsPlaynite.Converters"
+             mc:Ignorable="d" MinHeight="720" MinWidth="1200">
 
     <UserControl.Resources>
-        <converters:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
+        <convertersshared:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
     </UserControl.Resources>
-    
+
     <Grid Margin="10" Name="PART_DescriptionView">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -30,8 +31,13 @@
         <!-- Editor button -->
         <Border Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
             <DockPanel Margin="0,5">
+                <Button Name="PART_Undo" Content="&#xee0b;" FontFamily="{DynamicResource FontIcoFont}" 
+                        Margin="5" VerticalAlignment="Center" Click="PART_Undo_Click" IsEnabled="False" />
+                <Button Name="PART_Redo" Content="&#xedfe;" FontFamily="{DynamicResource FontIcoFont}" 
+                        Margin="5,5,50,5" VerticalAlignment="Center" Click="PART_Redo_Click" IsEnabled="False" />
+
                 <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Click="BtAddImg_Click"
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5">
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left" Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom" Name="btAddImgContextMenu">
                             <interface:ImageContextMenu BtInsertImgClick="BtInsertImg_Click" />
@@ -60,6 +66,15 @@
                 <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
                         HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
 
+                <Button Name="btHtmlFormaters" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormater}" 
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">
+                    <Button.ContextMenu>
+                        <ContextMenu Placement="Bottom">
+                            <MenuItem Click="BtHtoB_Click" Header="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}" />
+                            <MenuItem Click="BtPremove_Click" Header="{DynamicResource LOCDescriptionEditorButtonParagraphRemove}" />
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
 
                 <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">
@@ -73,9 +88,11 @@
         </Border>
 
         <TextBox Grid.Column="0" Grid.Row="2" VerticalAlignment="Stretch" TextChanged="DescriptionActual_TextChanged"
-                     TextWrapping="Wrap" AcceptsReturn="True" Name="DescriptionActual"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto"
-                     Text="{Binding Description, Mode=TwoWay}" />
+                 TextWrapping="Wrap" AcceptsReturn="True" Name="DescriptionActual"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 FontFamily="{DynamicResource MonospaceFontFamily}"
+                 PreviewKeyDown="DescriptionActual_PreviewKeyDown"
+                 Text="{Binding Description, Mode=TwoWay}" />
 
         <ScrollViewer Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
             <StackPanel Name="PART_HtmlDescription"></StackPanel>

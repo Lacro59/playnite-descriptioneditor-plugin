@@ -4,10 +4,8 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Linq;
 using AngleSharp.Parser.Html;
-using System.IO;
-using AngleSharp.Html;
-using System.Net;
 using HtmlAgilityPack;
+using Playnite.SDK.Data;
 
 namespace DescriptionEditor
 {
@@ -18,6 +16,7 @@ namespace DescriptionEditor
         private static readonly string Indentation = "    ";
 
 
+        #region Html identation
         public static string HtmlFormat(string Html)
         {
             Html = HtmlFormatRemove(Html);
@@ -110,8 +109,14 @@ namespace DescriptionEditor
 
             return Result;
         }
+        #endregion
 
 
+        /// <summary>
+        /// Serialize html text
+        /// </summary>
+        /// <param name="Html"></param>
+        /// <returns></returns>
         public static string HtmlFormatRemove(string Html)
         {
             Html = Html.Replace(Environment.NewLine, string.Empty);
@@ -125,20 +130,90 @@ namespace DescriptionEditor
         }
 
 
-        public static string RemoveTag(string html, string tag)
+        #region Html tag manipualtions
+        /// <summary>
+        /// Delete an html tag with or without replacement
+        /// </summary>
+        /// <param name="html"></param>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        public static string RemoveTag(string html, string tag, string openReplacement = "", string closeReplacement = "")
         {
             // Only img
-            html = Regex.Replace(html, $"<{tag.ToLower()}[^>]*>", "", RegexOptions.IgnoreCase);
-            html = Regex.Replace(html, $"<{tag.ToUpper()}[^>]*>", "", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, $"<{tag.ToLower()}[^>]*>", openReplacement, RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, $"</{tag.ToUpper()}[^>]*>", closeReplacement, RegexOptions.IgnoreCase);
             return html;
         }
 
+
+
+        /// <summary>
+        /// Transform html header (h1, h2, ...) to html bold (b)
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        public static string HeaderToBold(string html)
+        {
+            html = Regex.Replace(html, $"<h[0-9][^>]*>", "<br><br><b>", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, $"</h[0-9][^>]*>", "</b><br>", RegexOptions.IgnoreCase);
+            return html;
+        }
+
+        /// <summary>
+        /// Remove html paragraph (p)
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        public static string ParagraphRemove(string html)
+        {
+            html = RemoveTag(html, "p", "", "<br><br>");
+            return html;
+        }
+        #endregion
+
+
+        /// <summary>
+        /// Convert Markdown to html
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
+        public static string MarkdownToHtml(string html)
+        {
+            // List
+            html = Regex.Replace(html, "<br>*", "", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, "<br>-", "-", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, "<br>+", "", RegexOptions.IgnoreCase);
+
+            html = Markup.MarkdownToHtml(html);
+
+            html = Regex.Replace
+            (
+                html,
+                "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
+                "<img src=\"$1\" width=\"100%\"/>"
+            );
+
+            return html;
+        }
+
+
+        #region Image manipulations
+        /// <summary>
+        /// Add a css hack to center image
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
         public static string CenterImage(string html)
         {
             html = Regex.Replace(html, $"(<img[^>]*>)", "<div style=\"text-align: center;\">$1</div>", RegexOptions.IgnoreCase);
             return html;
         }
 
+        /// <summary>
+        /// Add a image width style at 100%
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
         public static string Add100PercentStyle(string html)
         {
             var parser = new HtmlParser();
@@ -172,6 +247,12 @@ namespace DescriptionEditor
             return document.Body.InnerHtml;
         }
 
+
+        /// <summary>
+        /// Remove image width & heigth style
+        /// </summary>
+        /// <param name="html"></param>
+        /// <returns></returns>
         public static string RemoveSizeStyle(string html)
         {
             var parser = new HtmlParser();
@@ -205,5 +286,6 @@ namespace DescriptionEditor
 
             return document.Body.InnerHtml;
         }
+        #endregion
     }
 }
