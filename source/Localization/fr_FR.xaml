@@ -3,7 +3,7 @@
 
     <!-- MainView -->
 
-    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">Éditeur de description</sys:String>
 
 
     <!-- EditGameDetails -->
@@ -14,8 +14,8 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Supprimer formateur HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown en html</sys:String>
     
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">En-tête en gras</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Retirer les &lt;p&gt;</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Formateur d'image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Ajouter image</sys:String>
@@ -24,7 +24,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Supprimer le style de taille</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centrer l'image</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">Éditeur HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Formateur Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Dimension image</sys:String>

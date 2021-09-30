@@ -14,8 +14,8 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Remover formatador de HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Reduzir para Html</sys:String>
     
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Colocar cabeçalho em negrito</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remover &lt;p&gt;</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Formatador de imagem</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Adicionar imagem</sys:String>
@@ -24,7 +24,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remover estilo de tamanho</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centralizar a imagem</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">formatador de html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatador</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Tamanho da imagem</sys:String>
