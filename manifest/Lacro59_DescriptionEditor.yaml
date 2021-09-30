@@ -8,4 +8,4 @@ Packages:
       - Playnite 9 version (not compatible with Playnite 8)
       - Fixed many bugs
       - Added undo/redo
-	  - Added new html formatter
+      - Added new html formatter
