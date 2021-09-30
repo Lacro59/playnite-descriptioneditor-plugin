@@ -5,7 +5,7 @@ Packages:
     ReleaseDate: 2021-09-30
     PackageUrl: https://github.com/Lacro59/playnite-descriptioneditor-plugin/releases/download/v2.0/playnite-descriptioneditor-plugin_2_0.pext
     Changelog:
-      - Playnite 9 beta version (not compatible with Playnite 8)
+      - Playnite 9 version (not compatible with Playnite 8)
       - Fixed many bugs
       - Added undo/redo
 	  - Added new html formatter
