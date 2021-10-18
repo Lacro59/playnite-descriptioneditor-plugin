@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:DescriptionEditor.Views"
              xmlns:interface="clr-namespace:DescriptionEditor.Views.Interface"
              xmlns:converters="clr-namespace:CommonPluginsShared"
-             xmlns:pbeh="clr-namespace:CommonPluginsPlaynite.Behaviors"
-             xmlns:convertersshared="clr-namespace:CommonPluginsPlaynite.Converters"
+             xmlns:pbeh="clr-namespace:CommonPlayniteShared.Behaviors"
+             xmlns:convertersshared="clr-namespace:CommonPlayniteShared.Converters"
              mc:Ignorable="d" MinHeight="720" MinWidth="1200">
 
     <UserControl.Resources>

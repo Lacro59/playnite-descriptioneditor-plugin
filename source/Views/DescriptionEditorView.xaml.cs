@@ -12,7 +12,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using DescriptionEditor.Views.Interface;
 using Playnite.SDK.Data;
-using CommonPluginsPlaynite.Extensions.Markup;
+using CommonPlayniteShared.Extensions.Markup;
 using System.Windows.Input;
 
 namespace DescriptionEditor.Views

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:DescriptionEditor.Views.Interface"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:converters="clr-namespace:CommonPluginsShared"
-      xmlns:convertersshared="clr-namespace:CommonPluginsPlaynite.Converters"
+      xmlns:convertersshared="clr-namespace:CommonPlayniteShared.Converters"
       mc:Ignorable="d" Width="400">
 
     <Grid.Resources>
