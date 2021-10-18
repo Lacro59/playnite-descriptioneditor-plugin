@@ -9,3 +9,9 @@ Packages:
       - Fixed many bugs
       - Added undo/redo
       - Added new html formatter
+  - Version: 2.0.1
+    RequiredApiVersion: 6.1.0
+    ReleaseDate: 2021-10-18
+    PackageUrl: https://github.com/Lacro59/playnite-descriptioneditor-plugin/releases/download/v2.0.1/playnite-descriptioneditor-plugin_2_0_1.pext
+    Changelog:
+      - Fixed many bugs
