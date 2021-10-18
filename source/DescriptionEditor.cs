@@ -1,13 +1,9 @@
 ﻿using DescriptionEditor.Views;
 using Playnite.SDK;
-using Playnite.SDK.Models;
 using Playnite.SDK.Plugins;
 using CommonPluginsShared;
 using CommonPluginsShared.PlayniteExtended;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Automation;
@@ -26,7 +22,7 @@ namespace DescriptionEditor
 
         public DescriptionEditor(IPlayniteAPI api) : base(api)
         {
-            Properties = new GenericPluginProperties { HasSettings = true };
+            Properties = new GenericPluginProperties { HasSettings = false };
 
             // Add Event for WindowBase for get the "WindowGameEdit".
             EventManager.RegisterClassHandler(typeof(Window), Window.LoadedEvent, new RoutedEventHandler(WindowBase_LoadedEvent));
