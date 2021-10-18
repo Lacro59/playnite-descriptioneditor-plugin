@@ -4,14 +4,11 @@ using CommonPluginsShared;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using DescriptionEditor.Views.Interface;
-using Playnite.SDK.Data;
 using CommonPlayniteShared.Extensions.Markup;
 using System.Windows.Input;
 
