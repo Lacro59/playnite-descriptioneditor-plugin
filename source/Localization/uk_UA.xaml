@@ -10,17 +10,17 @@
 
     <sys:String x:Key="LOCDescriptionEditorButton">Редактор Опису</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Розмітити в HTML</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Відновити розмітку HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Зручний HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Компактний HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Розмітити до HTML</sys:String>
     
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Заголовок жирним шрифтом</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Прибрати &lt;p&gt;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Форматування зображень</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Формат зображень</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Додати зображення</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Прибрати зображення</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width at 100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Встановити ширину на 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Вилучити стиль розміру</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Центрувати зображення</sys:String>
 
