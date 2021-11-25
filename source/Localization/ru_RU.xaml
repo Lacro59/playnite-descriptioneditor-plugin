@@ -12,10 +12,10 @@
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML формате</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Удаление HTML-формататора</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown на html</sys:String>
     
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Жирный шрифт заголовка</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Удалить &lt;p&gt;</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Формат изображения</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Добавить изображение</sys:String>
@@ -24,16 +24,16 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Удалить стиль размера</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">По центру изображения</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html формат</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматор Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (пикс)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Позиция</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Цент</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Цен</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Удалить &quot;О игре&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текс</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите тек</sys:String>
 
 </ResourceDictionary>
