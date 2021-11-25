@@ -3,37 +3,37 @@
 
     <!-- MainView -->
 
-    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">描述编辑器</sys:String>
 
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">描述编辑器</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">格式化html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">恢复html格式</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown到html</sys:String>
     
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">标题加粗</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">移除&lt;p&gt;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width at 100%</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">图像格式化</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">添加图像</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">删除图像</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">设置宽度为100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">删除尺寸样式</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">居中图像</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html格式化</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam格式化</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">or manual (px)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Center</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">图像尺寸</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">或手动（px）</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">位置</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">居中</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remove &quot;About the Game&quot;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">删除“About the Game”</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Your text here</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">此处是你的文本</sys:String>
 
 </ResourceDictionary>
