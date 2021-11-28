@@ -8,7 +8,7 @@
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">Редактор Опис</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">Редактор Опису</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Зручний HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Компактний HTML</sys:String>
@@ -21,7 +21,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Додати зображення</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Прибрати зображення</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Встановити ширину на 100%</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Вилучити стиль розмір</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Вилучити стиль розміру</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Центрувати зображення</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">Розмітка HTML</sys:String>
@@ -30,10 +30,10 @@
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Розмір зображення</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">або вручну (px)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Розташування</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">По центр</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">По центру</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Прибрати &quot;Про гру&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Ваш текст ту</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Ваш текст тут</sys:String>
 
 </ResourceDictionary>
