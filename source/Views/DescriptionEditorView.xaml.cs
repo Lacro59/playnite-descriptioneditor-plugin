@@ -218,6 +218,22 @@ namespace DescriptionEditor.Views
         {
             DescriptionActual.Text = HtmlHelper.CenterImage(DescriptionActual.Text);
         }
+
+
+        private void BtBr2to1_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.BrRemove(DescriptionActual.Text, 2, 1);
+        }
+
+        private void BtBr3to1_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.BrRemove(DescriptionActual.Text, 3, 1);
+        }
+
+        private void BtBr3to2_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.BrRemove(DescriptionActual.Text, 3, 2);
+        }
         #endregion
 
         #region Steam formatter 

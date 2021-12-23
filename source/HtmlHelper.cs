@@ -159,6 +159,23 @@ namespace DescriptionEditor
             return html;
         }
 
+
+
+        public static string BrRemove(string html, int countInitial, int countFinal)
+        {
+            html = HtmlFormatRemove(html);
+
+            string final = string.Empty;
+            for (int i = 0; i < countFinal; i++)
+            {
+                final += "<br>";
+            } 
+            
+            html = Regex.Replace(html, @"(<br>){" + countInitial + "}", final, RegexOptions.IgnoreCase);
+            return html;
+        }
+
+
         /// <summary>
         /// Remove html paragraph (p)
         /// </summary>
