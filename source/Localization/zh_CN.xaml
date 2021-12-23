@@ -3,12 +3,12 @@
 
     <!-- MainView -->
 
-    <sys:String x:Key="LOCDescriptionEditor">描述编辑器</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">描述编辑</sys:String>
 
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">描述编辑器</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">描述编辑</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">格式化html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">恢复html格式</sys:String>
@@ -28,7 +28,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam格式化</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">图像尺寸</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">或手动（px）</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">或手动（px</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">位置</sys:String>
     <sys:String x:Key="LOCDescriptionEditorCenter">居中</sys:String>
 
