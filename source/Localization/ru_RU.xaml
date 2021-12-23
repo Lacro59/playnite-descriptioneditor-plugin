@@ -24,7 +24,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Удалить стиль размера</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">По центру изображения</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html формат</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html форма</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматор Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
