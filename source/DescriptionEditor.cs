@@ -8,6 +8,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Automation;
 using Playnite.SDK.Events;
+using System.Collections.Generic;
+using Playnite.SDK.Models;
+using System.Linq;
 
 // TODO Integrate control HtmlTextView
 namespace DescriptionEditor
@@ -116,6 +119,284 @@ namespace DescriptionEditor
             {
                 Common.LogError(ex, false, $"Error on TabControl_SelectionChanged for {ControlName}");
             }
+        }
+        #endregion
+
+
+
+
+        #region Menus
+        // To add new game menu items override GetGameMenuItems
+        public override IEnumerable<GameMenuItem> GetGameMenuItems(GetGameMenuItemsArgs args)
+        {
+            Game GameMenu = args.Games.First();
+            List<Guid> Ids = args.Games.Select(x => x.Id).ToList();
+
+            List<GameMenuItem> gameMenuItems = new List<GameMenuItem>();
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonImageFormatter")}",
+                Description = resources.GetString("LOCDescriptionEditorButtonRemoveImg"), 
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.RemoveTag(game.Description, "img");
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonImageFormatter")}",
+                Description = resources.GetString("LOCDescriptionEditorButtonAdd100PercentImg"), 
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.Add100PercentStyle(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonImageFormatter")}",
+                Description = resources.GetString("LOCDescriptionEditorButtonRemoveStyleImg"), 
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.RemoveSizeStyle(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonImageFormatter")}",
+                Description = resources.GetString("LOCDescriptionEditorButtonCenterImg"),
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.CenterImage(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonHtmlFormatSteam")}",
+                Description = resources.GetString("LOCDescriptionEditorRemoveAboutGame"), 
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.SteamRemoveAbout(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}",
+                Description = resources.GetString("LOCDescriptionEditorButtonMarkdownToHtml"),
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.MarkdownToHtml(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = resources.GetString("LOCDescriptionEditorButtonHeaderToBold"), 
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.HeaderToBold(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = resources.GetString("LOCDescriptionEditorButtonParagraphRemove"),
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.ParagraphRemove(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = "<br><br> => <br>",
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.BrRemove(game.Description, 2, 1);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = "<br><br>br> => <br>",
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.BrRemove(game.Description, 3, 1);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{resources.GetString("LOCDescriptionEditor")}|{resources.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = "<br><br> => <br>br>",
+                Action = (mainMenuItem) =>
+                {
+                    var response = PlayniteApi.Dialogs.ShowMessage(resources.GetString("LOCConfirumationAskGeneric"), resources.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (var Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.BrRemove(game.Description, 3, 2);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+
+#if DEBUG
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = resources.GetString("LOCDescriptionEditor"),
+                Description = "-"
+            });
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = resources.GetString("LOCDescriptionEditor"),
+                Description = "Test",
+                Action = (mainMenuItem) =>
+                {
+
+                }
+            });
+#endif
+            return gameMenuItems;
         }
         #endregion
 

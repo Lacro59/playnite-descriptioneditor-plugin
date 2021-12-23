@@ -214,6 +214,66 @@ namespace DescriptionEditor
         }
 
 
+        public static string SteamRemoveAbout(string html)
+        {
+            List<string> AboutGame = new List<string>();
+            AboutGame.Add("<h1>about the game</h1>".ToLower());
+            AboutGame.Add("<h1>à propos du jeu</h1>".ToLower());
+            AboutGame.Add("<h1>Относно играта</h1>".ToLower());
+            AboutGame.Add("<h1>关于游戏</h1>".ToLower());
+            AboutGame.Add("<h1>關於此遊戲</h1>".ToLower());
+            AboutGame.Add("<h1>O hře</h1>".ToLower());
+            AboutGame.Add("<h1>Om spillet</h1>".ToLower());
+            AboutGame.Add("<h1>Info over het spel</h1>".ToLower());
+            AboutGame.Add("<h1>Tietoja pelistä</h1>".ToLower());
+            AboutGame.Add("<h1>Über das Spiel</h1>".ToLower());
+            AboutGame.Add("<h1>Σχετικά με το παιχνίδι</h1>".ToLower());
+            AboutGame.Add("<h1>A játékról:&nbsp;</h1>".ToLower());
+            AboutGame.Add("<h1>Informazioni sul gioco</h1>".ToLower());
+            AboutGame.Add("<h1>ゲームについて</h1>".ToLower());
+            AboutGame.Add("<h1>게임 정보</h1>".ToLower());
+            AboutGame.Add("<h1>Om spillet</h1>".ToLower());
+            AboutGame.Add("<h1>Informacje o&nbsp;grze</h1>".ToLower());
+            AboutGame.Add("<h1>Acerca do Jogo</h1>".ToLower());
+            AboutGame.Add("<h1>Sobre o jogo</h1>".ToLower());
+            AboutGame.Add("<h1>Despre joc</h1>".ToLower());
+            AboutGame.Add("<h1>Об игре</h1>".ToLower());
+            AboutGame.Add("<h1>Acerca del juego</h1>".ToLower());
+            AboutGame.Add("<h1>Acerca del juego</h1>".ToLower());
+            AboutGame.Add("<h1>Om spelet</h1>".ToLower());
+            AboutGame.Add("<h1>ข้อมูลเกม</h1>".ToLower());
+            AboutGame.Add("<h1>Oyun Açıklaması</h1>".ToLower());
+            AboutGame.Add("<h1>Про гру</h1>".ToLower());
+            AboutGame.Add("<h1>Về trò chơi này</h1>".ToLower());
+
+            bool isFind = false;
+            int index = -1;
+            string aboutFind = string.Empty;
+
+            html = Regex.Replace(html, @"\r\n", string.Empty);
+            html = HtmlHelper.HtmlFormatRemove(html);
+
+            foreach (string about in AboutGame)
+            {
+                index = html.ToLower().IndexOf(about);
+                if (index > -1)
+                {
+                    aboutFind = about;
+                    isFind = true;
+                    break;
+                }
+            }
+
+            if (isFind)
+            {
+                html = html.Substring(index + aboutFind.Length);
+            }
+
+            return html;
+        }
+
+
+
         #region Image manipulations
         /// <summary>
         /// Add a css hack to center image
