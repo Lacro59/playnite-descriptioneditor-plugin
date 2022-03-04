@@ -10,7 +10,7 @@
 
     <sys:String x:Key="LOCDescriptionEditorButton">Редактор описания</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML формате</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Формат html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Удаление HTML-формататора</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown на html</sys:String>
     
@@ -25,15 +25,15 @@
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">По центру изображения</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html форма</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматор Steam</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматер Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (пикс)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Позиция</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Цен</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Центр</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Удалить &quot;О игре&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите тек</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текст</sys:String>
 
 </ResourceDictionary>
