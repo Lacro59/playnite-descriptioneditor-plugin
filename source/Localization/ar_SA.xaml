@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- MainView -->
+
+    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
+
+
+    <!-- EditGameDetails -->
+
+    <sys:String x:Key="LOCDescriptionEditorButton">محرر الوصف</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">صيغة HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">إستعادة صيغة HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown إلى HTML</sys:String>
+    
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">العنوان بخط عريض</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">إزالة &lt;p&gt;</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">منسق الصورة</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">إضافة الصورة</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">إزالة الصورة</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">ضبط العرض إلى 100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">إزالة نمط الحجم</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">توسيط الصورة</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">منسق HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">منسق Steam</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">حجم الصورة</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">أو يدوي (px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">الموضع</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">الوسط</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">إزالة &quot;حول اللعبة&quot;</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorTextHere">اكتب النص هنا</sys:String>
+
+</ResourceDictionary>
