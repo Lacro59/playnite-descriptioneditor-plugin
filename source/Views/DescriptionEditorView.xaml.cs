@@ -19,27 +19,24 @@ namespace DescriptionEditor.Views
     /// </summary>
     public partial class DescriptionEditorView : UserControl
     {
-        private static readonly ILogger logger = LogManager.GetLogger();
-        private static IResourceProvider resources = new ResourceProvider();
-        private IPlayniteAPI _PlayniteApi;
+        private static IResourceProvider resources { get; set; } = new ResourceProvider();
 
         public string Description { get; set; }
-        private TextBox _TextDescription;
+        private TextBox _TextDescription { get; set; }
 
-        private HtmlTextView htmlTextView = new HtmlTextView();
-
-
-        private bool DisableEvent = false;
-        private int IndexUndo = 0;
-        private List<string> ListUndo = new List<string>();
+        private HtmlTextView htmlTextView { get; set; } = new HtmlTextView();
 
 
-        public DescriptionEditorView(IPlayniteAPI PlayniteApi, TextBox TextDescription)
+        private bool DisableEvent { get; set; } = false;
+        private int IndexUndo { get; set; } = 0;
+        private List<string> ListUndo { get; set; } = new List<string>();
+
+
+        public DescriptionEditorView(TextBox TextDescription)
         {
-            _PlayniteApi = PlayniteApi;
-            _TextDescription = TextDescription;
             InitializeComponent();
 
+            _TextDescription = TextDescription;
             Description = TextDescription.Text;
 
             PlayniteTools.SetThemeInformation();
@@ -236,6 +233,7 @@ namespace DescriptionEditor.Views
         }
         #endregion
 
+
         #region Steam formatter 
         private void SteamRemoveAbout_click(object sender, RoutedEventArgs e)
         {
@@ -247,7 +245,6 @@ namespace DescriptionEditor.Views
         private void DescriptionActual_TextChanged(object sender, TextChangedEventArgs e)
         {
             htmlTextView.HtmlText = ((TextBox)sender).Text;
-
 
             if (!DisableEvent)
             {

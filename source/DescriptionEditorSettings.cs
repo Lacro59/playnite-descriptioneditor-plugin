@@ -27,15 +27,7 @@ namespace DescriptionEditor
         private DescriptionEditorSettings EditingClone { get; set; }
 
         private DescriptionEditorSettings _Settings;
-        public DescriptionEditorSettings Settings
-        {
-            get => _Settings;
-            set
-            {
-                _Settings = value;
-                OnPropertyChanged();
-            }
-        }
+        public DescriptionEditorSettings Settings { get => _Settings; set => SetValue(ref _Settings, value); }
 
 
         public DescriptionEditorSettingsViewModel(DescriptionEditor plugin)
@@ -44,7 +36,7 @@ namespace DescriptionEditor
             Plugin = plugin;
 
             // Load saved settings.
-            var savedSettings = plugin.LoadPluginSettings<DescriptionEditorSettings>();
+            DescriptionEditorSettings savedSettings = plugin.LoadPluginSettings<DescriptionEditorSettings>();
 
             // LoadPluginSettings returns null if not saved data is available.
             if (savedSettings != null)

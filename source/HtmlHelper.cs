@@ -11,8 +11,6 @@ namespace DescriptionEditor
 {
     public class HtmlHelper
     {
-        private static readonly ILogger logger = LogManager.GetLogger();
-
         private static readonly string Indentation = "    ";
 
 
@@ -271,7 +269,6 @@ namespace DescriptionEditor
 
             return html;
         }
-
 
 
         #region Image manipulations
