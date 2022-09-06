@@ -30,7 +30,7 @@
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Розмір зображення</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">або вручну (px)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Розташування</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">По центр</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">По центру</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Прибрати &quot;Про гру&quot;</sys:String>
 
