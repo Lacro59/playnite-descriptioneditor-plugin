@@ -24,16 +24,16 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Удалить стиль размера</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">По центру изображения</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html форма</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html формат</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматер Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (пикс)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Позиция</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Цент</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Центр</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Удалить &quot;О игре&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текс</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текст</sys:String>
 
 </ResourceDictionary>
