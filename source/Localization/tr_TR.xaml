@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!-- MainView -->
+
+    <sys:String x:Key="LOCDescriptionEditor">AçıklamaDüzenleyici</sys:String>
+
+
+    <!-- EditGameDetails -->
+
+    <sys:String x:Key="LOCDescriptionEditorButton">Açıklama Düzenleyici</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Html biçimlendir</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Html biçimini geri yükle</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">HTML' ye işaretle</sys:String>
+    
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Başlığı kalın yap</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">&lt;p&gt; kaldır</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Görsel biçimlendirici</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Görsel ekle</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Görseli kaldır</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Genişliği %100 olarak ayarla</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Boyut stilini kaldır</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Görseli ortala</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html biçimlendirici</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam biçimlendirici</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">Görsel boyutu</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">veya elle (px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Konum</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Merkez</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">&quot;Oyun Hakkında&quot;yı kaldır</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Metniniz buraya</sys:String>
+
+</ResourceDictionary>
