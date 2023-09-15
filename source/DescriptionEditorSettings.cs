@@ -39,14 +39,7 @@ namespace DescriptionEditor
             DescriptionEditorSettings savedSettings = plugin.LoadPluginSettings<DescriptionEditorSettings>();
 
             // LoadPluginSettings returns null if not saved data is available.
-            if (savedSettings != null)
-            {
-                Settings = savedSettings;
-            }
-            else
-            {
-                Settings = new DescriptionEditorSettings();
-            }
+            Settings = savedSettings != null ? savedSettings : new DescriptionEditorSettings();
         }
 
         // Code executed when settings view is opened and user starts editing values.
