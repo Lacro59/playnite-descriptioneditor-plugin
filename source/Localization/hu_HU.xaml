@@ -3,37 +3,37 @@
 
     <!-- MainView -->
 
-    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">LeírásSzerkesztő</sys:String>
 
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">Leírás Szerkesztő</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML szerkesztése</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML szerkesztés eltávolítása</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Leértékelés HTML-re</sys:String>
     
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Fejléc félkövérré tétele</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">&lt;p&gt; eltávolítása</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width at 100%</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Képformázó</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Kép hozzáadása</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Kép etávolítása</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Szélesség beállítása 100%-ra</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Méretstílus eltávolítása</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Kép középre igazítása</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">HTML szerkesztő</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam szerkesztő</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">or manual (px)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Center</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">Képméret</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">vagy manuálisan (px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Pozíció</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Középre</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remove &quot;About the Game&quot;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">&quot;A játékról&quot; eltávolítása</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Your text here</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Ide kerül a szöveged</sys:String>
 
 </ResourceDictionary>
