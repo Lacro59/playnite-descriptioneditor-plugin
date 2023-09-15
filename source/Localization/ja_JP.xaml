@@ -10,30 +10,30 @@
 
     <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML formatter remove</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML を整形</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML の整形を元に戻す</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown から html へ</sys:String>
     
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">見出しを太字にする</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">&lt;p&gt; を削除</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width at 100%</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">画像の整形</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">画像を追加</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">画像を削除</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">幅を 100% に設定</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">サイズのスタイルを削除</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">画像を中央揃えにする</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html の整形</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam の整形</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">or manual (px)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Center</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">画像サイズ</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">手動(px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">位置</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">中央</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remove &quot;About the Game&quot;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">「このゲームについて」を削除</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Your text here</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">ここにテキストを入力してください</sys:String>
 
 </ResourceDictionary>
