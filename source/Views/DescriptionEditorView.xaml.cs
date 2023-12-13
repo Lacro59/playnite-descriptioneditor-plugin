@@ -333,5 +333,34 @@ namespace DescriptionEditor.Views
             }
         }
         #endregion
+
+
+        private void DescriptionActual_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            htmlTextView.Text = DescriptionActual.Text;
+
+            string sSelectedText = DescriptionActual.SelectedText;
+            if (!sSelectedText.IsNullOrEmpty())
+            {
+                int posStart = DescriptionActual.SelectionStart;
+                int length = DescriptionActual.SelectionLength;
+
+                if (posStart + length + 1 < DescriptionActual.Text.Length)
+                {
+                    length++;
+                }
+                if (posStart > 1)
+                {
+                    posStart--;
+                    length++;
+                }
+
+                string sSelectedTextExtend = htmlTextView.Text.Substring(posStart, length);
+                if (!Regex.IsMatch(sSelectedTextExtend, @"^.?<") && !Regex.IsMatch(sSelectedTextExtend, @">.?$") && !Regex.IsMatch(sSelectedTextExtend, @"\/.?$"))
+                {
+                    htmlTextView.Text = htmlTextView.Text.Replace(sSelectedText, "<span style=\"background-color: yellow;\">" + sSelectedText + "</span>");
+                }
+            }
+        }
     }
 }

@@ -96,6 +96,7 @@
                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                  FontFamily="{DynamicResource MonospaceFontFamily}"
                  PreviewKeyDown="DescriptionActual_PreviewKeyDown"
+                 SelectionChanged="DescriptionActual_SelectionChanged"
                  Text="{Binding Description, Mode=TwoWay}" />
 
         <ScrollViewer Grid.Column="2" Grid.Row="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
