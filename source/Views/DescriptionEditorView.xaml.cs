@@ -358,7 +358,7 @@ namespace DescriptionEditor.Views
                 string sSelectedTextExtend = htmlTextView.HtmlText.Substring(posStart, length);
                 if (!Regex.IsMatch(sSelectedTextExtend, @"^.?<") && !Regex.IsMatch(sSelectedTextExtend, @">.?$") && !Regex.IsMatch(sSelectedTextExtend, @"\/.?$"))
                 {
-                    htmlTextView.HtmlText = htmlTextView.HtmlText.Replace(sSelectedText, "<span style=\"background-color: yellow;\">" + sSelectedText + "</span>");
+                    htmlTextView.HtmlText = htmlTextView.HtmlText.Replace(sSelectedText, "<span style=\"background-color: yellow; color: black;\">" + sSelectedText + "</span>");
                 }
             }
         }
