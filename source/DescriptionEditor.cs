@@ -78,12 +78,14 @@ namespace DescriptionEditor
             {
                 ShowMinimizeButton = false,
                 ShowMaximizeButton = true,
-                ShowCloseButton = true
+                ShowCloseButton = true,
+                CanBeResizable = true,
+                Height = 700,
+                Width = 1200
             };
 
             DescriptionEditorView ViewExtension = new DescriptionEditorView(TextDescription);
             Window windowExtension = PlayniteUiHelper.CreateExtensionWindow(PlayniteApi, resources.GetString("LOCDescriptionEditor"), ViewExtension, windowOptions);
-            windowExtension.ResizeMode = ResizeMode.CanResize;
             windowExtension.ShowDialog();
         }
 
