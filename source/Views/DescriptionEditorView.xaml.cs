@@ -337,7 +337,7 @@ namespace DescriptionEditor.Views
 
         private void DescriptionActual_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            htmlTextView.Text = DescriptionActual.Text;
+            htmlTextView.HtmlText = DescriptionActual.Text;
 
             string sSelectedText = DescriptionActual.SelectedText;
             if (!sSelectedText.IsNullOrEmpty())
@@ -355,10 +355,10 @@ namespace DescriptionEditor.Views
                     length++;
                 }
 
-                string sSelectedTextExtend = htmlTextView.Text.Substring(posStart, length);
+                string sSelectedTextExtend = htmlTextView.HtmlText.Substring(posStart, length);
                 if (!Regex.IsMatch(sSelectedTextExtend, @"^.?<") && !Regex.IsMatch(sSelectedTextExtend, @">.?$") && !Regex.IsMatch(sSelectedTextExtend, @"\/.?$"))
                 {
-                    htmlTextView.Text = htmlTextView.Text.Replace(sSelectedText, "<span style=\"background-color: yellow;\">" + sSelectedText + "</span>");
+                    htmlTextView.HtmlText = htmlTextView.HtmlText.Replace(sSelectedText, "<span style=\"background-color: yellow;\">" + sSelectedText + "</span>");
                 }
             }
         }
