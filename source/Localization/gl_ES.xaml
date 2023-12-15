@@ -8,32 +8,32 @@
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">Editor de descricións</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Format html</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Restore html format</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Formato de HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Restaurar formato de HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">De Markdown a HTML</sys:String>
     
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">De cabeceira a negrita</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Eliminar &lt;p&gt;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width to 100%</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Formato de imaxe</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Engadir imaxe</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Quitar imaxe</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Establecer largo ao 100 %</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Quitar estilo do tamaño</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centrar a imaxe</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">Formato de HTML</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Formato de Steam</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">or manual (px)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Center</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">Tamaño da imaxe</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">ou manual (px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Posición</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Centro</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remove &quot;About the Game&quot;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Quitar &quot;Sobre o xogo&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Your text here</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Pon aquí o teu texto</sys:String>
 
 </ResourceDictionary>

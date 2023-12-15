@@ -18,10 +18,10 @@
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">&lt;p&gt; を削除</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">画像の整形</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">画像を追加</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">画像を追</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">画像を削除</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">幅を 100% に設定</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">サイズのスタイルを削除</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">幅を 100% に設</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg"></sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">画像を中央揃えにする</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html の整形</sys:String>
@@ -32,8 +32,8 @@
     <sys:String x:Key="LOCDescriptionEditorPosition">位置</sys:String>
     <sys:String x:Key="LOCDescriptionEditorCenter">中央</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">「このゲームについて」を削除</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame"></sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">ここにテキストを入力してください</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere"></sys:String>
 
 </ResourceDictionary>
