@@ -30,7 +30,7 @@
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Dimension image</sys:String>
     <sys:String x:Key="LOCDescriptionEditorLabelManualSize">ou manuel (px)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Centr</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Centré</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Retirer &quot;À propos du jeu&quot;</sys:String>
 
