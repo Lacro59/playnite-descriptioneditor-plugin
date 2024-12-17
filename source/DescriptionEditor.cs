@@ -1,17 +1,17 @@
-﻿using DescriptionEditor.Views;
-using Playnite.SDK;
-using Playnite.SDK.Plugins;
-using CommonPluginsShared;
-using CommonPluginsShared.PlayniteExtended;
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Automation;
-using Playnite.SDK.Events;
-using System.Collections.Generic;
-using Playnite.SDK.Models;
-using System.Linq;
+﻿using CommonPluginsShared;
 using CommonPluginsShared.Extensions;
+using CommonPluginsShared.PlayniteExtended;
+using DescriptionEditor.Views;
+using Playnite.SDK;
+using Playnite.SDK.Events;
+using Playnite.SDK.Models;
+using Playnite.SDK.Plugins;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Controls;
 
 // TODO Integrate control HtmlTextView
 namespace DescriptionEditor
@@ -36,24 +36,24 @@ namespace DescriptionEditor
         #region Custom event
         private void WindowBase_LoadedEvent(object sender, EventArgs e)
         {
-            string WinIdProperty = string.Empty;
-            string WinName = string.Empty;
+            string winIdProperty = string.Empty;
+            string winName = string.Empty;
             try
             {
-                WinIdProperty = ((Window)sender).GetValue(AutomationProperties.AutomationIdProperty).ToString();
-                WinName = ((Window)sender).Name;
+                winIdProperty = ((Window)sender).GetValue(AutomationProperties.AutomationIdProperty).ToString();
+                winName = ((Window)sender).Name;
 
-                if (WinIdProperty == "WindowGameEdit")
+                if (winIdProperty == "WindowGameEdit")
                 {
-                    Window WindowGameEdit = (Window)sender;
-                    DockPanel ElementParent = (DockPanel)((Button)WindowGameEdit.FindName("ButtonDownload")).Parent;
-                    TabControl tabControl = (TabControl)WindowGameEdit.FindName("TabControlMain");
+                    Window windowGameEdit = (Window)sender;
+                    DockPanel elementParent = (DockPanel)((Button)windowGameEdit.FindName("ButtonDownload")).Parent;
+                    TabControl tabControl = (TabControl)windowGameEdit.FindName("TabControlMain");
                     tabControl.SelectionChanged += TabControl_SelectionChanged;
 
-                    if (ElementParent != null)
+                    if (elementParent != null)
                     {
                         // Game Description
-                        TextDescription = (TextBox)WindowGameEdit.FindName("TextDescription");
+                        TextDescription = (TextBox)windowGameEdit.FindName("TextDescription");
 
                         // Add new button
                         Style style = Application.Current.FindResource("BottomButton") as Style;
@@ -63,13 +63,13 @@ namespace DescriptionEditor
                             Style = style
                         };
                         BtDescriptionEditor.Click += OnButtonClick;
-                        _ = ElementParent.Children.Add(BtDescriptionEditor);
+                        _ = elementParent.Children.Add(BtDescriptionEditor);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Common.LogError(ex, false, $"Error on WindowBase_LoadedEvent for {WinName} & {WinIdProperty}");
+                Common.LogError(ex, false, $"Error on WindowBase_LoadedEvent for {winName} & {winIdProperty}");
             }
         }
 
@@ -127,8 +127,8 @@ namespace DescriptionEditor
         // To add new game menu items override GetGameMenuItems
         public override IEnumerable<GameMenuItem> GetGameMenuItems(GetGameMenuItemsArgs args)
         {
-            Game GameMenu = args.Games.First();
-            List<Guid> Ids = args.Games.Select(x => x.Id).ToList();
+            Game gameMenu = args.Games.First();
+            List<Guid> ids = args.Games.Select(x => x.Id).ToList();
             List<GameMenuItem> gameMenuItems = new List<GameMenuItem>();
 
             gameMenuItems.Add(new GameMenuItem
@@ -140,9 +140,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.RemoveTag(game.Description, "img");
@@ -162,9 +162,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.Add100PercentStyle(game.Description);
@@ -184,9 +184,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.RemoveSizeStyle(game.Description);
@@ -206,9 +206,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.CenterImage(game.Description);
@@ -229,9 +229,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.SteamRemoveAbout(game.Description);
@@ -252,9 +252,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.MarkdownToHtml(game.Description);
@@ -275,9 +275,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.HeaderToBold(game.Description);
@@ -303,9 +303,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.ParagraphRemove(game.Description);
@@ -325,9 +325,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.BrBrToP(game.Description);
@@ -353,9 +353,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.BrRemove(game.Description, 2, 1);
@@ -375,9 +375,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.BrRemove(game.Description, 3, 1);
@@ -397,9 +397,9 @@ namespace DescriptionEditor
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
-                        foreach (Guid Id in Ids)
+                        foreach (Guid id in ids)
                         {
-                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            Game game = PlayniteApi.Database.Games.Get(id);
                             if (game != null)
                             {
                                 game.Description = HtmlHelper.BrRemove(game.Description, 3, 2);
