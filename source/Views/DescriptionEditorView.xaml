@@ -20,7 +20,7 @@
                 <Button Name="PART_Undo" Content="&#xee0b;" FontFamily="{DynamicResource FontIcoFont}" 
                         Margin="5" VerticalAlignment="Center" Click="PART_Undo_Click" IsEnabled="False" />
                 <Button Name="PART_Redo" Content="&#xedfe;" FontFamily="{DynamicResource FontIcoFont}" 
-                        Margin="5,5,50,5" VerticalAlignment="Center" Click="PART_Redo_Click" IsEnabled="False" />
+                        Margin="5,5,40,5" VerticalAlignment="Center" Click="PART_Redo_Click" IsEnabled="False" />
 
                 <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Click="BtAddImg_Click"
                         pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left" Margin="5">
@@ -32,7 +32,7 @@
                 </Button>
 
                 <Button Name="btImageFormatter" Content="{DynamicResource LOCDescriptionEditorButtonImageFormatter}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" Margin="5,5,50,5">
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" Margin="5,5,40,5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom">
                             <MenuItem Click="BtRemoveImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveImg}" />
@@ -47,17 +47,19 @@
                         HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormat_Click" />
 
                 <Button Name="btHtmlFormatRemove" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatRemove}"
-                        HorizontalAlignment="Left" Margin="5,5,50,5" Click="BtHtmlFormatRemove_Click" />
+                        HorizontalAlignment="Left" Margin="5,5,40,5" Click="BtHtmlFormatRemove_Click" />
 
                 <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
                         HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
 
                 <Button Name="btHtmlFormaters" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormater}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5,5,40,5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom">
                             <MenuItem Click="BtHtoB_Click" Header="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}" />
                             <MenuItem Click="BtPremove_Click" Header="{DynamicResource LOCDescriptionEditorButtonParagraphRemove}" />
+                            <Separator />
+                            <MenuItem Click="BtBrtoP_Click" Header="...&lt;br&gt;&lt;br&gt; => &lt;p&gt;...&lt;/p&gt;" />
                             <Separator />
                             <MenuItem Click="BtBr2to1_Click" Header="&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
                             <MenuItem Click="BtBr3to1_Click" Header="&lt;br&gt;&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
@@ -67,7 +69,7 @@
                 </Button>
 
                 <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Right" Margin="5">
+                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left" Margin="5">
                     <Button.ContextMenu>
                         <ContextMenu Placement="Bottom">
                             <MenuItem Click="SteamRemoveAbout_click" Header="{DynamicResource LOCDescriptionEditorRemoveAboutGame}" />

@@ -156,7 +156,7 @@ namespace DescriptionEditor.Views
                 {
                     if (imgRight)
                     {
-                        imgAdded = "<table style=\"border: 0; width: 100 %;border-spacing: 10px;\"><tr>"   
+                        imgAdded = "<table style=\"border: 0; width: 100 %;border-spacing: 10px;\"><tr>"
                              + "<td>" + resources.GetString("LOCDescriptionEditorTextHere") + "</td>"
                              + $"<td style=\"{style}vertical - align: top;\">"
                              + imgAdded
@@ -217,6 +217,12 @@ namespace DescriptionEditor.Views
         }
 
 
+        private void BtBrtoP_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionActual.Text = HtmlHelper.BrToP(DescriptionActual.Text);
+        }
+
+
         private void BtBr2to1_Click(object sender, RoutedEventArgs e)
         {
             DescriptionActual.Text = HtmlHelper.BrRemove(DescriptionActual.Text, 2, 1);
@@ -240,7 +246,7 @@ namespace DescriptionEditor.Views
             DescriptionActual.Text = HtmlHelper.SteamRemoveAbout(DescriptionActual.Text);
         }
         #endregion
-        
+
 
         private void DescriptionActual_TextChanged(object sender, TextChangedEventArgs e)
         {

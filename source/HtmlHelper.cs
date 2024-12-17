@@ -10,7 +10,7 @@ namespace DescriptionEditor
 {
     public class HtmlHelper
     {
-        private static readonly string Indentation = "    ";
+        private static string Indentation => "    ";
 
 
         #region Html identation
@@ -24,7 +24,7 @@ namespace DescriptionEditor
             Html = string.Empty;
             if (doc.DocumentNode != null)
             {
-                foreach (var node in doc.DocumentNode.ChildNodes)
+                foreach (HtmlNode node in doc.DocumentNode.ChildNodes)
                 {
                     Html += WriteNode(node, 0);
                 }
@@ -53,11 +53,14 @@ namespace DescriptionEditor
             string Result = string.Empty;
 
             // check parameter
-            if (_node == null) return string.Empty;
+            if (_node == null)
+            {
+                return string.Empty;
+            }
 
             // init 
             string INDENT = Indentation;
-            string NEW_LINE = System.Environment.NewLine;
+            string NEW_LINE = Environment.NewLine;
 
             // case: no children
             if (_node.HasChildNodes == false)
@@ -83,7 +86,7 @@ namespace DescriptionEditor
                 Result += string.Format("<{0}", _node.Name);
                 if (_node.HasAttributes)
                 {
-                    foreach (var attr in _node.Attributes)
+                    foreach (HtmlAttribute attr in _node.Attributes)
                     {
                         Result += string.Format(" {0}=\"{1}\"", attr.Name, attr.Value);
                     }
@@ -91,7 +94,7 @@ namespace DescriptionEditor
                 Result += string.Format(">{0}", NEW_LINE);
 
                 // childs
-                foreach (var chldNode in _node.ChildNodes)
+                foreach (HtmlNode chldNode in _node.ChildNodes)
                 {
                     Result += WriteNode(chldNode, _indentLevel + 1);
                 }
@@ -156,6 +159,15 @@ namespace DescriptionEditor
             return html;
         }
 
+        public static string BrToP(string html)
+        {
+            html = HtmlFormatRemove(html);
+            html = Regex.Replace(html, @"<[/]?br><[/]?br>", "{{BREAK}}", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, @"(.*?)(\{\{BREAK\}\}|\z)", m => m.Value.Trim().IsNullOrEmpty() ? string.Empty : $"<p>{m.Value.Trim()}</p>");
+            html = Regex.Replace(html, "{{BREAK}}", string.Empty);
+            html = Regex.Replace(html, "<p></p>", string.Empty, RegexOptions.IgnoreCase);
+            return html;
+        }
 
 
         public static string BrRemove(string html, int countInitial, int countFinal)
@@ -166,8 +178,8 @@ namespace DescriptionEditor
             for (int i = 0; i < countFinal; i++)
             {
                 final += "<br>";
-            } 
-            
+            }
+
             html = Regex.Replace(html, @"(<br>){" + countInitial + "}", final, RegexOptions.IgnoreCase);
             return html;
         }
@@ -289,12 +301,12 @@ namespace DescriptionEditor
         /// <returns></returns>
         public static string Add100PercentStyle(string html)
         {
-            var parser = new HtmlParser();
-            var document = parser.Parse(html);
+            HtmlParser parser = new HtmlParser();
+            AngleSharp.Dom.Html.IHtmlDocument document = parser.Parse(html);
 
-            foreach(var ImgTag in document.QuerySelectorAll("img"))
+            foreach (AngleSharp.Dom.IElement ImgTag in document.QuerySelectorAll("img"))
             {
-                ImgTag.RemoveAttribute("width");
+                _ = ImgTag.RemoveAttribute("width");
 
                 List<string> ActualStyle = new List<string>();
                 if (!ImgTag.GetAttribute("style").IsNullOrEmpty())
@@ -305,7 +317,7 @@ namespace DescriptionEditor
                 string NewStyle = string.Empty;
                 if (ActualStyle.Count > 0)
                 {
-                    foreach(string StyleProperty in ActualStyle)
+                    foreach (string StyleProperty in ActualStyle)
                     {
                         if (!StyleProperty.ToLower().Contains("width"))
                         {
@@ -328,13 +340,13 @@ namespace DescriptionEditor
         /// <returns></returns>
         public static string RemoveSizeStyle(string html)
         {
-            var parser = new HtmlParser();
-            var document = parser.Parse(html);
+            HtmlParser parser = new HtmlParser();
+            AngleSharp.Dom.Html.IHtmlDocument document = parser.Parse(html);
 
-            foreach (var ImgTag in document.QuerySelectorAll("img"))
+            foreach (AngleSharp.Dom.IElement ImgTag in document.QuerySelectorAll("img"))
             {
-                ImgTag.RemoveAttribute("width");
-                ImgTag.RemoveAttribute("height");
+                _ = ImgTag.RemoveAttribute("width");
+                _ = ImgTag.RemoveAttribute("height");
 
                 List<string> ActualStyle = new List<string>();
                 if (!ImgTag.GetAttribute("style").IsNullOrEmpty())
