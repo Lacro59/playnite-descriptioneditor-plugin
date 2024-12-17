@@ -1,4 +1,5 @@
-﻿using Playnite.SDK;
+﻿using CommonPluginsShared.Plugins;
+using Playnite.SDK;
 using Playnite.SDK.Data;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace DescriptionEditor
 {
-    public class DescriptionEditorSettings : ObservableObject
+    public class DescriptionEditorSettings : PluginSettings
     {
         #region Settings variables
 
@@ -26,8 +27,8 @@ namespace DescriptionEditor
         private readonly DescriptionEditor Plugin;
         private DescriptionEditorSettings EditingClone { get; set; }
 
-        private DescriptionEditorSettings _Settings;
-        public DescriptionEditorSettings Settings { get => _Settings; set => SetValue(ref _Settings, value); }
+        private DescriptionEditorSettings _settings;
+        public DescriptionEditorSettings Settings { get => _settings; set => SetValue(ref _settings, value); }
 
 
         public DescriptionEditorSettingsViewModel(DescriptionEditor plugin)
