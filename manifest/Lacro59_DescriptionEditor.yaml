@@ -62,3 +62,11 @@ Packages:
       - Updated localizations
       - Fixed bug with edit windows
       - Displayed selected text in HTML rendering view
+  - Version: 3.2
+    RequiredApiVersion: 6.11.0
+    ReleaseDate: 2024-12-17
+    PackageUrl: https://github.com/Lacro59/playnite-descriptioneditor-plugin/releases/download/v3.2/playnite-descriptioneditor-plugin_3_2.pext
+    Changelog:
+      - 'Updated: Localizations'
+      - 'Optimized: UI'
+      - 'Added: <br> => <p> transformation'
