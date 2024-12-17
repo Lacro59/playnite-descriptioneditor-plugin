@@ -20,8 +20,8 @@ namespace DescriptionEditor
     {
         public override Guid Id { get; } = Guid.Parse("7600a469-4616-4547-94b8-0c330db02b8f");
 
-        private TextBox TextDescription;
-        private Button BtDescriptionEditor;
+        private TextBox TextDescription { get; set; }
+        private Button BtDescriptionEditor { get; set; }
 
 
         public DescriptionEditor(IPlayniteAPI api) : base(api)
@@ -286,6 +286,12 @@ namespace DescriptionEditor
                         }
                     }
                 }
+            }); 
+            
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = "-"
             });
 
             gameMenuItems.Add(new GameMenuItem
@@ -308,6 +314,34 @@ namespace DescriptionEditor
                         }
                     }
                 }
+            });
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = ResourceProvider.GetString("LOCDescriptionEditorButtonParagraphTransform"),
+                Action = (mainMenuItem) =>
+                {
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (Guid Id in Ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(Id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.BrBrToP(game.Description);
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+            
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
+                Description = "-"
             });
 
             gameMenuItems.Add(new GameMenuItem

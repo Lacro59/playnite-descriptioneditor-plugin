@@ -219,7 +219,7 @@ namespace DescriptionEditor.Views
 
         private void BtBrtoP_Click(object sender, RoutedEventArgs e)
         {
-            DescriptionActual.Text = HtmlHelper.BrToP(DescriptionActual.Text);
+            DescriptionActual.Text = HtmlHelper.BrBrToP(DescriptionActual.Text);
         }
 
 

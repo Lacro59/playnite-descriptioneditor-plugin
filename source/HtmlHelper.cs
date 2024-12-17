@@ -159,7 +159,7 @@ namespace DescriptionEditor
             return html;
         }
 
-        public static string BrToP(string html)
+        public static string BrBrToP(string html)
         {
             html = HtmlFormatRemove(html);
             html = Regex.Replace(html, @"<[/]?br><[/]?br>", "{{BREAK}}", RegexOptions.IgnoreCase);

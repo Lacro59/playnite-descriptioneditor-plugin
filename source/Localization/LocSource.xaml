@@ -16,6 +16,7 @@
     
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &#60;p&#62;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphTransform">Transform ...&#60;br&#62;&#60;br&#62; => &#60;p&#62;...&#60;/p&#62;</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
