@@ -286,8 +286,8 @@ namespace DescriptionEditor
                         }
                     }
                 }
-            }); 
-            
+            });
+
             gameMenuItems.Add(new GameMenuItem
             {
                 MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
@@ -297,7 +297,7 @@ namespace DescriptionEditor
             gameMenuItems.Add(new GameMenuItem
             {
                 MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
-                Description = ResourceProvider.GetString("LOCDescriptionEditorButtonParagraphRemove"),
+                Description = "<p>...</p> => ...<br><br>",
                 Action = (mainMenuItem) =>
                 {
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
@@ -319,7 +319,7 @@ namespace DescriptionEditor
             gameMenuItems.Add(new GameMenuItem
             {
                 MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonHtmlFormater")}",
-                Description = ResourceProvider.GetString("LOCDescriptionEditorButtonParagraphTransform"),
+                Description = "...<br><br> => <p>...</p>",
                 Action = (mainMenuItem) =>
                 {
                     MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
@@ -337,7 +337,7 @@ namespace DescriptionEditor
                     }
                 }
             });
-            
+
             gameMenuItems.Add(new GameMenuItem
             {
                 MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonHtmlFormater")}",

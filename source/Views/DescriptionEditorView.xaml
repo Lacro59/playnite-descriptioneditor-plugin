@@ -58,8 +58,8 @@
                         <ContextMenu Placement="Bottom">
                             <MenuItem Click="BtHtoB_Click" Header="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}" />
                             <Separator />
-                            <MenuItem Click="BtPremove_Click" Header="{DynamicResource LOCDescriptionEditorButtonParagraphRemove}" />
-                            <MenuItem Click="BtBrtoP_Click" Header="{DynamicResource LOCDescriptionEditorButtonParagraphTransform}" />
+                            <MenuItem Click="BtPremove_Click" Header="&lt;p&gt;...&lt;/p&gt; => ...&lt;br&gt;&lt;br&gt;" />
+                            <MenuItem Click="BtBrtoP_Click" Header="...&lt;br&gt;&lt;br&gt; => &lt;p&gt;...&lt;/p&gt;" />
                             <Separator />
                             <MenuItem Click="BtBr2to1_Click" Header="&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
                             <MenuItem Click="BtBr3to1_Click" Header="&lt;br&gt;&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
