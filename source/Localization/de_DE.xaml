@@ -3,14 +3,14 @@
 
     <!-- MainView -->
 
-    <sys:String x:Key="LOCDescriptionEditor">BeschreibungEditor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">Beschreibungs-Editor</sys:String>
 
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">Beschreibung Editor</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">Beschreibungs-Editor</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML Format</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Html formatieren</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML Format wiederherstellen</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown zu HTML</sys:String>
     
