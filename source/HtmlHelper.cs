@@ -14,22 +14,23 @@ namespace DescriptionEditor
 
 
         #region Html identation
-        public static string HtmlFormat(string Html)
+
+        public static string HtmlFormat(string html)
         {
-            Html = HtmlFormatRemove(Html);
+            html = HtmlFormatRemove(html);
 
             HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(Html);
+            doc.LoadHtml(html);
 
-            Html = string.Empty;
+            html = string.Empty;
             if (doc.DocumentNode != null)
             {
                 foreach (HtmlNode node in doc.DocumentNode.ChildNodes)
                 {
-                    Html += WriteNode(node, 0);
+                    html += WriteNode(node, 0);
                 }
             }
-            return Html;
+            return html;
 
             // TODO With recent version of AngleSharp
             /*
@@ -50,7 +51,7 @@ namespace DescriptionEditor
 
         public static string WriteNode(HtmlNode _node, int _indentLevel)
         {
-            string Result = string.Empty;
+            string result = string.Empty;
 
             // check parameter
             if (_node == null)
@@ -67,10 +68,10 @@ namespace DescriptionEditor
             {
                 for (int i = 0; i < _indentLevel; i++)
                 {
-                    Result += INDENT;
+                    result += INDENT;
                 }
-                Result += _node.OuterHtml;
-                Result += NEW_LINE;
+                result += _node.OuterHtml;
+                result += NEW_LINE;
             }
 
             // case: node has childs
@@ -79,58 +80,58 @@ namespace DescriptionEditor
                 // indent
                 for (int i = 0; i < _indentLevel; i++)
                 {
-                    Result += INDENT;
+                    result += INDENT;
                 }
 
                 // open tag
-                Result += string.Format("<{0}", _node.Name);
+                result += string.Format("<{0}", _node.Name);
                 if (_node.HasAttributes)
                 {
                     foreach (HtmlAttribute attr in _node.Attributes)
                     {
-                        Result += string.Format(" {0}=\"{1}\"", attr.Name, attr.Value);
+                        result += string.Format(" {0}=\"{1}\"", attr.Name, attr.Value);
                     }
                 }
-                Result += string.Format(">{0}", NEW_LINE);
+                result += string.Format(">{0}", NEW_LINE);
 
                 // childs
                 foreach (HtmlNode chldNode in _node.ChildNodes)
                 {
-                    Result += WriteNode(chldNode, _indentLevel + 1);
+                    result += WriteNode(chldNode, _indentLevel + 1);
                 }
 
                 // close tag
                 for (int i = 0; i < _indentLevel; i++)
                 {
-                    Result += INDENT;
+                    result += INDENT;
                 }
-                Result += string.Format("</{0}>{1}", _node.Name, NEW_LINE);
+                result += string.Format("</{0}>{1}", _node.Name, NEW_LINE);
             }
 
-            return Result;
+            return result;
         }
-        #endregion
 
+        #endregion
 
         /// <summary>
         /// Serialize html text
         /// </summary>
-        /// <param name="Html"></param>
+        /// <param name="html"></param>
         /// <returns></returns>
-        public static string HtmlFormatRemove(string Html)
+        public static string HtmlFormatRemove(string html)
         {
-            Html = Html.Replace(Environment.NewLine, string.Empty);
-            Html = Html.Replace(Indentation, string.Empty);
-            Html = Regex.Replace(Html, @"\r\n?|\n", string.Empty);
-            Html = Regex.Replace(Html, @"\s+", " ");
-            Html = Regex.Replace(Html, @"[⠀⠀⠀⠀⠀⠀⠀⠀]", string.Empty);
-            Html = Regex.Replace(Html, @"(>)\s+(<)", "$1$2", RegexOptions.IgnoreCase);
-            Html = Regex.Replace(Html, @"\s+(<)", "$1", RegexOptions.IgnoreCase);
-            return Html;
+            html = html.Replace(Environment.NewLine, string.Empty);
+            html = html.Replace(Indentation, string.Empty);
+            html = Regex.Replace(html, @"\r\n?|\n", string.Empty);
+            html = Regex.Replace(html, @"\s+", " ");
+            html = Regex.Replace(html, @"[⠀⠀⠀⠀⠀⠀⠀⠀]", string.Empty);
+            html = Regex.Replace(html, @"(>)\s+(<)", "$1$2", RegexOptions.IgnoreCase);
+            html = Regex.Replace(html, @"\s+(<)", "$1", RegexOptions.IgnoreCase);
+            return html;
         }
 
-
         #region Html tag manipualtions
+
         /// <summary>
         /// Delete an html tag with or without replacement
         /// </summary>
@@ -144,8 +145,6 @@ namespace DescriptionEditor
             html = Regex.Replace(html, $"</{tag.ToUpper()}[^>]*>", closeReplacement, RegexOptions.IgnoreCase);
             return html;
         }
-
-
 
         /// <summary>
         /// Transform html header (h1, h2, ...) to html bold (b)
@@ -169,7 +168,6 @@ namespace DescriptionEditor
             return html;
         }
 
-
         public static string BrRemove(string html, int countInitial, int countFinal)
         {
             html = HtmlFormatRemove(html);
@@ -184,7 +182,6 @@ namespace DescriptionEditor
             return html;
         }
 
-
         /// <summary>
         /// Remove html paragraph (p)
         /// </summary>
@@ -195,8 +192,8 @@ namespace DescriptionEditor
             html = RemoveTag(html, "p", "", "<br><br>");
             return html;
         }
-        #endregion
 
+        #endregion
 
         /// <summary>
         /// Convert Markdown to html
@@ -221,7 +218,6 @@ namespace DescriptionEditor
 
             return html;
         }
-
 
         public static string SteamRemoveAbout(string html)
         {
@@ -281,8 +277,8 @@ namespace DescriptionEditor
             return html;
         }
 
-
         #region Image manipulations
+
         /// <summary>
         /// Add a css hack to center image
         /// </summary>
@@ -304,34 +300,33 @@ namespace DescriptionEditor
             HtmlParser parser = new HtmlParser();
             AngleSharp.Dom.Html.IHtmlDocument document = parser.Parse(html);
 
-            foreach (AngleSharp.Dom.IElement ImgTag in document.QuerySelectorAll("img"))
+            foreach (AngleSharp.Dom.IElement imgTag in document.QuerySelectorAll("img"))
             {
-                _ = ImgTag.RemoveAttribute("width");
+                _ = imgTag.RemoveAttribute("width");
 
-                List<string> ActualStyle = new List<string>();
-                if (!ImgTag.GetAttribute("style").IsNullOrEmpty())
+                List<string> actualStyle = new List<string>();
+                if (!imgTag.GetAttribute("style").IsNullOrEmpty())
                 {
-                    ActualStyle = ImgTag.GetAttribute("style").Split(';').ToList(); ;
+                    actualStyle = imgTag.GetAttribute("style").Split(';').ToList(); ;
                 }
 
-                string NewStyle = string.Empty;
-                if (ActualStyle.Count > 0)
+                string newStyle = string.Empty;
+                if (actualStyle.Count > 0)
                 {
-                    foreach (string StyleProperty in ActualStyle)
+                    foreach (string styleProperty in actualStyle)
                     {
-                        if (!StyleProperty.ToLower().Contains("width"))
+                        if (!styleProperty.ToLower().Contains("width"))
                         {
-                            NewStyle += StyleProperty.ToLower() + ";";
+                            newStyle += styleProperty.ToLower() + ";";
                         }
                     }
                 }
 
-                ImgTag.SetAttribute("style", NewStyle + "width: 100%;");
+                imgTag.SetAttribute("style", newStyle + "width: 100%;");
             }
 
             return document.Body.InnerHtml;
         }
-
 
         /// <summary>
         /// Remove image width & heigth style
@@ -343,34 +338,35 @@ namespace DescriptionEditor
             HtmlParser parser = new HtmlParser();
             AngleSharp.Dom.Html.IHtmlDocument document = parser.Parse(html);
 
-            foreach (AngleSharp.Dom.IElement ImgTag in document.QuerySelectorAll("img"))
+            foreach (AngleSharp.Dom.IElement imgTag in document.QuerySelectorAll("img"))
             {
-                _ = ImgTag.RemoveAttribute("width");
-                _ = ImgTag.RemoveAttribute("height");
+                _ = imgTag.RemoveAttribute("width");
+                _ = imgTag.RemoveAttribute("height");
 
-                List<string> ActualStyle = new List<string>();
-                if (!ImgTag.GetAttribute("style").IsNullOrEmpty())
+                List<string> actualStyle = new List<string>();
+                if (!imgTag.GetAttribute("style").IsNullOrEmpty())
                 {
-                    ActualStyle = ImgTag.GetAttribute("style").Split(';').ToList(); ;
+                    actualStyle = imgTag.GetAttribute("style").Split(';').ToList(); ;
                 }
 
-                string NewStyle = string.Empty;
-                if (ActualStyle.Count > 0)
+                string newStyle = string.Empty;
+                if (actualStyle.Count > 0)
                 {
-                    foreach (string StyleProperty in ActualStyle)
+                    foreach (string styleProperty in actualStyle)
                     {
-                        if (!StyleProperty.ToLower().Contains("width") && !StyleProperty.ToLower().Contains("height"))
+                        if (!styleProperty.ToLower().Contains("width") && !styleProperty.ToLower().Contains("height"))
                         {
-                            NewStyle += StyleProperty.ToLower() + ";";
+                            newStyle += styleProperty.ToLower() + ";";
                         }
                     }
                 }
 
-                ImgTag.SetAttribute("style", NewStyle);
+                imgTag.SetAttribute("style", newStyle);
             }
 
             return document.Body.InnerHtml;
         }
+
         #endregion
     }
 }

@@ -130,13 +130,13 @@ namespace DescriptionEditor.Views
         {
             ImageContextMenu imageContextMenu = ((ImageContextMenu)btAddImgContextMenu.Items[0]);
 
-            string imgUrl = imageContextMenu.imgUrl;
-            bool imgCent = imageContextMenu.imgCent;
-            bool imgPx = imageContextMenu.imgPx;
-            int imgSize = imageContextMenu.imgSize;
-            bool imgLeft = imageContextMenu.imgLeft;
-            bool imgCenter = imageContextMenu.imgCenter;
-            bool imgRight = imageContextMenu.imgRight;
+            string imgUrl = imageContextMenu.ImgUrl;
+            bool imgCent = imageContextMenu.ImgCent;
+            bool imgPx = imageContextMenu.ImgPx;
+            int imgSize = imageContextMenu.ImgSize;
+            bool imgLeft = imageContextMenu.ImgLeft;
+            bool imgCenter = imageContextMenu.ImgCenter;
+            bool imgRight = imageContextMenu.ImgRight;
 
 
             string imgAdded = "<img src=\"{0}\" style=\"{1}\">";

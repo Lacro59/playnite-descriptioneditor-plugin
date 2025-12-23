@@ -34,6 +34,7 @@ namespace DescriptionEditor
 
 
         #region Custom event
+
         private void WindowBase_LoadedEvent(object sender, EventArgs e)
         {
             string winIdProperty = string.Empty;
@@ -92,12 +93,12 @@ namespace DescriptionEditor
 
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string ControlName = string.Empty;
+            string controlName = string.Empty;
             try
             {
-                ControlName = ((TabControl)sender).Name;
+                controlName = ((TabControl)sender).Name;
 
-                if (ControlName == "TabControlMain" && BtDescriptionEditor != null)
+                if (controlName == "TabControlMain" && BtDescriptionEditor != null)
                 {
                     BtDescriptionEditor.Visibility = Visibility.Collapsed;
                     TabItem tabItem = (TabItem)((TabControl)sender).SelectedItem;
@@ -117,13 +118,14 @@ namespace DescriptionEditor
             }
             catch (Exception ex)
             {
-                Common.LogError(ex, false, $"Error on TabControl_SelectionChanged for {ControlName}");
+                Common.LogError(ex, false, $"Error on TabControl_SelectionChanged for {controlName}");
             }
         }
+
         #endregion
 
-
         #region Menus
+
         // To add new game menu items override GetGameMenuItems
         public override IEnumerable<GameMenuItem> GetGameMenuItems(GetGameMenuItemsArgs args)
         {
@@ -137,7 +139,7 @@ namespace DescriptionEditor
                 Description = ResourceProvider.GetString("LOCDescriptionEditorButtonRemoveImg"),
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -159,7 +161,7 @@ namespace DescriptionEditor
                 Description = ResourceProvider.GetString("LOCDescriptionEditorButtonAdd100PercentImg"),
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -181,7 +183,7 @@ namespace DescriptionEditor
                 Description = ResourceProvider.GetString("LOCDescriptionEditorButtonRemoveStyleImg"),
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -203,7 +205,7 @@ namespace DescriptionEditor
                 Description = ResourceProvider.GetString("LOCDescriptionEditorButtonCenterImg"),
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -226,7 +228,7 @@ namespace DescriptionEditor
                 Description = ResourceProvider.GetString("LOCDescriptionEditorRemoveAboutGame"),
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -249,7 +251,7 @@ namespace DescriptionEditor
                 Description = ResourceProvider.GetString("LOCDescriptionEditorButtonMarkdownToHtml"),
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -272,7 +274,7 @@ namespace DescriptionEditor
                 Description = ResourceProvider.GetString("LOCDescriptionEditorButtonHeaderToBold"),
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -300,7 +302,7 @@ namespace DescriptionEditor
                 Description = "<p>...</p> => ...<br><br>",
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -322,7 +324,7 @@ namespace DescriptionEditor
                 Description = "...<br><br> => <p>...</p>",
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -350,7 +352,7 @@ namespace DescriptionEditor
                 Description = "<br><br> => <br>",
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -372,7 +374,7 @@ namespace DescriptionEditor
                 Description = "<br><br>br> => <br>",
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -394,7 +396,7 @@ namespace DescriptionEditor
                 Description = "<br><br> => <br>br>",
                 Action = (mainMenuItem) =>
                 {
-                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirumationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
                     if (response == MessageBoxResult.Yes)
                     {
                         foreach (Guid id in ids)
@@ -430,10 +432,11 @@ namespace DescriptionEditor
 
             return gameMenuItems;
         }
+
         #endregion
 
-
         #region Game event
+
         public override void OnGameSelected(OnGameSelectedEventArgs args)
         {
         }
@@ -462,10 +465,11 @@ namespace DescriptionEditor
         public override void OnGameUninstalled(OnGameUninstalledEventArgs args)
         {
         }
+
         #endregion
 
-
         #region Application event
+
         // Add code to be executed when Playnite is initialized.
         public override void OnApplicationStarted(OnApplicationStartedEventArgs args)
         {
@@ -475,16 +479,16 @@ namespace DescriptionEditor
         public override void OnApplicationStopped(OnApplicationStoppedEventArgs args)
         {
         }
-        #endregion
 
+        #endregion
 
         // Add code to be executed when library is updated.
         public override void OnLibraryUpdated(OnLibraryUpdatedEventArgs args)
         {
         }
 
-
         #region Settings
+
         public override ISettings GetSettings(bool firstRunSettings)
         {
             return PluginSettings;
@@ -494,6 +498,7 @@ namespace DescriptionEditor
         {
             return new DescriptionEditorSettingsView();
         }
+
         #endregion
     }
 }

@@ -16,18 +16,17 @@ namespace DescriptionEditor.Views.Interface
     /// </summary>
     public partial class ImageContextMenu : Grid
     {
-        private static readonly ILogger logger = LogManager.GetLogger();
-        private static IResourceProvider resources = new ResourceProvider();
+        private static IResourceProvider ResourceProvider => new ResourceProvider();
 
         public event RoutedEventHandler BtInsertImgClick;
 
-        public string imgUrl { get; set; } = string.Empty;
-        public bool imgCent { get; set; } = true;
-        public bool imgPx { get; set; } = false;
-        public int imgSize { get; set; } = 0;
-        public bool imgLeft { get; set; } = false;
-        public bool imgCenter { get; set; } = true;
-        public bool imgRight { get; set; } = false;
+        public string ImgUrl { get; set; } = string.Empty;
+        public bool ImgCent { get; set; } = true;
+        public bool ImgPx { get; set; } = false;
+        public int ImgSize { get; set; } = 0;
+        public bool ImgLeft { get; set; } = false;
+        public bool ImgCenter { get; set; } = true;
+        public bool ImgRight { get; set; } = false;
 
 
         public ImageContextMenu()
@@ -35,7 +34,7 @@ namespace DescriptionEditor.Views.Interface
             InitializeComponent();
         }
 
-        private void ImgSize_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        private void ImgSize_KeyUp(object sender, KeyEventArgs e)
         {
             tbImgSize.Text = Regex.Replace(tbImgSize.Text, "[^0-9]+", string.Empty);
 
@@ -61,9 +60,9 @@ namespace DescriptionEditor.Views.Interface
 
             foreach (var ui in UI.FindVisualChildren<Border>((ContextMenu)((FrameworkElement)((FrameworkElement)sender).Parent).Parent))
             {
-                if (((FrameworkElement)ui).Name == "HoverBorder")
+                if (ui.Name == "HoverBorder")
                 {
-                    ((Border)ui).Background = (System.Windows.Media.Brush)resources.GetResource("NormalBrush");
+                    ui.Background = (System.Windows.Media.Brush)ResourceProvider.GetResource("NormalBrush");
                     break;
                 }
             }
@@ -92,14 +91,14 @@ namespace DescriptionEditor.Views.Interface
 
         public void BtInsertImg_Click(object sender, RoutedEventArgs e)
         {
-            imgUrl = tbImgUrl.Text;
-            imgCent = (bool)ckImgCent.IsChecked;
-            imgPx = (bool)ckImgPx.IsChecked;
+            ImgUrl = tbImgUrl.Text;
+            ImgCent = (bool)ckImgCent.IsChecked;
+            ImgPx = (bool)ckImgPx.IsChecked;
             int.TryParse(tbImgSize.Text, out int size);
-            imgSize = size;
-            imgLeft = (bool)rbImgLeft.IsChecked;
-            imgCenter = (bool)rbImgCenter.IsChecked;
-            imgRight = (bool)rbImgRight.IsChecked;
+            ImgSize = size;
+            ImgLeft = (bool)rbImgLeft.IsChecked;
+            ImgCenter = (bool)rbImgCenter.IsChecked;
+            ImgRight = (bool)rbImgRight.IsChecked;
 
             BtInsertImgClick?.Invoke(this, new RoutedEventArgs());
         }
