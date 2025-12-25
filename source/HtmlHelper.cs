@@ -20,7 +20,7 @@ namespace DescriptionEditor
         /// </summary>
         private static string Indentation => "    ";
 
-        private static HashSet<string> InlineTags => new HashSet<string>
+        private static readonly HashSet<string> InlineTags = new HashSet<string>
         {
             "a", "span", "b", "strong", "i", "em", "u", "small", "code", "mark", "abbr"
         };
