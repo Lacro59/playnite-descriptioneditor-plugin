@@ -242,18 +242,23 @@ namespace DescriptionEditor.Views
         private void DescriptionTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
             htmlTextView.HtmlText = DescriptionTextBox.Text;
-
             string selected = DescriptionTextBox.SelectedText;
-            if (string.IsNullOrEmpty(selected)) return;
+
+            if (string.IsNullOrEmpty(selected))
+            {
+                return;
+            }
 
             int start = Math.Max(DescriptionTextBox.SelectionStart - 1, 0);
             int length = DescriptionTextBox.SelectionLength + 2;
             length = Math.Min(length, htmlTextView.HtmlText.Length - start);
-
             string extended = htmlTextView.HtmlText.Substring(start, length);
             if (!Regex.IsMatch(extended, @"^.?<") && !Regex.IsMatch(extended, @">.?$") && !Regex.IsMatch(extended, @"\/.?$"))
             {
-                htmlTextView.HtmlText = htmlTextView.HtmlText.Replace(selected, $"<span style=\"background-color: yellow; color: black;\">{selected}</span>");
+                int selStart = DescriptionTextBox.SelectionStart;
+                string before = htmlTextView.HtmlText.Substring(0, selStart);
+                string after = htmlTextView.HtmlText.Substring(selStart + selected.Length);
+                htmlTextView.HtmlText = before + $"<span style=\"background-color: yellow; color: black;\">{selected}</span>" + after;
             }
         }
 
