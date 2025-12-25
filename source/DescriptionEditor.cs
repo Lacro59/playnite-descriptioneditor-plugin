@@ -457,14 +457,7 @@ namespace DescriptionEditor
                 Description = "Test",
                 Action = (mainMenuItem) =>
                 {
-                    foreach (var game in API.Instance.Database.Games)
-                    {
-                        if (game.Description.Contains("<video", StringComparison.OrdinalIgnoreCase))
-                        {
-                            API.Instance.MainView.SelectGame(game.Id);
-                            break;
-                        }
-                    }
+
                 }
             });
 #endif

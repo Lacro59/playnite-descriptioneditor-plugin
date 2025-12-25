@@ -20,62 +20,52 @@ namespace DescriptionEditor
         /// </summary>
         private static string Indentation => "    ";
 
+        private static HashSet<string> InlineTags => new HashSet<string>
+        {
+            "a", "span", "b", "strong", "i", "em", "u", "small", "code", "mark", "abbr"
+        };
+
         #region Compiled Regex - Performance optimization
 
         /// <summary>
         /// Matches newline characters (\r\n, \r, \n).
         /// </summary>
-        private static readonly Regex NewLineRegex = new Regex(@"\r\n?|\n", RegexOptions.Compiled);
+        private static Regex NewLineRegex => new Regex(@"\r\n?|\n", RegexOptions.Compiled);
 
         /// <summary>
         /// Matches one or more whitespace characters.
         /// </summary>
-        private static readonly Regex WhitespaceRegex = new Regex(@"\s+", RegexOptions.Compiled);
-
-        /// <summary>
-        /// Matches special Unicode spacing characters (braille pattern blank).
-        /// </summary>
-        private static readonly Regex SpecialCharsRegex = new Regex(@"[⠀⠀⠀⠀⠀⠀⠀⠀]", RegexOptions.Compiled);
-
-        /// <summary>
-        /// Matches whitespace between HTML tags (>  <).
-        /// </summary>
-        private static readonly Regex TagSpacingRegex = new Regex(@"(>)\s+(<)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-
-        /// <summary>
-        /// Matches leading whitespace before opening HTML tags.
-        /// </summary>
-        private static readonly Regex LeadingSpaceRegex = new Regex(@"\s+(<)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex WhitespaceRegex => new Regex(@"\s+", RegexOptions.Compiled);
 
         /// <summary>
         /// Matches double br tags (<br><br> or </br></br>).
         /// </summary>
-        private static readonly Regex BrBrRegex = new Regex(@"<[/]?br><[/]?br>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex BrBrRegex => new Regex(@"<[/]?br><[/]?br>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches br tags followed by asterisks (<br>*).
         /// </summary>
-        private static readonly Regex BrAsteriskRegex = new Regex("<br>\\*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex BrAsteriskRegex => new Regex("<br>\\*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches br tags followed by dashes (<br>-).
         /// </summary>
-        private static readonly Regex BrDashRegex = new Regex("<br>-", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex BrDashRegex => new Regex("<br>-", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches br tags followed by plus signs (<br>+).
         /// </summary>
-        private static readonly Regex BrPlusRegex = new Regex("<br>\\+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex BrPlusRegex => new Regex("<br>\\+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches empty paragraph tags (<p></p>).
         /// </summary>
-        private static readonly Regex EmptyParagraphRegex = new Regex("<p></p>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex EmptyParagraphRegex => new Regex("<p></p>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches Markdown image syntax and extracts the URL.
         /// </summary>
-        private static readonly Regex MarkdownImageRegex = new Regex(
+        private static Regex MarkdownImageRegex => new Regex(
             "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
             RegexOptions.Compiled
         );
@@ -88,7 +78,7 @@ namespace DescriptionEditor
         /// Contains localized "About the Game" header variants in multiple languages.
         /// Used for identifying and removing Steam game description headers.
         /// </summary>
-        private static readonly HashSet<string> AboutGameHeaders = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        private static HashSet<string> AboutGameHeaders => new HashSet<string>(StringComparer.OrdinalIgnoreCase)
         {
             "<h1>about the game</h1>",
             "<h1>à propos du jeu</h1>",
@@ -163,53 +153,46 @@ namespace DescriptionEditor
                 return;
             }
 
-            string indent = new string(' ', indentLevel * Indentation.Length);
-            string newLine = Environment.NewLine;
-
-            // Case: no children
-            if (!node.HasChildNodes)
+            if (node.NodeType == HtmlNodeType.Text)
             {
-                sb.Append(indent);
-                sb.Append(node.OuterHtml);
-                sb.Append(newLine);
+                sb.Append(node.InnerText);
                 return;
             }
 
-            // Case: node has children
-            sb.Append(indent);
-            sb.Append('<');
-            sb.Append(node.Name);
+            bool isInline = InlineTags.Contains(node.Name);
 
-            if (node.HasAttributes)
+            string indent = isInline ? string.Empty : new string(' ', indentLevel * Indentation.Length);
+            string newLine = isInline ? string.Empty : Environment.NewLine;
+
+            sb.Append(indent);
+            sb.Append('<').Append(node.Name);
+
+            foreach (var attr in node.Attributes)
             {
-                foreach (HtmlAttribute attr in node.Attributes)
-                {
-                    sb.Append(' ');
-                    sb.Append(attr.Name);
-                    sb.Append("=\"");
-                    sb.Append(attr.Value);
-                    sb.Append('"');
-                }
+                sb.Append(' ').Append(attr.Name).Append("=\"").Append(attr.Value).Append('"');
             }
 
             sb.Append('>');
-            sb.Append(newLine);
 
-            // Children
-            foreach (HtmlNode childNode in node.ChildNodes)
+            if (!isInline)
             {
-                WriteNode(childNode, indentLevel + 1, sb);
+                sb.Append(newLine);
             }
 
-            // Close tag
-            sb.Append(indent);
-            sb.Append("</");
-            sb.Append(node.Name);
-            sb.Append('>');
-            sb.Append(newLine);
+            foreach (var child in node.ChildNodes)
+            {
+                WriteNode(child, isInline ? indentLevel : indentLevel + 1, sb);
+            }
+
+            sb.Append(isInline ? string.Empty : indent);
+            sb.Append("</").Append(node.Name).Append('>');
+
+            if (!isInline)
+            {
+                sb.Append(newLine);
+            }
         }
 
-        // Backward compatibility - keep old signature
         /// <summary>
         /// Recursively writes an HTML node and its children with proper indentation.
         /// This is a legacy method maintained for backward compatibility.
@@ -235,33 +218,85 @@ namespace DescriptionEditor
         /// <returns>A serialized, single-line HTML string with no formatting.</returns>
         public static string HtmlFormatRemove(string html)
         {
-            if (string.IsNullOrEmpty(html))
+            if (string.IsNullOrWhiteSpace(html))
             {
                 return string.Empty;
             }
 
-            html = html.Replace(Environment.NewLine, string.Empty);
-            html = html.Replace(Indentation, string.Empty);
-            html = NewLineRegex.Replace(html, string.Empty);
-            html = WhitespaceRegex.Replace(html, " ");
-            html = SpecialCharsRegex.Replace(html, string.Empty);
-            html = TagSpacingRegex.Replace(html, "$1$2");
-            html = LeadingSpaceRegex.Replace(html, "$1");
+            var doc = new HtmlDocument
+            {
+                OptionWriteEmptyNodes = true,
+                OptionOutputAsXml = false,
+                OptionAutoCloseOnEnd = true
+            };
 
-            return html;
+            doc.LoadHtml(html);
+
+            NormalizeTextNodes(doc.DocumentNode);
+
+            return doc.DocumentNode.InnerHtml;
+        }
+
+        private static void NormalizeTextNodes(HtmlNode node)
+        {
+            foreach (var child in node.ChildNodes.ToList())
+            {
+                if (child.NodeType == HtmlNodeType.Text)
+                {
+                    var text = child.InnerText;
+                    text = NewLineRegex.Replace(text, " ");
+                    text = WhitespaceRegex.Replace(text, " ");
+                    child.InnerHtml = text;
+                }
+                else
+                {
+                    NormalizeTextNodes(child);
+                }
+            }
         }
 
         #region Html tag manipulations
 
         /// <summary>
-        /// Delete an html tag with or without replacement
+        /// Removes all instances of a specified HTML tag from the string, including its content.
+        /// Optionally replaces the entire tag (including content) with a custom string.
         /// </summary>
-        /// <param name="html"></param>
-        /// <param name="tag"></param>
-        /// <param name="openReplacement"></param>
-        /// <param name="closeReplacement"></param>
-        /// <returns></returns>
-        public static string RemoveTag(string html, string tag, string openReplacement = "", string closeReplacement = "")
+        /// <param name="html">The HTML string to process.</param>
+        /// <param name="tag">The tag name to remove (e.g., "img", "div", "video").</param>
+        /// <param name="replacement">Optional replacement string for the entire tag and its content (default: empty string).</param>
+        /// <returns>HTML string with the specified tags and their content removed or replaced.</returns>
+        public static string RemoveTag(string html, string tag, string replacement = "")
+        {
+            if (string.IsNullOrEmpty(html) || string.IsNullOrEmpty(tag))
+            {
+                return html;
+            }
+
+            // For self-closing tags (like img, br, hr), just remove the tag itself
+            var selfClosingRegex = new Regex($"<{Regex.Escape(tag)}[^>]*/>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            html = selfClosingRegex.Replace(html, replacement);
+
+            // For tags with closing tags, remove everything from opening to closing tag (including content)
+            var tagWithContentRegex = new Regex(
+                $"<{Regex.Escape(tag)}[^>]*>.*?</{Regex.Escape(tag)}>",
+                RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.Singleline
+            );
+            html = tagWithContentRegex.Replace(html, replacement);
+
+            return html;
+        }
+
+        /// <summary>
+        /// Removes all instances of a specified HTML tag, with separate replacements for opening and closing tags.
+        /// This method does NOT remove the content between tags, only the tags themselves.
+        /// Use RemoveTag(html, tag, replacement) if you want to remove content as well.
+        /// </summary>
+        /// <param name="html">The HTML string to process.</param>
+        /// <param name="tag">The tag name to remove (e.g., "p", "b").</param>
+        /// <param name="openReplacement">Replacement string for opening tags (default: empty string).</param>
+        /// <param name="closeReplacement">Replacement string for closing tags (default: empty string).</param>
+        /// <returns>HTML string with the specified tags removed or replaced, content preserved.</returns>
+        public static string RemoveTagKeepContent(string html, string tag, string openReplacement = "", string closeReplacement = "")
         {
             if (string.IsNullOrEmpty(html) || string.IsNullOrEmpty(tag))
             {
@@ -278,10 +313,12 @@ namespace DescriptionEditor
         }
 
         /// <summary>
-        /// Transform html header (h1, h2, ...) to html bold (b)
+        /// Transforms HTML header tags (h1, h2, h3, etc.) to bold tags with line breaks.
+        /// Opening headers become: br + br + b
+        /// Closing headers become: /b + br
         /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
+        /// <param name="html">The HTML string containing header tags.</param>
+        /// <returns>HTML string with headers converted to bold formatting.</returns>
         public static string HeaderToBold(string html)
         {
             if (string.IsNullOrEmpty(html))
@@ -298,6 +335,12 @@ namespace DescriptionEditor
             return html;
         }
 
+        /// <summary>
+        /// Converts double br tags to paragraph tags, wrapping content between breaks in p tags.
+        /// Removes empty paragraph tags after conversion.
+        /// </summary>
+        /// <param name="html">The HTML string to convert.</param>
+        /// <returns>HTML string with paragraph tags instead of double br tags.</returns>
         public static string BrBrToP(string html)
         {
             if (string.IsNullOrEmpty(html))
@@ -318,6 +361,14 @@ namespace DescriptionEditor
             return html;
         }
 
+        /// <summary>
+        /// Reduces consecutive br tags from a specified count to a different count.
+        /// For example, can replace 3 consecutive br tags with 1 br tag.
+        /// </summary>
+        /// <param name="html">The HTML string to process.</param>
+        /// <param name="countInitial">The number of consecutive br tags to match.</param>
+        /// <param name="countFinal">The number of br tags to replace them with.</param>
+        /// <returns>HTML string with reduced br tag sequences.</returns>
         public static string BrRemove(string html, int countInitial, int countFinal)
         {
             if (string.IsNullOrEmpty(html))
@@ -339,22 +390,25 @@ namespace DescriptionEditor
         }
 
         /// <summary>
-        /// Remove html paragraph (p)
+        /// Removes paragraph tags from HTML, replacing closing p tags with double br tags.
+        /// Opening p tags are removed completely. Content inside paragraphs is preserved.
         /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
+        /// <param name="html">The HTML string containing paragraph tags.</param>
+        /// <returns>HTML string with paragraphs converted to line breaks.</returns>
         public static string ParagraphRemove(string html)
         {
-            return RemoveTag(html, "p", "", "<br><br>");
+            return RemoveTagKeepContent(html, "p", "", "<br><br>");
         }
 
         #endregion
 
         /// <summary>
-        /// Convert Markdown to html
+        /// Converts Markdown syntax to HTML.
+        /// Handles list markers (*, -, +) and Markdown image syntax ![alt](url).
+        /// Images are converted to HTML img tags with 100% width.
         /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
+        /// <param name="html">The string containing Markdown syntax.</param>
+        /// <returns>HTML string with Markdown converted to HTML tags.</returns>
         public static string MarkdownToHtml(string html)
         {
             if (string.IsNullOrEmpty(html))
@@ -374,6 +428,13 @@ namespace DescriptionEditor
             return html;
         }
 
+        /// <summary>
+        /// Removes the "About the Game" header section from Steam game descriptions.
+        /// Searches for localized variants of the header in 26+ languages and removes everything before it.
+        /// This is useful for cleaning up Steam game descriptions to show only the actual description content.
+        /// </summary>
+        /// <param name="html">The HTML string containing a Steam game description.</param>
+        /// <returns>HTML string with the "About the Game" header section removed.</returns>
         public static string SteamRemoveAbout(string html)
         {
             if (string.IsNullOrEmpty(html))
@@ -411,10 +472,11 @@ namespace DescriptionEditor
         #region Image manipulations
 
         /// <summary>
-        /// Add a css hack to center image
+        /// Wraps all img tags in centered div containers using inline CSS.
+        /// Each image will be centered horizontally in its container.
         /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
+        /// <param name="html">The HTML string containing img tags.</param>
+        /// <returns>HTML string with images wrapped in centered divs.</returns>
         public static string CenterImage(string html)
         {
             if (string.IsNullOrEmpty(html))
@@ -427,10 +489,12 @@ namespace DescriptionEditor
         }
 
         /// <summary>
-        /// Add a image width style at 100%
+        /// Adds a 100% width style to all img tags in the HTML.
+        /// Removes any existing width attributes and width-related inline styles first.
+        /// Useful for making images responsive and full-width.
         /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
+        /// <param name="html">The HTML string containing img tags.</param>
+        /// <returns>HTML string with all images set to 100% width via inline CSS.</returns>
         public static string Add100PercentStyle(string html)
         {
             if (string.IsNullOrEmpty(html))
@@ -467,10 +531,12 @@ namespace DescriptionEditor
         }
 
         /// <summary>
-        /// Remove image width & height style
+        /// Removes all width and height attributes and styles from img tags.
+        /// Allows images to use their natural dimensions or be sized by external CSS.
+        /// Useful for removing fixed dimensions that might break responsive layouts.
         /// </summary>
-        /// <param name="html"></param>
-        /// <returns></returns>
+        /// <param name="html">The HTML string containing img tags.</param>
+        /// <returns>HTML string with width and height attributes/styles removed from all images.</returns>
         public static string RemoveSizeStyle(string html)
         {
             if (string.IsNullOrEmpty(html))
