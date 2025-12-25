@@ -13,7 +13,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Html formatieren</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML Format wiederherstellen</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown zu HTML</sys:String>
-    
+
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Kopfzeile zu Fett</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Entfernen &lt;p&gt;</sys:String>
 
@@ -23,6 +23,9 @@
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Breite auf 100% setzen</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Größenstil entfernen</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Bild zentrieren</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">HTML Formatierer</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam Formatierer</sys:String>
