@@ -167,6 +167,13 @@ namespace DescriptionEditor.Views
 
         #endregion
 
+        #region Video Actions
+
+        private void BtRemoveVideo_Click(object sender, RoutedEventArgs e) =>
+            DescriptionTextBox.Text = HtmlHelper.RemoveTag(DescriptionTextBox.Text, "video");
+
+        #endregion
+
         #region Undo / Redo
 
         private void DescriptionTextBox_TextChanged(object sender, TextChangedEventArgs e)

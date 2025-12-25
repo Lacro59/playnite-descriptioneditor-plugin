@@ -133,6 +133,8 @@ namespace DescriptionEditor
             List<Guid> ids = args.Games.Select(x => x.Id).ToList();
             List<GameMenuItem> gameMenuItems = new List<GameMenuItem>();
 
+            #region Image Actions
+
             gameMenuItems.Add(new GameMenuItem
             {
                 MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonImageFormatter")}",
@@ -221,6 +223,35 @@ namespace DescriptionEditor
                 }
             });
 
+            #endregion
+
+            #region Video Actions
+
+            gameMenuItems.Add(new GameMenuItem
+            {
+                MenuSection = $"{ResourceProvider.GetString("LOCDescriptionEditor")}|{ResourceProvider.GetString("LOCDescriptionEditorButtonVideoFormatter")}",
+                Description = ResourceProvider.GetString("LOCDescriptionEditorButtonRemoveVideo"),
+                Action = (mainMenuItem) =>
+                {
+                    MessageBoxResult response = PlayniteApi.Dialogs.ShowMessage(ResourceProvider.GetString("LOCConfirmationAskGeneric"), ResourceProvider.GetString("LOCDescriptionEditor"), MessageBoxButton.YesNo);
+                    if (response == MessageBoxResult.Yes)
+                    {
+                        foreach (Guid id in ids)
+                        {
+                            Game game = PlayniteApi.Database.Games.Get(id);
+                            if (game != null)
+                            {
+                                game.Description = HtmlHelper.RemoveTag(game.Description, "video");
+                                PlayniteApi.Database.Games.Update(game);
+                            }
+                        }
+                    }
+                }
+            });
+
+            #endregion
+
+            #region Actions (HTML / Markdown)
 
             gameMenuItems.Add(new GameMenuItem
             {
@@ -412,6 +443,7 @@ namespace DescriptionEditor
                 }
             });
 
+            #endregion
 
 #if DEBUG
             gameMenuItems.Add(new GameMenuItem
@@ -425,7 +457,14 @@ namespace DescriptionEditor
                 Description = "Test",
                 Action = (mainMenuItem) =>
                 {
-
+                    foreach (var game in API.Instance.Database.Games)
+                    {
+                        if (game.Description.Contains("<video", StringComparison.OrdinalIgnoreCase))
+                        {
+                            API.Instance.MainView.SelectGame(game.Id);
+                            break;
+                        }
+                    }
                 }
             });
 #endif
