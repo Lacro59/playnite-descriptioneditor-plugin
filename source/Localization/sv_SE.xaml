@@ -13,7 +13,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Formatera html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Återställ html-format</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown till html</sys:String>
-    
+
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Rubrik till fetstil</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Ta bort &lt;p&gt;</sys:String>
 
@@ -23,6 +23,9 @@
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Ange bredd till 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Ta bort storleksstil</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centrera bilden</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html-format</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formaterare</sys:String>
