@@ -30,42 +30,42 @@ namespace DescriptionEditor
         /// <summary>
         /// Matches newline characters (\r\n, \r, \n).
         /// </summary>
-        private static Regex NewLineRegex => new Regex(@"\r\n?|\n", RegexOptions.Compiled);
+        private static readonly Regex NewLineRegex = new Regex(@"\r\n?|\n", RegexOptions.Compiled);
 
         /// <summary>
         /// Matches one or more whitespace characters.
         /// </summary>
-        private static Regex WhitespaceRegex => new Regex(@"\s+", RegexOptions.Compiled);
+        private static readonly Regex WhitespaceRegex = new Regex(@"\s+", RegexOptions.Compiled);
 
         /// <summary>
         /// Matches double br tags (<br><br> or </br></br>).
         /// </summary>
-        private static Regex BrBrRegex => new Regex(@"<[/]?br><[/]?br>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex BrBrRegex = new Regex(@"<[/]?br><[/]?br>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches br tags followed by asterisks (<br>*).
         /// </summary>
-        private static Regex BrAsteriskRegex => new Regex("<br>\\*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex BrAsteriskRegex = new Regex("<br>\\*", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches br tags followed by dashes (<br>-).
         /// </summary>
-        private static Regex BrDashRegex => new Regex("<br>-", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex BrDashRegex = new Regex("<br>-", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches br tags followed by plus signs (<br>+).
         /// </summary>
-        private static Regex BrPlusRegex => new Regex("<br>\\+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex BrPlusRegex = new Regex("<br>\\+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches empty paragraph tags (<p></p>).
         /// </summary>
-        private static Regex EmptyParagraphRegex => new Regex("<p></p>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex EmptyParagraphRegex = new Regex("<p></p>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         /// <summary>
         /// Matches Markdown image syntax and extracts the URL.
         /// </summary>
-        private static Regex MarkdownImageRegex => new Regex(
+        private static readonly Regex MarkdownImageRegex = new Regex(
             "!\\[[a-zA-Z0-9- ]*\\][\\s]*\\(((ftp|http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?)\\)",
             RegexOptions.Compiled
         );
