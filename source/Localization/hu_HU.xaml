@@ -13,7 +13,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">HTML szerkesztése</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">HTML szerkesztés eltávolítása</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Leértékelés HTML-re</sys:String>
-    
+
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Fejléc félkövérré tétele</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">&lt;p&gt; eltávolítása</sys:String>
 
@@ -23,6 +23,9 @@
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Szélesség beállítása 100%-ra</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Méretstílus eltávolítása</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Kép középre igazítása</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">HTML szerkesztő</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam szerkesztő</sys:String>

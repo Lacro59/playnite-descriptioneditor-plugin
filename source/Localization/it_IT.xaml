@@ -13,7 +13,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Formattatore HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Rimuovi formattatore HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown in html</sys:String>
-    
+
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Titolo in grassetto</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Rimuovi &lt;p&gt;</sys:String>
 
@@ -23,6 +23,9 @@
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Imposta ampiezza al 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Rimuovi stile della dimensione</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centra l'immagine</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">formattatore html</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Formattatore di Steam</sys:String>
