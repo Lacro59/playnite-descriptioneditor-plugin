@@ -13,7 +13,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">صيغة HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">إستعادة صيغة HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown إلى HTML</sys:String>
-    
+
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">العنوان بخط عريض</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">إزالة &lt;p&gt;</sys:String>
 
@@ -23,6 +23,9 @@
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">ضبط العرض إلى 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">إزالة نمط الحج</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">توسيط الصور</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">منسق HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">منسق Steam</sys:String>
