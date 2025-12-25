@@ -10,102 +10,117 @@
              mc:Ignorable="d" d:DesignHeight="720" d:DesignWidth="1200">
 
     <UserControl.Resources>
+        <!-- Converters -->
         <convertersshared:InvertedBoolenConverter x:Key="InvertedBoolenConverter"/>
+
+        <!-- Button Styles -->
+        <Style x:Key="EditorButtonStyle" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{DynamicResource FontIcoFont}"/>
+        </Style>
+
+        <Style x:Key="BottomButtonStyle" TargetType="Button" BasedOn="{StaticResource EditorButtonStyle}">
+            <Setter Property="Width" Value="100"/>
+        </Style>
+
+        <!-- ContextMenus -->
+        <ContextMenu x:Key="ImageFormatterMenu">
+            <MenuItem Click="BtRemoveImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveImg}" />
+            <MenuItem Click="Bt100PercentImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonAdd100PercentImg}" />
+            <MenuItem Click="BtRemoveImgStyle_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveStyleImg}" />
+            <MenuItem Click="BtCenterImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonCenterImg}" />
+        </ContextMenu>
+
+        <ContextMenu x:Key="HtmlFormatMenu">
+            <MenuItem Click="BtHtoB_Click" Header="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}" />
+            <Separator />
+            <MenuItem Click="BtPremove_Click" Header="&lt;p&gt;...&lt;/p&gt; => ...&lt;br&gt;&lt;br&gt;" />
+            <MenuItem Click="BtBrtoP_Click" Header="...&lt;br&gt;&lt;br&gt; => &lt;p&gt;...&lt;/p&gt;" />
+            <Separator />
+            <MenuItem Click="BtBr2to1_Click" Header="&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
+            <MenuItem Click="BtBr3to1_Click" Header="&lt;br&gt;&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
+            <MenuItem Click="BtBr3to2_Click" Header="&lt;br&gt;&lt;br&gt;&lt;br&gt; => &lt;br&gt;&lt;br&gt;" />
+        </ContextMenu>
+
+        <ContextMenu x:Key="HtmlSteamMenu">
+            <MenuItem Click="SteamRemoveAbout_click" Header="{DynamicResource LOCDescriptionEditorRemoveAboutGame}" />
+        </ContextMenu>
     </UserControl.Resources>
 
     <DockPanel Margin="10" Name="PART_DescriptionView" LastChildFill="True">
-        <!-- Editor button -->
+
+        <!-- Toolbar -->
         <Border DockPanel.Dock="Top" BorderThickness="0,0,0,1" BorderBrush="{StaticResource NormalBorderBrush}">
             <DockPanel Margin="0,5">
-                <Button Name="PART_Undo" Content="&#xee0b;" FontFamily="{DynamicResource FontIcoFont}" 
-                        Margin="5" VerticalAlignment="Center" Click="PART_Undo_Click" IsEnabled="False" />
-                <Button Name="PART_Redo" Content="&#xedfe;" FontFamily="{DynamicResource FontIcoFont}" 
-                        Margin="5,5,40,5" VerticalAlignment="Center" Click="PART_Redo_Click" IsEnabled="False" />
+                <!-- Undo/Redo -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                    <Button Name="PART_Undo" Content="&#xee0b;" Style="{StaticResource EditorButtonStyle}" Click="PART_Undo_Click" IsEnabled="False"/>
+                    <Button Name="PART_Redo" Content="&#xedfe;" Style="{StaticResource EditorButtonStyle}" Click="PART_Redo_Click" IsEnabled="False"/>
+                </StackPanel>
 
-                <Button Name="btAddImg" Content="{DynamicResource LOCDescriptionEditorButtonAddImg}" Click="BtAddImg_Click"
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left" Margin="5">
-                    <Button.ContextMenu>
-                        <ContextMenu Placement="Bottom" Name="btAddImgContextMenu">
-                            <interface:ImageContextMenu BtInsertImgClick="BtInsertImg_Click" />
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                </Button>
+                <!-- Image Buttons -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                    <Button Name="btAddImg" Click="BtAddImg_Click" ToolTip="{DynamicResource LOCDescriptionEditorButtonAddImg}"
+                            pbeh:LeftClickContextMenuBehavior.Enabled="True" Style="{StaticResource EditorButtonStyle}">
+                        <Grid>
+                            <TextBlock Text="&#xef4b;" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="&#xefc0;" FontSize="8" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,-5,0"/>
+                        </Grid>
+                        <Button.ContextMenu>
+                            <ContextMenu Placement="Bottom" Name="btAddImgContextMenu">
+                                <interface:ImageContextMenu BtInsertImgClick="BtInsertImg_Click"/>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
 
-                <Button Name="btImageFormatter" Content="{DynamicResource LOCDescriptionEditorButtonImageFormatter}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" Margin="5,5,40,5">
-                    <Button.ContextMenu>
-                        <ContextMenu Placement="Bottom">
-                            <MenuItem Click="BtRemoveImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveImg}" />
-                            <MenuItem Click="Bt100PercentImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonAdd100PercentImg}" />
-                            <MenuItem Click="BtRemoveImgStyle_Click" Header="{DynamicResource LOCDescriptionEditorButtonRemoveStyleImg}" />
-                            <MenuItem Click="BtCenterImg_Click" Header="{DynamicResource LOCDescriptionEditorButtonCenterImg}" />
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                </Button>
+                    <Button Name="btImageFormatter" Content="&#xef4b;" ToolTip="{DynamicResource LOCDescriptionEditorButtonImageFormatter}" 
+                            pbeh:LeftClickContextMenuBehavior.Enabled="True" Style="{StaticResource EditorButtonStyle}" ContextMenu="{StaticResource ImageFormatterMenu}"/>
+                </StackPanel>
 
-                <Button Name="btHtmlFormat" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormat}"
-                        HorizontalAlignment="Left" Margin="5" Click="BtHtmlFormat_Click" />
-
-                <Button Name="btHtmlFormatRemove" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatRemove}"
-                        HorizontalAlignment="Left" Margin="5,5,40,5" Click="BtHtmlFormatRemove_Click" />
-
-                <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}"
-                        HorizontalAlignment="Left" Margin="5" Click="BtMarkdownToHtml_Click" />
-
-                <Button Name="btHtmlFormaters" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormater}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left"  Margin="5,5,40,5">
-                    <Button.ContextMenu>
-                        <ContextMenu Placement="Bottom">
-                            <MenuItem Click="BtHtoB_Click" Header="{DynamicResource LOCDescriptionEditorButtonHeaderToBold}" />
-                            <Separator />
-                            <MenuItem Click="BtPremove_Click" Header="&lt;p&gt;...&lt;/p&gt; => ...&lt;br&gt;&lt;br&gt;" />
-                            <MenuItem Click="BtBrtoP_Click" Header="...&lt;br&gt;&lt;br&gt; => &lt;p&gt;...&lt;/p&gt;" />
-                            <Separator />
-                            <MenuItem Click="BtBr2to1_Click" Header="&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
-                            <MenuItem Click="BtBr3to1_Click" Header="&lt;br&gt;&lt;br&gt;&lt;br&gt; => &lt;br&gt;" />
-                            <MenuItem Click="BtBr3to2_Click" Header="&lt;br&gt;&lt;br&gt;&lt;br&gt; => &lt;br&gt;&lt;br&gt;" />
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                </Button>
-
-                <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
-                        pbeh:LeftClickContextMenuBehavior.Enabled="True" HorizontalAlignment="Left" Margin="5">
-                    <Button.ContextMenu>
-                        <ContextMenu Placement="Bottom">
-                            <MenuItem Click="SteamRemoveAbout_click" Header="{DynamicResource LOCDescriptionEditorRemoveAboutGame}" />
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                </Button>
+                <!-- HTML / Markdown Buttons -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,20,0">
+                    <Button Name="btHtmlFormat" Content="&#xe9a8;" FontFamily="{DynamicResource CommonFont}" ToolTip="{DynamicResource LOCDescriptionEditorButtonHtmlFormat}" 
+                            Style="{StaticResource EditorButtonStyle}" Click="BtHtmlFormat_Click"/>
+                    <Button Name="btHtmlFormatRemove" Content="&#xe9b0;" FontFamily="{DynamicResource CommonFont}" ToolTip="{DynamicResource LOCDescriptionEditorButtonHtmlFormatRemove}" 
+                            Style="{StaticResource EditorButtonStyle}" Click="BtHtmlFormatRemove_Click"/>
+                    <Button Name="btMarkdownToHtml" Content="{DynamicResource LOCDescriptionEditorButtonMarkdownToHtml}" Style="{StaticResource EditorButtonStyle}" Click="BtMarkdownToHtml_Click"/>
+                    <Button Name="btHtmlFormaters" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormater}" 
+                            pbeh:LeftClickContextMenuBehavior.Enabled="True" Style="{StaticResource EditorButtonStyle}" ContextMenu="{StaticResource HtmlFormatMenu}"/>
+                    <Button Name="btHtmlFormatSteam" Content="{DynamicResource LOCDescriptionEditorButtonHtmlFormatSteam}" 
+                            pbeh:LeftClickContextMenuBehavior.Enabled="True" Style="{StaticResource EditorButtonStyle}" ContextMenu="{StaticResource HtmlSteamMenu}"/>
+                </StackPanel>
             </DockPanel>
         </Border>
 
-        <!-- Action button -->
+        <!-- Bottom Action Buttons -->
         <Border DockPanel.Dock="Bottom" BorderThickness="0,1,0,0" BorderBrush="{StaticResource NormalBorderBrush}">
-            <DockPanel KeyboardNavigation.TabNavigation="Local" LastChildFill="False" Margin="0,5">
-                <Button TabIndex="1" Name="btEditorCancel" Content="{DynamicResource LOCCancelLabel}" DockPanel.Dock="Right" IsCancel="True"
-                        Style="{StaticResource BottomButton}" Click="BtEditorCancel_Click"/>
-                <Button TabIndex="2" Name="btEditorOK" Content="{DynamicResource LOCSaveLabel}" DockPanel.Dock="Right" IsDefault="True"
-                        Style="{StaticResource BottomButton}" Click="BtEditorOK_Click"/>
+            <DockPanel KeyboardNavigation.TabNavigation="Local" LastChildFill="False" Margin="0,5" HorizontalAlignment="Right">
+                <Button Name="btEditorOK" Content="{DynamicResource LOCSaveLabel}" IsDefault="True"
+                        Style="{StaticResource BottomButtonStyle}" Click="BtEditorOK_Click"/>
+                <Button Name="btEditorCancel" Content="{DynamicResource LOCCancelLabel}" IsCancel="True"
+                        Style="{StaticResource BottomButtonStyle}" Click="BtEditorCancel_Click"/>
             </DockPanel>
         </Border>
 
+        <!-- Editor Area -->
         <Grid Margin="0,10,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="10" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            <TextBox Grid.Column="0" TextChanged="DescriptionActual_TextChanged"
-                 TextWrapping="Wrap" AcceptsReturn="True" Name="DescriptionActual"
-                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                 FontFamily="{DynamicResource MonospaceFontFamily}"
-                 PreviewKeyDown="DescriptionActual_PreviewKeyDown"
-                 SelectionChanged="DescriptionActual_SelectionChanged"
-                 Text="{Binding Description, Mode=TwoWay}" />
+
+            <TextBox Grid.Column="0" Name="DescriptionTextBox" TextWrapping="Wrap" AcceptsReturn="True"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     FontFamily="{DynamicResource MonospaceFontFamily}"
+                     Text="{Binding Description, Mode=TwoWay}"
+                     PreviewKeyDown="DescriptionTextBox_PreviewKeyDown"
+                     TextChanged="DescriptionTextBox_TextChanged"
+                     SelectionChanged="DescriptionTextBox_SelectionChanged"/>
 
             <ScrollViewer Grid.Column="2" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                <StackPanel Name="PART_HtmlDescription" />
+                <StackPanel Name="HtmlPreviewPanel" />
             </ScrollViewer>
         </Grid>
     </DockPanel>
