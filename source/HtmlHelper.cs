@@ -303,8 +303,8 @@ namespace DescriptionEditor
                 return html;
             }
 
-            var openTagRegex = new Regex($"<{Regex.Escape(tag.ToLower())}[^>]*>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-            var closeTagRegex = new Regex($"</{Regex.Escape(tag.ToUpper())}[^>]*>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            var openTagRegex = new Regex($"<{Regex.Escape(tag)}[^>]*>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            var closeTagRegex = new Regex($"</{Regex.Escape(tag)}[^>]*>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
             html = openTagRegex.Replace(html, openReplacement);
             html = closeTagRegex.Replace(html, closeReplacement);
