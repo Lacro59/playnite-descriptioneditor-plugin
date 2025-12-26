@@ -70,3 +70,12 @@ Packages:
       - 'Updated: Localizations'
       - 'Optimized: UI'
       - 'Added: <br> => <p> transformation'
+  - Version: 3.3
+    RequiredApiVersion: 6.14.0
+    ReleaseDate: 2025-12-25
+    PackageUrl: https://github.com/Lacro59/playnite-descriptioneditor-plugin/releases/download/v3.3/playnite-descriptioneditor-plugin_3_3.pext
+    Changelog:
+      - 'Updated: Localizations'
+      - 'Optimized: UI'
+      - 'Added: Remove video tag option'
+      - 'Optimized: Text selector in preview'
