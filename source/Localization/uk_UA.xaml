@@ -13,7 +13,7 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Зручний HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Компактний HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Додати HTML</sys:String>
-    
+
     <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Заголовок жирним шрифтом</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Прибрати &lt;p&gt;</sys:String>
 
@@ -23,6 +23,9 @@
     <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Встановити ширину на 100%</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Вилучити стиль розміру</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Центрувати зображення</sys:String>
+
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">Розмітка HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Розмітка Steam</sys:String>
