@@ -445,15 +445,13 @@ namespace DescriptionEditor
             html = NewLineRegex.Replace(html, string.Empty);
             html = HtmlFormatRemove(html);
 
-            string htmlLower = html.ToLower(); // Convert once
-
             int bestIndex = -1;
             int bestLength = 0;
 
             // Find the first matching header
             foreach (string about in AboutGameHeaders)
             {
-                int index = htmlLower.IndexOf(about, StringComparison.Ordinal);
+                int index = html.IndexOf(about, StringComparison.InvariantCultureIgnoreCase);
                 if (index > -1 && (bestIndex == -1 || index < bestIndex))
                 {
                     bestIndex = index;
