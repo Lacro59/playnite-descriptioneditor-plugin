@@ -78,7 +78,7 @@ namespace DescriptionEditor
         /// Contains localized "About the Game" header variants in multiple languages.
         /// Used for identifying and removing Steam game description headers.
         /// </summary>
-        private static readonly HashSet<string> AboutGameHeaders = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        private static readonly HashSet<string> AboutGameHeaders = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase)
         {
             "<h1>about the game</h1>",
             "<h1>à propos du jeu</h1>",
