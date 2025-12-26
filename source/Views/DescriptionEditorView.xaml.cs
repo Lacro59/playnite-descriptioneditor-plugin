@@ -15,11 +15,11 @@ namespace DescriptionEditor.Views
 {
     public partial class DescriptionEditorView : UserControl
     {
-        private static IResourceProvider resources { get; set; } = new ResourceProvider();
+        private static IResourceProvider RessourceProvider => new ResourceProvider();
 
         public string Description { get; set; }
-        private TextBox _TextDescription { get; set; }
-        private HtmlTextView htmlTextView { get; set; } = new HtmlTextView();
+        private TextBox TextDescription { get; set; }
+        private HtmlTextView HtmlTextView { get; set; } = new HtmlTextView();
 
         private bool DisableEvent { get; set; } = false;
         private int IndexUndo { get; set; } = 0;
@@ -31,7 +31,7 @@ namespace DescriptionEditor.Views
         {
             InitializeComponent();
 
-            _TextDescription = TextDescription;
+            this.TextDescription = TextDescription;
             Description = TextDescription.Text;
 
             PlayniteTools.SetThemeInformation();
@@ -39,16 +39,16 @@ namespace DescriptionEditor.Views
 
             try
             {
-                htmlTextView.Visibility = Visibility.Visible;
-                htmlTextView.TemplatePath = DescriptionViewFile;
-                htmlTextView.HtmlText = Description;
+                HtmlTextView.Visibility = Visibility.Visible;
+                HtmlTextView.TemplatePath = DescriptionViewFile;
+                HtmlTextView.HtmlText = Description;
 
-                htmlTextView.HtmlFontSize = (double)resources.GetResource("FontSize");
-                htmlTextView.HtmlFontFamily = (FontFamily)resources.GetResource("FontFamily");
-                htmlTextView.HtmlForeground = (Color)resources.GetResource("TextColor");
-                htmlTextView.LinkForeground = (Color)resources.GetResource("GlyphColor");
+                HtmlTextView.HtmlFontSize = (double)RessourceProvider.GetResource("FontSize");
+                HtmlTextView.HtmlFontFamily = (FontFamily)RessourceProvider.GetResource("FontFamily");
+                HtmlTextView.HtmlForeground = (Color)RessourceProvider.GetResource("TextColor");
+                HtmlTextView.LinkForeground = (Color)RessourceProvider.GetResource("GlyphColor");
 
-                _ = HtmlPreviewPanel.Children.Add(htmlTextView);
+                _ = HtmlPreviewPanel.Children.Add(HtmlTextView);
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace DescriptionEditor.Views
 
         private void BtEditorOK_Click(object sender, RoutedEventArgs e)
         {
-            _TextDescription.Text = DescriptionTextBox.Text;
+            TextDescription.Text = DescriptionTextBox.Text;
             ((Window)this.Parent).Close();
         }
 
@@ -144,8 +144,8 @@ namespace DescriptionEditor.Views
 
             if (config.ImgLeft || config.ImgRight)
             {
-                string tdLeft = config.ImgLeft ? imgTag : resources.GetString("LOCDescriptionEditorTextHere");
-                string tdRight = config.ImgRight ? imgTag : resources.GetString("LOCDescriptionEditorTextHere");
+                string tdLeft = config.ImgLeft ? imgTag : RessourceProvider.GetString("LOCDescriptionEditorTextHere");
+                string tdRight = config.ImgRight ? imgTag : RessourceProvider.GetString("LOCDescriptionEditorTextHere");
 
                 imgTag = $"<table style=\"border:0;width:100%;border-spacing:10px;\"><tr><td>{tdLeft}</td><td>{tdRight}</td></tr></table>";
             }
@@ -178,7 +178,7 @@ namespace DescriptionEditor.Views
 
         private void DescriptionTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            htmlTextView.HtmlText = DescriptionTextBox.Text;
+            HtmlTextView.HtmlText = DescriptionTextBox.Text;
 
             if (DisableEvent) { DisableEvent = false; return; }
 
@@ -241,7 +241,7 @@ namespace DescriptionEditor.Views
 
         private void DescriptionTextBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            htmlTextView.HtmlText = DescriptionTextBox.Text;
+            HtmlTextView.HtmlText = DescriptionTextBox.Text;
             string selected = DescriptionTextBox.SelectedText;
 
             if (string.IsNullOrEmpty(selected))
@@ -251,14 +251,14 @@ namespace DescriptionEditor.Views
 
             int start = Math.Max(DescriptionTextBox.SelectionStart - 1, 0);
             int length = DescriptionTextBox.SelectionLength + 2;
-            length = Math.Min(length, htmlTextView.HtmlText.Length - start);
-            string extended = htmlTextView.HtmlText.Substring(start, length);
+            length = Math.Min(length, HtmlTextView.HtmlText.Length - start);
+            string extended = HtmlTextView.HtmlText.Substring(start, length);
             if (!Regex.IsMatch(extended, @"^.?<") && !Regex.IsMatch(extended, @">.?$") && !Regex.IsMatch(extended, @"\/.?$"))
             {
                 int selStart = DescriptionTextBox.SelectionStart;
-                string before = htmlTextView.HtmlText.Substring(0, selStart);
-                string after = htmlTextView.HtmlText.Substring(selStart + selected.Length);
-                htmlTextView.HtmlText = before + $"<span style=\"background-color: yellow; color: black;\">{selected}</span>" + after;
+                string before = HtmlTextView.HtmlText.Substring(0, selStart);
+                string after = HtmlTextView.HtmlText.Substring(selStart + selected.Length);
+                HtmlTextView.HtmlText = before + $"<span style=\"background-color: yellow; color: black;\">{selected}</span>" + after;
             }
         }
 
