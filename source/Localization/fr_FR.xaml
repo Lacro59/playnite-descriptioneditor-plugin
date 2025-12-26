@@ -24,8 +24,8 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Supprimer le style de taille</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Centrer l'image</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Formateur vidéo</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Retirer les vidéos</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">Éditeur HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Formateur Steam</sys:String>

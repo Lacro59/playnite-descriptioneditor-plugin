@@ -24,8 +24,8 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Вилучити стиль розміру</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Центрувати зображення</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Робота з відео</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Прибрати відео</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">Розмітка HTML</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Розмітка Steam</sys:String>
