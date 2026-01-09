@@ -31,12 +31,12 @@
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматер Steam</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (пикс)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (px)</sys:String>
     <sys:String x:Key="LOCDescriptionEditorPosition">Позиция</sys:String>
     <sys:String x:Key="LOCDescriptionEditorCenter">Центр</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Удалить &quot;О игре&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текст</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите здесь свой текст</sys:String>
 
 </ResourceDictionary>
