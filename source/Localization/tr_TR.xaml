@@ -24,8 +24,8 @@
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Boyut stilini kaldır</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Görseli ortala</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatlayıcı</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Videoyu kaldır</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html biçimlendirici</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam biçimlendirici</sys:String>
