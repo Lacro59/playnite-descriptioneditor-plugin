@@ -3,40 +3,40 @@
 
     <!-- MainView -->
 
-    <sys:String x:Key="LOCDescriptionEditor">Редактор описания</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
 
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">Редактор описания</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Формат html</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Удаление HTML-формататора</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown на html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Format html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Restore html format</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Жирный шрифт заголовка</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Удалить &lt;p&gt;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Формат изображения</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Добавить изображение</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Удалить изображение</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Установить ширину на 100%</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Удалить стиль размера</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">По центру изображения</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width to 100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
 
     <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
     <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html формат</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Форматер Steam</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorLabelSize">Размер изображения</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (пикс)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Позиция</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Центр</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">или вручную (px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Center</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Удалить &quot;О игре&quot;</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remove &quot;About the Game&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите текст</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Введите здесь свой текст</sys:String>
 
 </ResourceDictionary>

@@ -3,40 +3,40 @@
 
     <!-- MainView -->
 
-    <sys:String x:Key="LOCDescriptionEditor">AçıklamaDüzenleyici</sys:String>
+    <sys:String x:Key="LOCDescriptionEditor">DescriptionEditor</sys:String>
 
 
     <!-- EditGameDetails -->
 
-    <sys:String x:Key="LOCDescriptionEditorButton">Açıklama Düzenleyici</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButton">Description Editor</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Html biçimlendir</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Html biçimini geri yükle</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">HTML' ye işaretle</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormat">Format html</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatRemove">Restore html format</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonMarkdownToHtml">Markdown to html</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Başlığı kalın yap</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">&lt;p&gt; kaldır</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHeaderToBold">Header to bold</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonParagraphRemove">Remove &lt;p&gt;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Görsel biçimlendirici</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Görsel ekle</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Görseli kaldır</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Genişliği %100 olarak ayarla</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Boyut stilini kaldır</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Görseli ortala</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonImageFormatter">Image formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAddImg">Add image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveImg">Remove image</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonAdd100PercentImg">Set width to 100%</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveStyleImg">Remove size style</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonCenterImg">Center the image</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatter</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Remove video</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonVideoFormatter">Video formatlayıcı</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonRemoveVideo">Videoyu kaldır</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html biçimlendirici</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam biçimlendirici</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormater">html formatter</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorButtonHtmlFormatSteam">Steam formatter</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorLabelSize">Görsel boyutu</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">veya elle (px)</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorPosition">Konum</sys:String>
-    <sys:String x:Key="LOCDescriptionEditorCenter">Merkez</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelSize">Image size</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorLabelManualSize">or manual (px)</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorPosition">Position</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorCenter">Center</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">&quot;Oyun Hakkında&quot;yı kaldır</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorRemoveAboutGame">Remove &quot;About the Game&quot;</sys:String>
 
-    <sys:String x:Key="LOCDescriptionEditorTextHere">Metniniz buraya</sys:String>
+    <sys:String x:Key="LOCDescriptionEditorTextHere">Your text here</sys:String>
 
 </ResourceDictionary>
